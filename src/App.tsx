@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import reactLogo from './assets/images/react.svg'
 import viteLogo from '/vite.svg'
+import TestComponents from "./components/ComponentShowcase"
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,13 +25,9 @@ function App() {
             />
           </a>
         </div>
-        <h1 className="text-center text-4xl font-semibold tracking-tight">
-          Vite, React, and Tailwind CSS
-        </h1>
-        <h2 className="text-center text-2xl font-semibold tracking-tight">
-          S p o o k y <span className="text-red-700">Surprise</span>
+        <h2 className="font-heading text-center text-7xl font-semibold tracking-widest">
+          Spooky <span className="text-red-700">Surprise</span>
         </h2>
-        <p>Let's gooooooooooooooo</p>
         <div className="flex flex-col items-center gap-4 rounded-2xl border border-slate-800/80 bg-slate-900/60 px-10 py-8 shadow-lg shadow-emerald-500/10">
           <button
             className="rounded-lg bg-emerald-500 px-5 py-2 text-sm font-medium text-slate-950 shadow transition hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
@@ -43,6 +40,7 @@ function App() {
             and save to test HMR
           </p>
         </div>
+        <TestComponents />
       </main>
     </div>
   )
