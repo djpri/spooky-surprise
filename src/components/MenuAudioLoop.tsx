@@ -6,6 +6,7 @@ const OVERLAP_SECONDS = 0.4
 const FADE_IN_SECONDS = 0.4
 const FADE_OUT_SECONDS = 0.8
 const START_DELAY_SECONDS = 0.1
+const TARGET_VOLUME = 0.7
 
 export default function MenuAudioLoop() {
   const { soundEnabled } = useStoryStore()
@@ -73,8 +74,8 @@ export default function MenuAudioLoop() {
       const gain = gainNodes[slotIndex].gain
       gain.cancelScheduledValues(startTime)
       gain.setValueAtTime(0, startTime)
-      gain.linearRampToValueAtTime(1, fadeInEnd)
-      gain.setValueAtTime(1, fadeOutStart)
+      gain.linearRampToValueAtTime(TARGET_VOLUME, fadeInEnd)
+      gain.setValueAtTime(TARGET_VOLUME, fadeOutStart)
       gain.linearRampToValueAtTime(0, stopTime)
 
       try {
