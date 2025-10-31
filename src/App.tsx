@@ -7,10 +7,12 @@ import { useStoryStore } from "./store/storyStore";
 import MenuAudioLoop from "./components/MenuAudioLoop";
 import { GhostCursor } from "./components/GhostCursor";
 import MazeOverlay from "./components/MazeOverlay";
+import BSODOverlay from "./components/BSODOverlay";
 
 function App() {
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
     const [showMaze, setShowMaze] = useState(false);
+    const [showBSOD, setShowBSOD] = useState(false);
     const {
         currentNode,
         visited,
@@ -25,7 +27,7 @@ function App() {
     return (
         <div className="min-h-screen bg-background text-foreground">
             {!showMaze && <GhostCursor />}
-            <MenuAudioLoop />
+            {!showBSOD && <MenuAudioLoop />}
             <main className="container mx-auto flex min-h-screen flex-col items-center justify-center gap-16 px-4 py-16">
                 <h2 className="font-heading text-center text-7xl font-semibold tracking-widest">
                     <button
@@ -37,7 +39,13 @@ function App() {
                         Spooky
                     </button>
                     {" "}
-                    <span className="text-secondary">Surprise</span>
+                    {/* Intentionally no hover/gesture to suggest interaction */}
+                    <span
+                        className="text-secondary"
+                        onClick={() => setShowBSOD(true)}
+                    >
+                        Surprise
+                    </span>
                 </h2>
 
                 <div className="flex w-full max-w-3xl justify-center">
@@ -107,7 +115,10 @@ function App() {
                 isOpen={isSettingsOpen}
                 onClose={() => setIsSettingsOpen(false)}
             />
-            {showMaze && <MazeOverlay onClose={() => setShowMaze(false)} />}
+            {showMaze && <MazeOverlay onClose={() => setShowMaze(false)} />} 
+            {showBSOD && (
+                <BSODOverlay onClose={() => setShowBSOD(false)} />
+            )}
         </div>
     );
 }
