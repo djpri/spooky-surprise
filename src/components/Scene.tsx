@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { storyNodes, type StoryNode } from '../data/storyNodes'
 import { useStoryStore } from '../store/storyStore'
 import { Button } from './ui/Button'
@@ -8,14 +8,8 @@ interface SceneProps {
 }
 
 export default function Scene({ node }: SceneProps) {
-  const { setNode, addItem, recordRoll, lastRoll } = useStoryStore()
+  const { setNode, recordRoll, lastRoll } = useStoryStore()
   const [isRolling, setIsRolling] = useState(false)
-
-  useEffect(() => {
-    if (node.id === 'amulet') {
-      addItem('Obsidian Amulet')
-    }
-  }, [addItem, node.id])
 
   const choices = useMemo(() => node.choices ?? [], [node.choices])
 
