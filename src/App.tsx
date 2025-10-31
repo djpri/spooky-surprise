@@ -6,9 +6,11 @@ import StoryRenderer from "./components/StoryRenderer";
 import { useStoryStore } from "./store/storyStore";
 import MenuAudioLoop from "./components/MenuAudioLoop";
 import { GhostCursor } from "./components/GhostCursor";
+import MazeOverlay from "./components/MazeOverlay";
 
 function App() {
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+    const [showMaze, setShowMaze] = useState(false);
     const {
         currentNode,
         visited,
@@ -22,11 +24,20 @@ function App() {
 
     return (
         <div className="min-h-screen bg-background text-foreground">
-            <GhostCursor />
+            {!showMaze && <GhostCursor />}
             <MenuAudioLoop />
             <main className="container mx-auto flex min-h-screen flex-col items-center justify-center gap-16 px-4 py-16">
                 <h2 className="font-heading text-center text-7xl font-semibold tracking-widest">
-                    Spooky <span className="text-secondary">Surprise</span>
+                    <button
+                        onClick={() => setShowMaze(true)}
+                        className="underline-offset-4 hover:underline"
+                        aria-label="Open spooky maze"
+                        title="Spooky (click me)"
+                    >
+                        Spooky
+                    </button>
+                    {" "}
+                    <span className="text-secondary">Surprise</span>
                 </h2>
 
                 <div className="flex w-full max-w-3xl justify-center">
@@ -96,6 +107,7 @@ function App() {
                 isOpen={isSettingsOpen}
                 onClose={() => setIsSettingsOpen(false)}
             />
+            {showMaze && <MazeOverlay onClose={() => setShowMaze(false)} />}
         </div>
     );
 }

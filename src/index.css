@@ -79,6 +79,15 @@ body {
   cursor: none;
 }
 
+/* Maze mode: restore default cursor and hide ghost */
+.maze-active,
+.maze-active * {
+  cursor: auto !important;
+}
+.maze-active .ghost-cursor {
+  display: none !important;
+}
+
 /* Ghost Cursor Styles */
 .ghost-body {
   width: 32px;
@@ -88,6 +97,21 @@ body {
   position: relative;
   animation: float 2s ease-in-out infinite;
   filter: drop-shadow(0 0 8px rgba(163, 24, 24, 0.5));
+}
+
+/* Pointer state: make ghost more transparent over interactive elements */
+.ghost-cursor.ghost-pointer .ghost-body {
+  opacity: 0.15;
+  filter: drop-shadow(0 0 6px rgba(163, 24, 24, 0.25));
+}
+.dark .ghost-cursor.ghost-pointer .ghost-body {
+  filter: drop-shadow(0 0 8px rgba(255, 8, 8, 0.3));
+}
+.ghost-cursor.ghost-pointer .ghost-wave {
+  opacity: 0.55;
+}
+.ghost-cursor.ghost-pointer .ghost-eye {
+  opacity: 0.75;
 }
 
 .dark .ghost-body {
@@ -165,6 +189,14 @@ body {
 .dark .ghost-trail {
   background: var(--secondary);
   opacity: 0.5;
+}
+
+/* Reduce trail strength when hovering interactive targets */
+.ghost-pointer-mode .ghost-trail {
+  opacity: 0.2;
+}
+.dark .ghost-pointer-mode .ghost-trail {
+  opacity: 0.25;
 }
 
 @keyframes float {

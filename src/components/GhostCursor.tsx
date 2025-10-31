@@ -4,14 +4,41 @@ export function GhostCursor() {
   const cursorRef = useRef<HTMLDivElement>(null)
   const trailsRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [isPointer, setIsPointer] = useState(false)
   const mousePos = useRef({ x: 0, y: 0 })
   const cursorPos = useRef({ x: 0, y: 0 })
   const animationFrameId = useRef<number | null>(null)
 
   useEffect(() => {
+    const isPointerTarget = (el: Element | null): boolean => {
+      let current: Element | null = el
+      while (current && current !== document.documentElement) {
+        const style = getComputedStyle(current as Element)
+        if (style.cursor === 'pointer') return true
+
+        if (current instanceof HTMLElement) {
+          const tag = current.tagName
+          if (tag === 'A' && (current as HTMLAnchorElement).href) return true
+          if (tag === 'BUTTON') return !(current as HTMLButtonElement).disabled
+          if (tag === 'LABEL') return true
+          if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return true
+          if (current.getAttribute('role') === 'button') return true
+          if (current.classList.contains('cursor-pointer')) return true
+        }
+
+        current = (current as HTMLElement).parentElement
+      }
+      return false
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
       mousePos.current = { x: e.clientX, y: e.clientY }
       if (!isVisible) setIsVisible(true)
+
+       // Detect if target is a pointer/clickable area
+      const target = e.target as Element | null
+      const pointerNow = isPointerTarget(target)
+      setIsPointer(prev => (prev !== pointerNow ? pointerNow : prev))
     }
 
     const handleMouseLeave = () => {
@@ -68,12 +95,15 @@ export function GhostCursor() {
   return (
     <>
       {/* Trail container */}
-      <div ref={trailsRef} className="pointer-events-none fixed inset-0 z-[9998]" />
+      <div
+        ref={trailsRef}
+        className={`pointer-events-none fixed inset-0 z-[9998] ${isPointer ? 'ghost-pointer-mode' : ''}`}
+      />
 
       {/* Ghost cursor */}
       <div
         ref={cursorRef}
-        className={`ghost-cursor ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+        className={`ghost-cursor ${isVisible ? 'opacity-100' : 'opacity-0'} ${isPointer ? 'ghost-pointer' : ''}`}
         style={{
           position: 'fixed',
           left: 0,
