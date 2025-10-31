@@ -5,6 +5,7 @@ import { Button } from "./components/ui/Button";
 import StoryRenderer from "./components/StoryRenderer";
 import { useStoryStore } from "./store/storyStore";
 import MenuAudioLoop from "./components/MenuAudioLoop";
+import { GhostCursor } from "./components/GhostCursor";
 
 function App() {
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -21,6 +22,7 @@ function App() {
 
     return (
         <div className="min-h-screen bg-background text-foreground">
+            <GhostCursor />
             <MenuAudioLoop />
             <main className="container mx-auto flex min-h-screen flex-col items-center justify-center gap-16 px-4 py-16">
                 <h2 className="font-heading text-center text-7xl font-semibold tracking-widest">
