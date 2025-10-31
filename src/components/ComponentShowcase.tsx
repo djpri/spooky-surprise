@@ -9,15 +9,15 @@ import { Textarea } from './ui/Textarea'
  */
 export function TestComponents() {
   return (
-    <div className="container mx-auto max-w-xl space-y-8 rounded-2xl border border-slate-800 bg-slate-950/60 p-8 shadow-lg shadow-emerald-500/10">
+    <div className="container mx-auto max-w-xl space-y-8 rounded-2xl border border-border/80 bg-surface/80 p-8 shadow-lg shadow-primary/15">
       <header className="space-y-2 text-center">
-        <h2 className="font-heading text-2xl font-semibold tracking-widest text-slate-100">
+        <h2 className="font-heading text-2xl font-semibold tracking-widest text-foreground">
           UI Component Preview
         </h2>
-        <p className="text-sm text-slate-400">
+        <p className="text-sm text-foreground/80">
           Temporarily add this component to a page to see component styles from <code>src/components/ui</code>.
         </p>
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-foreground/70">
           Located at <code>src/components/ComponentShowcase.tsx</code>. It
           renders sample instances of components from <code>src/components/ui</code>{' '}
           so you can quickly verify their default appearance and theming overrides.
@@ -25,10 +25,13 @@ export function TestComponents() {
       </header>
 
       <section className="space-y-4">
-        <div className="space-x-3">
+        <div className="flex flex-wrap gap-3">
           <Button>Primary Button</Button>
-          <Button className="bg-slate-700 text-slate-100 hover:bg-slate-600">
-            Muted Button
+          <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
+            Secondary Button
+          </Button>
+          <Button className="bg-tertiary text-tertiary-foreground hover:bg-tertiary/90">
+            Tertiary Button
           </Button>
         </div>
 

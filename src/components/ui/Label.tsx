@@ -3,7 +3,7 @@ import { clsx } from 'clsx'
 
 type LabelProps = LabelHTMLAttributes<HTMLLabelElement>
 
-const baseStyles = 'block text-sm font-medium text-slate-200'
+const baseStyles = 'block text-sm font-medium text-foreground'
 
 export function Label({ className, ...props }: LabelProps) {
   return <label className={clsx(baseStyles, className)} {...props} />
