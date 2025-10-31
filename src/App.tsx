@@ -1,7 +1,11 @@
+import { useState } from 'react'
 import TestComponents from './components/ComponentShowcase'
 import ThemeToggle from './components/ThemeToggle'
+import { SettingsMenu } from './components/SettingsMenu'
+import { Button } from './components/ui/Button'
 
 function App() {
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false)
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -12,11 +16,16 @@ function App() {
 
         <TestComponents />
         <div className="mt-auto w-full pb-8 pt-12">
-          <div className="flex justify-center">
+          <div className="flex justify-center gap-4">
+            <Button onClick={() => setIsSettingsOpen(true)}>
+              Settings
+            </Button>
             <ThemeToggle />
           </div>
         </div>
       </main>
+
+      <SettingsMenu isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
     </div>
   )
 }
