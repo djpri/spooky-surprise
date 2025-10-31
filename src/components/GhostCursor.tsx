@@ -6,7 +6,7 @@ export function GhostCursor() {
   const [isVisible, setIsVisible] = useState(false)
   const mousePos = useRef({ x: 0, y: 0 })
   const cursorPos = useRef({ x: 0, y: 0 })
-  const animationFrameId = useRef<number>()
+  const animationFrameId = useRef<number | null>(null)
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
