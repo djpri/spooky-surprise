@@ -8,12 +8,15 @@ interface StoryState {
   setNode: (id: string) => void
   recordRoll: (value: number | null) => void
   reset: () => void
+  soundEnabled: boolean
+  setSoundEnabled: (value: boolean) => void
 }
 
 export const useStoryStore = create<StoryState>((set) => ({
   currentNode: 'intro',
   visited: ['intro'],
   lastRoll: null,
+  soundEnabled: false,
   setNode: (id) =>
     set((state) => ({
       currentNode: storyNodes[id] ? id : state.currentNode,
@@ -29,5 +32,10 @@ export const useStoryStore = create<StoryState>((set) => ({
       currentNode: 'intro',
       visited: ['intro'],
       lastRoll: null,
+      soundEnabled: false,
+    })),
+  setSoundEnabled: (value) =>
+    set(() => ({
+      soundEnabled: value,
     })),
 }))

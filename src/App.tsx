@@ -5,8 +5,9 @@ import { useStoryStore } from './store/storyStore'
 import MenuAudioLoop from './components/MenuAudioLoop'
 
 function App() {
-  const { currentNode, visited, reset } = useStoryStore()
+  const { currentNode, visited, reset, soundEnabled, setSoundEnabled } = useStoryStore()
   const visitedCount = visited.length
+  const toggleSound = () => setSoundEnabled(!soundEnabled)
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -15,6 +16,16 @@ function App() {
         <h2 className="font-heading text-center text-7xl font-semibold tracking-widest">
           Spooky <span className="text-secondary">Surprise</span>
         </h2>
+
+        <div className="flex w-full max-w-3xl justify-center">
+          <Button
+            className="px-4 py-2 text-sm"
+            onClick={toggleSound}
+            aria-pressed={soundEnabled}
+          >
+            {soundEnabled ? 'Disable Sound' : 'Enable Sound'}
+          </Button>
+        </div>
 
         <section className="w-full max-w-3xl">
           <StoryRenderer />
@@ -29,7 +40,7 @@ function App() {
             </Button>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-3 text-left">
             <h3 className="font-heading text-lg uppercase tracking-wide text-foreground/70">Visited</h3>
             <p className="text-sm text-foreground/60">{visitedCount} locations explored</p>
             <ul className="grid gap-2 text-sm text-foreground/80 sm:grid-cols-2">
@@ -40,6 +51,7 @@ function App() {
               ))}
             </ul>
           </div>
+
         </section>
 
         <div className="mt-auto w-full pb-8 pt-12">

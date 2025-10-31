@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import menuTrack from '../assets/audio/menu.mp3'
+import { useStoryStore } from '../store/storyStore'
 
 const OVERLAP_SECONDS = 0.4
 const FADE_IN_SECONDS = 0.4
@@ -7,8 +8,10 @@ const FADE_OUT_SECONDS = 0.8
 const START_DELAY_SECONDS = 0.1
 
 export default function MenuAudioLoop() {
+  const { soundEnabled } = useStoryStore()
+
   useEffect(() => {
-    if (typeof window === 'undefined') {
+    if (typeof window === 'undefined' || !soundEnabled) {
       return
     }
 
@@ -126,7 +129,7 @@ export default function MenuAudioLoop() {
       gainNodes.forEach((gain) => gain.disconnect())
       context.close().catch(() => undefined)
     }
-  }, [])
+  }, [soundEnabled])
 
   return null
 }

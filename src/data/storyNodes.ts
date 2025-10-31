@@ -19,36 +19,36 @@ export const storyNodes: Record<string, StoryNode> = {
   intro: {
     id: 'intro',
     text:
-      'Mist coils around the wrought-iron gates of Blackwood Manor. A distant whistle, like a dying scream, rides the wind. Beyond the bars, the manor waits.',
+      'You wake to the creak of settling stone. The chapel breathes--a long, slow inhale as dust drifts through angled light. Moss has claimed the pews; candles gutter in half-melted sconces, their flames trembling as the dimensions slide into alignment. Your skin hums with black-gold veins, the heartbeat of the Veil answering your own. Through shattered lenses you glimpse echoes of other Brichan, their silhouettes caught in flame like prayers that refuse to die. The Hunt has begun again.',
     choices: [
-      { text: 'Push open the creaking gate', next: 'foyer' },
-      { text: 'Circle the manor for another way in', next: 'moonlitPath' },
+      { text: 'Draw the lenses from their satchel and stand', next: 'foyer' },
+      { text: 'Listen to the whispers behind the walls', next: 'moonlitPath' },
     ],
   },
   foyer: {
     id: 'foyer',
     text:
-      'Dust motes swirl in the foyer as the doors slam behind you. Portraits of stern ancestors seem to watch your every move.',
+      'The narthex smells of cold wax and old smoke. Mirrors line the stone pillars, angled to catch the light of absent pyres. Each mirror bears the scorch mark of a Brichan lens--rings of gold, blue, and violet burned deep into the glass. Something here has already anchored: a presence tugging at the edges of the Veil.',
     choices: [
-      { text: 'Inspect the flickering candelabra', next: 'secretPassage' },
-      { text: 'Call out to see if anyone answers', next: 'whisper' },
+      { text: 'Align the lenses and sweep for the anchor', next: 'secretPassage' },
+      { text: 'Call to the ghosts of former hunters', next: 'whisper' },
     ],
   },
   moonlitPath: {
     id: 'moonlitPath',
     text:
-      'A narrow path winds through overgrown hedges. Somewhere in the darkness, an eerie whistle echoes through the night.',
+      'You linger in the chapel hush and let the whispers rise. They speak of Alderthorn\'s fields, of pyres that once blazed across the harvest. Outside the stained glass, the night bleeds through--the Veil is thin here, and the hell-ridden landscape presses in with hungry patience.',
     choices: [
-      { text: 'Follow the path toward a faint lantern glow', next: 'lantern' },
-      { text: 'Return to the manor gate', next: 'intro' },
+      { text: 'Answer the whispers and bargain for knowledge', next: 'lantern' },
+      { text: 'Shake free of the voices and refocus', next: 'intro' },
     ],
   },
   secretPassage: {
     id: 'secretPassage',
     text:
-      'The candelabra clicks, and a hidden panel slides aside to reveal a stairway spiraling down into shadow.',
+      'The aligned lenses flare. Neamh burns bright, Muir ripples, and Talamh drinks in the dark. A stained altar cracks open, revealing a stair that descends into the ossuary beneath. The corruption recoils, but it clings to something below.',
     diceCheck: {
-      stat: 'courage',
+      stat: 'fortitude',
       target: 12,
       success: 'cellar',
       fail: 'panic',
@@ -57,43 +57,43 @@ export const storyNodes: Record<string, StoryNode> = {
   panic: {
     id: 'panic',
     text:
-      'Fear clenches your chest. You stumble backward, knocking over a suit of armor. When you catch your breath, the passage has slammed shut.',
-    choices: [{ text: 'Gather yourself and explore the foyer again', next: 'foyer' }],
+      'The lens flares sear across your palm. The veins beneath your skin blaze too hot, and the corruption surges toward your heart. You stagger back, the stair sealing with a slam. You cannot descend until you master the burning light.',
+    choices: [{ text: 'Steady your breath and survey the narthex once more', next: 'foyer' }],
   },
   cellar: {
     id: 'cellar',
     text:
-      'The staircase opens into a candlelit cellar lined with dusty bottles. Something glitters beneath an old crate.',
+      'Bones of alder roots twist through the ceiling, dripping with crimson resin. The air is wet and electric. An anchor hangs above a pyre basin: a tarnished censer, pulsing with stolen breaths. Spirits circle it like moths to a wound.',
     choices: [
-      { text: 'Examine the glittering object', next: 'amulet' },
-      { text: 'Retreat back upstairs', next: 'foyer' },
+      { text: 'Focus the lenses on the censer', next: 'amulet' },
+      { text: 'Retreat and regroup before confronting it', next: 'foyer' },
     ],
   },
   amulet: {
     id: 'amulet',
     text:
-      'You uncover an obsidian amulet etched with unfamiliar runes. It thrums with cold energy in your palm.',
-    choices: [{ text: 'Slip the amulet into your pocket', next: 'cellarReturn' }],
+      'Neamh strikes first, searing the outer shell. Muir follows, revealing faces trapped within the smoke. Talamh clamps shut, devouring the corruption and channeling it into your veins. It leaves behind a shard of tempered glass etched with the three rings--a token of service and a warning of your limits.',
+    choices: [{ text: 'Absorb the shard and prepare to ascend', next: 'cellarReturn' }],
   },
   cellarReturn: {
     id: 'cellarReturn',
     text:
-      'The cellar seems darker now, but the amulet glows faintly, guiding your steps. Perhaps it will be useful later.',
-    choices: [{ text: 'Head back to the foyer', next: 'foyer' }],
+      'The censer is silent, yet the shard hums in your grasp. Each pulse tightens the web of dark lines beneath your skin. Above, the chapel waits with more anchors to break.',
+    choices: [{ text: 'Return to the narthex', next: 'foyer' }],
   },
   whisper: {
     id: 'whisper',
     text:
-      'Your call echoes upward. For a heartbeat, there is silence—then a whisper answers from the landing: "Why have you come?"',
+      'Your voice echoes through the vaulted ceiling, and the answer comes at once: a chorus of former Brichan, their words carried on candle smoke. "Neamh begins. Muir reveals. Talamh ends. Remember the order or be devoured." A final whisper adds, almost kindly, "The lens remembers your first failure."',
     choices: [
-      { text: 'Dash up the stairs toward the voice', next: 'staircase' },
-      { text: 'Flee back outside', next: 'intro' },
+      { text: 'Sprint toward the bell tower to confront the echo', next: 'staircase' },
+      { text: 'Bow in thanks and steady your focus', next: 'intro' },
     ],
   },
   staircase: {
     id: 'staircase',
     text:
-      'Each step groans as you ascend. The whisper curls around you like smoke, leading to a locked door etched with moonlight.',
+      'You ascend the spiral stairs, mirrors flashing with fragments of other worlds. At the top stands the bell tower door, sealed by strands of shadow silk. The corruption here is clever, mimicking the motions of the lens.',
     diceCheck: {
       stat: 'insight',
       target: 14,
@@ -104,34 +104,34 @@ export const storyNodes: Record<string, StoryNode> = {
   moonDoor: {
     id: 'moonDoor',
     text:
-      'Your intuition guides your hand to a hidden latch. The door swings open, revealing a silver-lit study filled with arcane tomes.',
-    choices: [{ text: 'Examine the ancient tomes', next: 'study' }],
+      'You align the rings in perfect rhythm. Neamh, Muir, Talamh. The strands shriek and dissolve, revealing a bell chamber washed in lunar light. An altar holds a ledger of Brichan vows, and beside it lies a mirror draped in pyre ash.',
+    choices: [{ text: 'Read the ledger and heed its warning', next: 'study' }],
   },
   soulLock: {
     id: 'soulLock',
     text:
-      'You fumble with the lock, but a chilling force pushes you back. The whisper turns to mocking laughter, and the door seals shut.',
-    choices: [{ text: 'Retreat down the stairs', next: 'foyer' }],
+      'The strands lash your arm. The corruption flares past your control, and for a heartbeat you see the hellscape pressing against Alderthorn--a sky of teeth, a field of broken mirrors. The door seals, saving you from being pulled across the Veil.',
+    choices: [{ text: 'Retreat before the corruption consumes you', next: 'foyer' }],
   },
   study: {
     id: 'study',
     text:
-      'The study hums with power. One tome tells of a lantern that reveals the spirits bound to this manor.',
-    choices: [{ text: 'Seek the lantern in the garden', next: 'lantern' }],
+      'The ledger lists names burned away by duty. Margins describe the lens rings: Neamh the Breath of Heaven, Muir the Mirror Sea, Talamh the Root Flame. A final entry speaks of a lantern forged from three mirrors--your next anchor to sever.',
+    choices: [{ text: 'Follow the ledger\'s guidance toward the garden pyres', next: 'lantern' }],
   },
   lantern: {
     id: 'lantern',
     text:
-      'A lantern glows atop an old pedestal. Its flame burns without fuel, casting long, twisting shadows that drift like spirits.',
+      'In the garden cloister, a lantern formed of concentric mirrors floats above a cold brazier. Pyre mirrors around it have gone dark--no candles remain to hold the Veil at bay. The lantern flickers with stolen souls.',
     choices: [
-      { text: 'Take the lantern', next: 'lanternTaken' },
-      { text: 'Leave it untouched and head back', next: 'moonlitPath' },
+      { text: 'Align the lenses and draw the corruption into yourself', next: 'lanternTaken' },
+      { text: 'Step away and let the lantern hang for now', next: 'intro' },
     ],
   },
   lanternTaken: {
     id: 'lanternTaken',
     text:
-      'The lantern feels impossibly light in your hands. Footprints of pale light appear, guiding you back toward the manor doors.',
-    choices: [{ text: 'Follow the spectral trail to the manor', next: 'foyer' }],
+      'The three rings harmonize. Neamh blazes, Muir reveals the faces trapped within, and Talamh devours the remainder. The lantern collapses into a single ember that brands your palm. Alderthorn is safer--for this night. The veins beneath your skin darken, a reminder of how close you stand to the abyss.',
+    choices: [{ text: 'Let the ember guide you back inside', next: 'foyer' }],
   },
 }
