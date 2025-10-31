@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
 import { Modal } from './ui/Modal'
 import { Button } from './ui/Button'
+import { useStoryStore } from '../store/storyStore'
 
 type SettingsMenuProps = {
   isOpen: boolean
@@ -8,14 +8,7 @@ type SettingsMenuProps = {
 }
 
 export function SettingsMenu({ isOpen, onClose }: SettingsMenuProps) {
-  const [soundEnabled, setSoundEnabled] = useState(() => {
-    const saved = localStorage.getItem('soundEnabled')
-    return saved !== null ? saved === 'true' : true
-  })
-
-  useEffect(() => {
-    localStorage.setItem('soundEnabled', String(soundEnabled))
-  }, [soundEnabled])
+  const { soundEnabled, setSoundEnabled } = useStoryStore()
 
   const handleResetGame = () => {
     if (window.confirm('Are you sure you want to reset your game progress? This action cannot be undone.')) {
