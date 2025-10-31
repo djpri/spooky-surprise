@@ -1,10 +1,13 @@
+import { useState } from 'react'
 import ThemeToggle from './components/ThemeToggle'
-import StoryRenderer from './components/StoryRenderer'
+import { SettingsMenu } from './components/SettingsMenu'
 import { Button } from './components/ui/Button'
+import StoryRenderer from './components/StoryRenderer'
 import { useStoryStore } from './store/storyStore'
 import MenuAudioLoop from './components/MenuAudioLoop'
 
 function App() {
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false)
   const { currentNode, visited, reset, soundEnabled, setSoundEnabled } = useStoryStore()
   const visitedCount = visited.length
   const toggleSound = () => setSoundEnabled(!soundEnabled)
@@ -55,11 +58,16 @@ function App() {
         </section>
 
         <div className="mt-auto w-full pb-8 pt-12">
-          <div className="flex justify-center">
+          <div className="flex justify-center gap-4">
+            <Button onClick={() => setIsSettingsOpen(true)}>
+              Settings
+            </Button>
             <ThemeToggle />
           </div>
         </div>
       </main>
+
+      <SettingsMenu isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
     </div>
   )
 }
