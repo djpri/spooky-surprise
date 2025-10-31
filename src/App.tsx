@@ -2,6 +2,7 @@ import ThemeToggle from './components/ThemeToggle'
 import StoryRenderer from './components/StoryRenderer'
 import { Button } from './components/ui/Button'
 import { useStoryStore } from './store/storyStore'
+import MenuAudioLoop from './components/MenuAudioLoop'
 
 function App() {
   const { currentNode, inventory, visited, reset } = useStoryStore()
@@ -9,6 +10,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <MenuAudioLoop />
       <main className="container mx-auto flex min-h-screen flex-col items-center justify-center gap-12 px-4 py-16">
         <h2 className="font-heading text-center text-7xl font-semibold tracking-widest">
           Spooky <span className="text-secondary">Surprise</span>
