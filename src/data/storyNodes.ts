@@ -1,0 +1,137 @@
+export interface StoryChoice {
+  text: string
+  next: string
+}
+
+export interface StoryNode {
+  id: string
+  text: string
+  choices?: StoryChoice[]
+  diceCheck?: {
+    stat: string
+    target: number
+    success: string
+    fail: string
+  }
+}
+
+export const storyNodes: Record<string, StoryNode> = {
+  intro: {
+    id: 'intro',
+    text:
+      'You wake to the creak of settling stone. The chapel breathes--a long, slow inhale as dust drifts through angled light. Moss has claimed the pews; candles gutter in half-melted sconces, their flames trembling as the dimensions slide into alignment. Your skin hums with black-gold veins, the heartbeat of the Veil answering your own. Through shattered lenses you glimpse echoes of other Brichan, their silhouettes caught in flame like prayers that refuse to die. The Hunt has begun again.',
+    choices: [
+      { text: 'Draw the lenses from their satchel and stand', next: 'foyer' },
+      { text: 'Listen to the whispers behind the walls', next: 'moonlitPath' },
+    ],
+  },
+  foyer: {
+    id: 'foyer',
+    text:
+      'The narthex smells of cold wax and old smoke. Mirrors line the stone pillars, angled to catch the light of absent pyres. Each mirror bears the scorch mark of a Brichan lens--rings of gold, blue, and violet burned deep into the glass. Something here has already anchored: a presence tugging at the edges of the Veil.',
+    choices: [
+      { text: 'Align the lenses and sweep for the anchor', next: 'secretPassage' },
+      { text: 'Call to the ghosts of former hunters', next: 'whisper' },
+    ],
+  },
+  moonlitPath: {
+    id: 'moonlitPath',
+    text:
+      'You linger in the chapel hush and let the whispers rise. They speak of Alderthorn\'s fields, of pyres that once blazed across the harvest. Outside the stained glass, the night bleeds through--the Veil is thin here, and the hell-ridden landscape presses in with hungry patience.',
+    choices: [
+      { text: 'Answer the whispers and bargain for knowledge', next: 'lantern' },
+      { text: 'Shake free of the voices and refocus', next: 'intro' },
+    ],
+  },
+  secretPassage: {
+    id: 'secretPassage',
+    text:
+      'The aligned lenses flare. Neamh burns bright, Muir ripples, and Talamh drinks in the dark. A stained altar cracks open, revealing a stair that descends into the ossuary beneath. The corruption recoils, but it clings to something below.',
+    diceCheck: {
+      stat: 'fortitude',
+      target: 12,
+      success: 'cellar',
+      fail: 'panic',
+    },
+  },
+  panic: {
+    id: 'panic',
+    text:
+      'The lens flares sear across your palm. The veins beneath your skin blaze too hot, and the corruption surges toward your heart. You stagger back, the stair sealing with a slam. You cannot descend until you master the burning light.',
+    choices: [{ text: 'Steady your breath and survey the narthex once more', next: 'foyer' }],
+  },
+  cellar: {
+    id: 'cellar',
+    text:
+      'Bones of alder roots twist through the ceiling, dripping with crimson resin. The air is wet and electric. An anchor hangs above a pyre basin: a tarnished censer, pulsing with stolen breaths. Spirits circle it like moths to a wound.',
+    choices: [
+      { text: 'Focus the lenses on the censer', next: 'amulet' },
+      { text: 'Retreat and regroup before confronting it', next: 'foyer' },
+    ],
+  },
+  amulet: {
+    id: 'amulet',
+    text:
+      'Neamh strikes first, searing the outer shell. Muir follows, revealing faces trapped within the smoke. Talamh clamps shut, devouring the corruption and channeling it into your veins. It leaves behind a shard of tempered glass etched with the three rings--a token of service and a warning of your limits.',
+    choices: [{ text: 'Absorb the shard and prepare to ascend', next: 'cellarReturn' }],
+  },
+  cellarReturn: {
+    id: 'cellarReturn',
+    text:
+      'The censer is silent, yet the shard hums in your grasp. Each pulse tightens the web of dark lines beneath your skin. Above, the chapel waits with more anchors to break.',
+    choices: [{ text: 'Return to the narthex', next: 'foyer' }],
+  },
+  whisper: {
+    id: 'whisper',
+    text:
+      'Your voice echoes through the vaulted ceiling, and the answer comes at once: a chorus of former Brichan, their words carried on candle smoke. "Neamh begins. Muir reveals. Talamh ends. Remember the order or be devoured." A final whisper adds, almost kindly, "The lens remembers your first failure."',
+    choices: [
+      { text: 'Sprint toward the bell tower to confront the echo', next: 'staircase' },
+      { text: 'Bow in thanks and steady your focus', next: 'intro' },
+    ],
+  },
+  staircase: {
+    id: 'staircase',
+    text:
+      'You ascend the spiral stairs, mirrors flashing with fragments of other worlds. At the top stands the bell tower door, sealed by strands of shadow silk. The corruption here is clever, mimicking the motions of the lens.',
+    diceCheck: {
+      stat: 'insight',
+      target: 14,
+      success: 'moonDoor',
+      fail: 'soulLock',
+    },
+  },
+  moonDoor: {
+    id: 'moonDoor',
+    text:
+      'You align the rings in perfect rhythm. Neamh, Muir, Talamh. The strands shriek and dissolve, revealing a bell chamber washed in lunar light. An altar holds a ledger of Brichan vows, and beside it lies a mirror draped in pyre ash.',
+    choices: [{ text: 'Read the ledger and heed its warning', next: 'study' }],
+  },
+  soulLock: {
+    id: 'soulLock',
+    text:
+      'The strands lash your arm. The corruption flares past your control, and for a heartbeat you see the hellscape pressing against Alderthorn--a sky of teeth, a field of broken mirrors. The door seals, saving you from being pulled across the Veil.',
+    choices: [{ text: 'Retreat before the corruption consumes you', next: 'foyer' }],
+  },
+  study: {
+    id: 'study',
+    text:
+      'The ledger lists names burned away by duty. Margins describe the lens rings: Neamh the Breath of Heaven, Muir the Mirror Sea, Talamh the Root Flame. A final entry speaks of a lantern forged from three mirrors--your next anchor to sever.',
+    choices: [{ text: 'Follow the ledger\'s guidance toward the garden pyres', next: 'lantern' }],
+  },
+  lantern: {
+    id: 'lantern',
+    text:
+      'In the garden cloister, a lantern formed of concentric mirrors floats above a cold brazier. Pyre mirrors around it have gone dark--no candles remain to hold the Veil at bay. The lantern flickers with stolen souls.',
+    choices: [
+      { text: 'Align the lenses and draw the corruption into yourself', next: 'lanternTaken' },
+      { text: 'Step away and let the lantern hang for now', next: 'intro' },
+    ],
+  },
+  lanternTaken: {
+    id: 'lanternTaken',
+    text:
+      'The three rings harmonize. Neamh blazes, Muir reveals the faces trapped within, and Talamh devours the remainder. The lantern collapses into a single ember that brands your palm. Alderthorn is safer--for this night. The veins beneath your skin darken, a reminder of how close you stand to the abyss.',
+    choices: [{ text: 'Let the ember guide you back inside', next: 'foyer' }],
+  },
+}
