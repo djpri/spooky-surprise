@@ -42,15 +42,9 @@ function App() {
                     <h2 className="font-heading text-center text-7xl font-semibold tracking-widest">
                         Spooky <span className="text-secondary">Surprise</span>
                     </h2>
-                    <div className="flex w-full max-w-3xl justify-center">
-                        <Button
-                            className="px-4 py-2 text-sm"
-                            onClick={toggleSound}
-                            aria-pressed={soundEnabled}
-                        >
-                            {soundEnabled ? "Disable Sound" : "Enable Sound"}
-                        </Button>
-                    </div>
+                    <h3 className="text-center text-2xl text-foreground/70">
+                        An Interactive Halloween Adventure
+                    </h3>
 
                     <section className="w-full max-w-3xl">
                         <StoryRenderer />
@@ -101,6 +95,17 @@ function App() {
                                 Settings
                             </Button>
                             <ThemeToggle />
+                            <Button
+                                className="px-4 py-2 text-sm"
+                                onClick={toggleSound}
+                                aria-pressed={soundEnabled}
+                            >
+                                {soundEnabled ? (
+                                    <i className="fas fa-volume-high mr-2"></i>
+                                ) : (
+                                    <i className="fas fa-volume-mute mr-2"></i>
+                                )}
+                            </Button>
                         </div>
                     </div>
                 </div>
