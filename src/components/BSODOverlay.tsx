@@ -1,6 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import bsodImg from '../assets/images/bsod.jpg'
+import scaryFaceImg from '../assets/images/scary-face.png'
 import crashAudio from '../assets/audio/pc_crash.mp3'
+
+declare global {
+  interface Window {
+    __BSOD_PAUSE_ON_FACE__?: boolean
+    resumeBSODEasterEgg?: () => void
+  }
+}
 
 type BSODOverlayProps = {
   onClose?: () => void
@@ -13,6 +21,7 @@ export default function BSODOverlay({ onClose }: BSODOverlayProps) {
   const [flashOpacity, setFlashOpacity] = useState(1)
   const [pulseOpacity, setPulseOpacity] = useState(0)
   const [preGlitch, setPreGlitch] = useState(true)
+  const [showScaryFace, setShowScaryFace] = useState(false)
   const inputLockedRef = useRef(false)
 
   // Lock all user input for a short period after BSOD appears
@@ -114,18 +123,43 @@ export default function BSODOverlay({ onClose }: BSODOverlayProps) {
       const flashTimer = setTimeout(() => setShowFlash(false), 220)
 
       // Subtle pulses before BSOD reveal
-      const pulse = (delay: number) => {
-        setTimeout(() => {
+      const pulse = (delay: number, revealFace = false) => {
+        const pulseTimer = window.setTimeout(() => {
+          if (revealFace) setShowScaryFace(true)
           setPulseOpacity(0.22)
-          setTimeout(() => setPulseOpacity(0), 80)
+          if (revealFace && window.__BSOD_PAUSE_ON_FACE__) {
+            clearTimeout(bsodTimer)
+            window.resumeBSODEasterEgg = () => {
+              window.resumeBSODEasterEgg = undefined
+              setPulseOpacity(0)
+              setShowScaryFace(false)
+              setTimeout(() => setShowBSOD(true), 0)
+            }
+            return
+          }
+
+          const faceHideTimer = revealFace
+            ? window.setTimeout(() => setShowScaryFace(false), 45)
+            : undefined
+          if (faceHideTimer) cleanupFns.push(() => clearTimeout(faceHideTimer))
+
+          const fadeTimer = window.setTimeout(() => {
+            setPulseOpacity(0)
+            if (revealFace) setShowScaryFace(false)
+          }, 90)
+          cleanupFns.push(() => clearTimeout(fadeTimer))
         }, delay)
+        cleanupFns.push(() => clearTimeout(pulseTimer))
       }
       pulse(380)
-      pulse(1150)
+      pulse(1150, true)
 
       cleanupFns.push(() => {
         cancelAnimationFrame(raf)
         clearTimeout(flashTimer)
+        if (window.resumeBSODEasterEgg) {
+          window.resumeBSODEasterEgg = undefined
+        }
       })
     }
 
@@ -158,6 +192,7 @@ export default function BSODOverlay({ onClose }: BSODOverlayProps) {
       ;(document.documentElement as HTMLElement).style.filter = prevRootFilter
       cleanupFns.forEach((fn) => fn())
       clearTimeout(bsodTimer)
+      setShowScaryFace(false)
     }
   }, [onClose])
 
@@ -215,6 +250,51 @@ export default function BSODOverlay({ onClose }: BSODOverlayProps) {
             pointerEvents: 'none',
           }}
         />
+      )}
+
+      {/* Quick scare frame during black flicker */}
+      {showScaryFace && !showBSOD && (
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            pointerEvents: 'none',
+            background: 'radial-gradient(circle at center, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.92) 100%)',
+          }}
+        >
+          <div
+            style={{
+              position: 'relative',
+              width: 'min(38vmin, 360px)',
+              aspectRatio: '1',
+              borderRadius: '32px',
+              overflow: 'hidden',
+              boxShadow: '0 0 120px 60px rgba(0, 0, 0, 0.85)',
+            }}
+          >
+            <img
+              src={scaryFaceImg}
+              alt=""
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                borderRadius: 'inherit',
+                opacity: 0.28,
+              }}
+            />
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'radial-gradient(circle at center, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.8) 100%)',
+              }}
+            />
+          </div>
+        </div>
       )}
 
       {/* Hidden but controlled audio element */}
