@@ -10,7 +10,7 @@ type SettingsMenuProps = {
 
 export function SettingsMenu({ isOpen, onClose }: SettingsMenuProps) {
     const { soundEnabled, setSoundEnabled } = useStoryStore();
-
+    const { volume, setVolume } = useStoryStore();
     const handleResetGame = () => {
         if (
             window.confirm(
@@ -71,10 +71,28 @@ export function SettingsMenu({ isOpen, onClose }: SettingsMenuProps) {
                         />
                     </button>
                 </div>
-
+                <div>
+                    <label
+                        htmlFor="music-volume"
+                        className="mb-2 block text-lg text-foreground"
+                    >
+                        Music Volume
+                    </label>
+                    <input
+                        id="music-volume"
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        value={volume}
+                        onChange={(e) => setVolume(parseFloat(e.target.value))}
+                        className="w-full cursor-pointer accent-primary"
+                    />
+                </div>
                 {/* Reset Game Button */}
                 <div className="border-t border-border pt-6">
                     <Button
+                        id="reset-game-button"
                         onClick={handleResetGame}
                         className="w-full bg-secondary hover:bg-secondary/90 text-primary-foreground"
                     >

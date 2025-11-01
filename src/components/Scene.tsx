@@ -53,8 +53,10 @@ export default function Scene({ node }: SceneProps) {
                 </h3>
             </header>
 
-            <p className="text-lg leading-relaxed text-foreground/90 typewriter">
-                <Typewriter text={fullText} speed={30} />
+            <p className="text-lg leading-relaxed text-foreground/90">
+                <span className="typewriter">
+                    <Typewriter text={fullText} speed={30} />
+                </span>
                 {node.requiresName && (
                     <>
                         {" "}

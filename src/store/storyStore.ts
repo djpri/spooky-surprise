@@ -20,6 +20,8 @@ interface StoryState {
     setSoundEnabled: (value: boolean) => void;
     playerName: string;
     setPlayerName: (name: string) => void;
+    volume: number;
+    setVolume: (value: number) => void;
 }
 
 export const useStoryStore = create<StoryState>((set) => ({
@@ -28,6 +30,8 @@ export const useStoryStore = create<StoryState>((set) => ({
     lastRoll: null,
     soundEnabled: getInitialSoundEnabled(),
     playerName: "",
+    volume: 0.25,
+    setVolume: (value) => set(() => ({ volume: value })),
     setPlayerName: (name) => set({ playerName: name }),
     setNode: (id) =>
         set((state) => ({

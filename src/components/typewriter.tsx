@@ -91,8 +91,7 @@ export const Typewriter: React.FC<TypewriterProps> = ({
         return () => {
             cancelled = true;
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [text, speed, onComplete]); // removed soundEnabled from deps
+    }, [text, speed, onComplete]);
 
     // mid animation catch
     useEffect(() => {
