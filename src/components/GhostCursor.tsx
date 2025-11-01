@@ -1,133 +1,115 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from "react";
 
 export function GhostCursor() {
-  const cursorRef = useRef<HTMLDivElement>(null)
-  const trailsRef = useRef<HTMLDivElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
-  const [isPointer, setIsPointer] = useState(false)
-  const mousePos = useRef({ x: 0, y: 0 })
-  const cursorPos = useRef({ x: 0, y: 0 })
-  const animationFrameId = useRef<number | null>(null)
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const trailsRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const mousePos = useRef({ x: 0, y: 0 });
+  const cursorPos = useRef({ x: 0, y: 0 });
+  const animationFrameId = useRef<number | null>(null);
+  const lastTrailAt = useRef<number>(0);
 
   useEffect(() => {
-    const isPointerTarget = (el: Element | null): boolean => {
-      let current: Element | null = el
-      while (current && current !== document.documentElement) {
-        const style = getComputedStyle(current as Element)
-        if (style.cursor === 'pointer') return true
-
-        if (current instanceof HTMLElement) {
-          const tag = current.tagName
-          if (tag === 'A' && (current as HTMLAnchorElement).href) return true
-          if (tag === 'BUTTON') return !(current as HTMLButtonElement).disabled
-          if (tag === 'LABEL') return true
-          if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return true
-          if (current.getAttribute('role') === 'button') return true
-          if (current.classList.contains('cursor-pointer')) return true
-        }
-
-        current = (current as HTMLElement).parentElement
-      }
-      return false
-    }
-
     const handleMouseMove = (e: MouseEvent) => {
-      mousePos.current = { x: e.clientX, y: e.clientY }
-      if (!isVisible) setIsVisible(true)
-
-       // Detect if target is a pointer/clickable area
-      const target = e.target as Element | null
-      const pointerNow = isPointerTarget(target)
-      setIsPointer(prev => (prev !== pointerNow ? pointerNow : prev))
-    }
+      mousePos.current = { x: e.clientX, y: e.clientY };
+      if (!isVisible) setIsVisible(true);
+    };
 
     const handleMouseLeave = () => {
-      setIsVisible(false)
-    }
+      setIsVisible(false);
+    };
+
+    const isPointerTarget = (x: number, y: number) => {
+      const el = document.elementFromPoint(x, y) as HTMLElement | null;
+      if (!el) return false;
+      const tag = el.tagName.toLowerCase();
+      if (["a", "button", "input", "select", "textarea", "label"].includes(tag)) return true;
+      if (el.getAttribute("role") === "button") return true;
+      const style = getComputedStyle(el);
+      return style.cursor === "pointer";
+    };
+
+    const createTrail = (x: number, y: number, pointerMode: boolean) => {
+      if (!trailsRef.current) return;
+      const trail = document.createElement("div");
+      trail.className = `ghost-trail${pointerMode ? " ghost-pointer-mode" : ""}`;
+      trail.style.left = `${x}px`;
+      trail.style.top = `${y}px`;
+      trailsRef.current.appendChild(trail);
+      setTimeout(() => trail.remove(), 1000);
+    };
 
     const updateCursor = () => {
-      if (!cursorRef.current) return
-
-      // Smooth follow with easing
-      const speed = 0.15
-      cursorPos.current.x += (mousePos.current.x - cursorPos.current.x) * speed
-      cursorPos.current.y += (mousePos.current.y - cursorPos.current.y) * speed
-
-      // Update cursor position using transform for better performance
-      cursorRef.current.style.transform = `translate(${cursorPos.current.x}px, ${cursorPos.current.y}px)`
-
-      // Create trail effect periodically
-      if (trailsRef.current && Math.random() > 0.85) {
-        createTrail(cursorPos.current.x, cursorPos.current.y)
+      if (!cursorRef.current) {
+        animationFrameId.current = requestAnimationFrame(updateCursor);
+        return;
       }
 
-      animationFrameId.current = requestAnimationFrame(updateCursor)
-    }
+      const speed = 0.15; // easing
+      cursorPos.current.x += (mousePos.current.x - cursorPos.current.x) * speed;
+      cursorPos.current.y += (mousePos.current.y - cursorPos.current.y) * speed;
 
-    const createTrail = (x: number, y: number) => {
-      if (!trailsRef.current) return
+      const x = cursorPos.current.x;
+      const y = cursorPos.current.y;
 
-      const trail = document.createElement('div')
-      trail.className = 'ghost-trail'
-      trail.style.left = `${x}px`
-      trail.style.top = `${y}px`
-      trailsRef.current.appendChild(trail)
+      cursorRef.current.style.transform = `translate(${x}px, ${y}px)`;
 
-      // Remove trail after animation
-      setTimeout(() => {
-        trail.remove()
-      }, 1000)
-    }
+      // Toggle pointer state class based on hover target
+      const pointer = isPointerTarget(mousePos.current.x, mousePos.current.y);
+      if (pointer) {
+        cursorRef.current.classList.add("ghost-pointer");
+      } else {
+        cursorRef.current.classList.remove("ghost-pointer");
+      }
 
-    document.addEventListener('mousemove', handleMouseMove)
-    document.addEventListener('mouseleave', handleMouseLeave)
-    animationFrameId.current = requestAnimationFrame(updateCursor)
+      // Create trail at a steady cadence
+      const now = performance.now();
+      const intervalMs = pointer ? 70 : 40; // fewer trails over interactive elements
+      if (trailsRef.current && now - lastTrailAt.current > intervalMs) {
+        createTrail(x, y, pointer);
+        lastTrailAt.current = now;
+      }
+
+      animationFrameId.current = requestAnimationFrame(updateCursor);
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseleave", handleMouseLeave);
+    animationFrameId.current = requestAnimationFrame(updateCursor);
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove)
-      document.removeEventListener('mouseleave', handleMouseLeave)
-      if (animationFrameId.current) {
-        cancelAnimationFrame(animationFrameId.current)
-      }
-    }
-  }, [isVisible])
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
+    };
+  }, [isVisible]);
 
   return (
     <>
-      {/* Trail container */}
-      <div
-        ref={trailsRef}
-        className={`pointer-events-none fixed inset-0 z-[9998] ${isPointer ? 'ghost-pointer-mode' : ''}`}
-      />
-
-      {/* Ghost cursor */}
+      <div ref={trailsRef} className="pointer-events-none fixed inset-0 z-[9998]" />
       <div
         ref={cursorRef}
-        className={`ghost-cursor ${isVisible ? 'opacity-100' : 'opacity-0'} ${isPointer ? 'ghost-pointer' : ''}`}
+        className={`ghost-cursor ${isVisible ? "opacity-100" : "opacity-0"}`}
         style={{
-          position: 'fixed',
+          position: "fixed",
           left: 0,
           top: 0,
-          pointerEvents: 'none',
+          pointerEvents: "none",
           zIndex: 9999,
-          transition: 'opacity 0.3s ease',
+          transition: "opacity 0.3s ease",
         }}
       >
-        {/* Ghost body */}
         <div className="relative -translate-x-1/2 -translate-y-1/2">
-          {/* Main ghost shape */}
           <div className="ghost-body">
-            {/* Eyes */}
             <div className="ghost-eyes">
               <div className="ghost-eye" />
               <div className="ghost-eye" />
             </div>
-
-            {/* Wavy bottom */}
             <div className="ghost-wave" />
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }

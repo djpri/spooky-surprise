@@ -14,8 +14,14 @@ export interface StoryNode {
         fail: string;
     };
     requiresName?: boolean;
+    imagePath: string | null;
 }
 
+const bgImages = import.meta.glob("../assets/images/background/*", {
+    eager: true,
+    import: "default",
+}) as Record<string, string>;
+console.log("bgImages:", bgImages);
 export const storyNodes: Record<string, StoryNode> = {
     Neamh: {
         id: "Prologue 1 - The Chapel",
@@ -26,6 +32,7 @@ export const storyNodes: Record<string, StoryNode> = {
                 next: "Muir",
             },
         ],
+        imagePath: null,
     },
     Muir: {
         id: "Prologue 2 - Their Name",
@@ -33,10 +40,13 @@ export const storyNodes: Record<string, StoryNode> = {
         requiresName: true,
         choices: [
             {
-                text: "Align the lenses and sweep for the anchor",
+                text: "I remember...",
                 next: "Talamh",
             },
         ],
+        // SAMPLE TEST IMAGE
+        // imagePath: null,
+        imagePath: bgImages["../assets/images/background/Muir.jpg"],
     },
     Talamh: {
         id: "moonlitPath",
@@ -48,6 +58,7 @@ export const storyNodes: Record<string, StoryNode> = {
             },
             { text: "Shake free of the voices and refocus", next: "intro" },
         ],
+        imagePath: null,
     },
     secretPassage: {
         id: "secretPassage",
@@ -58,6 +69,7 @@ export const storyNodes: Record<string, StoryNode> = {
             success: "cellar",
             fail: "panic",
         },
+        imagePath: null,
     },
     panic: {
         id: "panic",
@@ -68,6 +80,7 @@ export const storyNodes: Record<string, StoryNode> = {
                 next: "foyer",
             },
         ],
+        imagePath: null,
     },
     cellar: {
         id: "cellar",
@@ -79,6 +92,7 @@ export const storyNodes: Record<string, StoryNode> = {
                 next: "foyer",
             },
         ],
+        imagePath: null,
     },
     amulet: {
         id: "amulet",
@@ -89,11 +103,13 @@ export const storyNodes: Record<string, StoryNode> = {
                 next: "cellarReturn",
             },
         ],
+        imagePath: null,
     },
     cellarReturn: {
         id: "cellarReturn",
         text: "The censer is silent, yet the shard hums in your grasp. Each pulse tightens the web of dark lines beneath your skin. Above, the chapel waits with more anchors to break.",
         choices: [{ text: "Return to the narthex", next: "foyer" }],
+        imagePath: null,
     },
     whisper: {
         id: "whisper",
@@ -105,6 +121,7 @@ export const storyNodes: Record<string, StoryNode> = {
             },
             { text: "Bow in thanks and steady your focus", next: "intro" },
         ],
+        imagePath: null,
     },
     staircase: {
         id: "staircase",
@@ -115,6 +132,7 @@ export const storyNodes: Record<string, StoryNode> = {
             success: "moonDoor",
             fail: "soulLock",
         },
+        imagePath: null,
     },
     moonDoor: {
         id: "moonDoor",
@@ -122,6 +140,7 @@ export const storyNodes: Record<string, StoryNode> = {
         choices: [
             { text: "Read the ledger and heed its warning", next: "study" },
         ],
+        imagePath: null,
     },
     soulLock: {
         id: "soulLock",
@@ -132,6 +151,7 @@ export const storyNodes: Record<string, StoryNode> = {
                 next: "foyer",
             },
         ],
+        imagePath: null,
     },
     study: {
         id: "study",
@@ -142,6 +162,7 @@ export const storyNodes: Record<string, StoryNode> = {
                 next: "lantern",
             },
         ],
+        imagePath: null,
     },
     lantern: {
         id: "lantern",
@@ -156,6 +177,7 @@ export const storyNodes: Record<string, StoryNode> = {
                 next: "intro",
             },
         ],
+        imagePath: null,
     },
     lanternTaken: {
         id: "lanternTaken",
@@ -163,5 +185,6 @@ export const storyNodes: Record<string, StoryNode> = {
         choices: [
             { text: "Let the ember guide you back inside", next: "foyer" },
         ],
+        imagePath: null,
     },
 };

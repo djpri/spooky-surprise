@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Typewriter } from "./typewriter";
 import { storyNodes, type StoryNode } from "../data/storyNodes";
 import { useStoryStore } from "../store/storyStore";
 import { Button } from "./ui/Button";
@@ -38,9 +39,10 @@ export default function Scene({ node }: SceneProps) {
         }, 1100);
     };
 
-    const renderText = useMemo(() => {
-        if (typeof node.text === "function") return node.text(playerName);
-        return node.text.replaceAll("PLAYERNAME", playerName || "_____");
+    const fullText = useMemo(() => {
+        return typeof node.text === "function"
+            ? node.text(playerName)
+            : node.text.replaceAll("PLAYERNAME", playerName || "____");
     }, [node, playerName]);
 
     return (
@@ -52,7 +54,9 @@ export default function Scene({ node }: SceneProps) {
             </header>
 
             <p className="text-lg leading-relaxed text-foreground/90">
-                {renderText}
+                <span className="typewriter">
+                    <Typewriter text={fullText} speed={30} />
+                </span>
                 {node.requiresName && (
                     <>
                         {" "}
@@ -64,7 +68,7 @@ export default function Scene({ node }: SceneProps) {
                 )}
             </p>
 
-            {/* ✅ Choices */}
+            {/* Choices */}
             {choices.length > 0 ? (
                 <div className="space-y-2">
                     <h4 className="font-heading text-lg uppercase tracking-wide text-foreground/80">
@@ -90,7 +94,7 @@ export default function Scene({ node }: SceneProps) {
                 </p>
             ) : null}
 
-            {/* ✅ Dice check block */}
+            {/* Dice check block */}
             {node.diceCheck && (
                 <div className="space-y-3 rounded-xl border border-border/40 bg-background/60 p-4">
                     <p className="text-sm text-foreground/80">
@@ -110,7 +114,7 @@ export default function Scene({ node }: SceneProps) {
                 </div>
             )}
 
-            {/* ✅ Display roll result */}
+            {/* Display roll result */}
             {lastRoll !== null && (
                 <p className="text-center text-sm text-foreground/70">
                     You rolled a {lastRoll}.
