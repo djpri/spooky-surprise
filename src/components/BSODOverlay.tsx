@@ -24,11 +24,9 @@ export default function BSODOverlay({ onClose }: BSODOverlayProps) {
   const [showScaryFace, setShowScaryFace] = useState(false)
   const inputLockedRef = useRef(false)
 
-  // Lock all user input for a short period after BSOD appears
+  // Lock all user input immediately while the overlay sequence runs
   useEffect(() => {
-    if (!showBSOD) return
-
-    const lockMs = 7500 // length of input lock while BSOD is visible
+    const lockMs = 7500 // length of input lock while BSOD sequence is active
     inputLockedRef.current = true
 
     const blocker = (e: Event) => {
@@ -91,7 +89,7 @@ export default function BSODOverlay({ onClose }: BSODOverlayProps) {
       document.removeEventListener('fullscreenchange', onFsChange)
       inputLockedRef.current = false
     }
-  }, [showBSOD])
+  }, [])
 
   useEffect(() => {
     const el = document.documentElement
