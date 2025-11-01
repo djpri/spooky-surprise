@@ -156,8 +156,7 @@ export default function MenuAudioLoop() {
             contextRef.current = null;
             gainNodesRef.current = [];
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [soundEnabled]); // volume is handled in separate effect
+    }, [soundEnabled]);
 
     useEffect(() => {
         volumeRef.current = volume;
