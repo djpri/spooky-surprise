@@ -20,7 +20,6 @@ function App() {
     } = useStoryStore();
     const visitedCount = visited.length;
     const toggleSound = () => setSoundEnabled(!soundEnabled);
-
     useEffect(() => {
         const script = document.createElement("script");
         script.src = "https://kit.fontawesome.com/9cf674f529.js";

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import menuTrack from "../assets/audio/menu.mp3";
 import { useStoryStore } from "../store/storyStore";
 
@@ -6,10 +6,12 @@ const OVERLAP_SECONDS = 0.4;
 const FADE_IN_SECONDS = 0.4;
 const FADE_OUT_SECONDS = 0.8;
 const START_DELAY_SECONDS = 0.1;
-const TARGET_VOLUME = 0.5;
 
 export default function MenuAudioLoop() {
-    const { soundEnabled } = useStoryStore();
+    const { soundEnabled, volume } = useStoryStore();
+    const contextRef = useRef<AudioContext | null>(null);
+    const gainNodesRef = useRef<GainNode[]>([]);
+    const volumeRef = useRef(volume);
 
     useEffect(() => {
         if (typeof window === "undefined" || !soundEnabled) {
@@ -40,6 +42,8 @@ export default function MenuAudioLoop() {
         gainNodes.forEach((gain) => {
             gain.gain.value = 0;
             gain.connect(context.destination);
+            contextRef.current = context;
+            gainNodesRef.current = gainNodes;
         });
 
         const scheduleTimeout = (callback: () => void, delayMs: number) => {
@@ -88,8 +92,8 @@ export default function MenuAudioLoop() {
             const gain = gainNodes[slotIndex].gain;
             gain.cancelScheduledValues(startTime);
             gain.setValueAtTime(0, startTime);
-            gain.linearRampToValueAtTime(TARGET_VOLUME, fadeInEnd);
-            gain.setValueAtTime(TARGET_VOLUME, fadeOutStart);
+            gain.linearRampToValueAtTime(volumeRef.current, fadeInEnd);
+            gain.setValueAtTime(volumeRef.current, fadeOutStart);
             gain.linearRampToValueAtTime(0, stopTime);
 
             try {
@@ -149,8 +153,21 @@ export default function MenuAudioLoop() {
             });
             gainNodes.forEach((gain) => gain.disconnect());
             context.close().catch(() => undefined);
+            contextRef.current = null;
+            gainNodesRef.current = [];
         };
-    }, [soundEnabled]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [soundEnabled]); // volume is handled in separate effect
+
+    useEffect(() => {
+        volumeRef.current = volume;
+        gainNodesRef.current.forEach((g) => {
+            g.gain.linearRampToValueAtTime(
+                volume,
+                contextRef.current?.currentTime ?? 0 + 0.2
+            );
+        });
+    }, [volume]);
 
     return null;
 }
