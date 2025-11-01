@@ -5,8 +5,7 @@
 @layer base {
   @font-face {
     font-family: "Weiss Initialen";
-    src: url("./assets/fonts/weiss-initialen/WeissInitialen.ttf")
-      format("truetype");
+    src: url("./assets/fonts/weiss-initialen/WeissInitialen.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -14,8 +13,7 @@
 
   @font-face {
     font-family: "Weiss Initialen";
-    src: url("./assets/fonts/weiss-initialen/WeissInitialen-Alternates.ttf")
-      format("truetype");
+    src: url("./assets/fonts/weiss-initialen/WeissInitialen-Alternates.ttf") format("truetype");
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -119,33 +117,29 @@ body {
   left: 0;
   width: 100%;
   height: 8px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    transparent 25%,
-    var(--primary) 25%,
-    var(--primary) 50%,
-    transparent 50%,
-    transparent 75%,
-    var(--primary) 75%,
-    var(--primary) 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      transparent 25%,
+      var(--primary) 25%,
+      var(--primary) 50%,
+      transparent 50%,
+      transparent 75%,
+      var(--primary) 75%,
+      var(--primary) 100%);
   background-size: 16px 100%;
   animation: wave 0.5s linear infinite;
 }
 
 .dark .ghost-wave {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    transparent 25%,
-    var(--secondary) 25%,
-    var(--secondary) 50%,
-    transparent 50%,
-    transparent 75%,
-    var(--secondary) 75%,
-    var(--secondary) 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      transparent 25%,
+      var(--secondary) 25%,
+      var(--secondary) 50%,
+      transparent 50%,
+      transparent 75%,
+      var(--secondary) 75%,
+      var(--secondary) 100%);
   background-size: 16px 100%;
 }
 
@@ -168,9 +162,12 @@ body {
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-6px);
   }
@@ -180,16 +177,22 @@ body {
   0% {
     background-position: 0 0;
   }
+
   100% {
     background-position: 16px 0;
   }
 }
 
 @keyframes blink {
-  0%, 92%, 100% {
+
+  0%,
+  92%,
+  100% {
     opacity: 1;
   }
-  94%, 98% {
+
+  94%,
+  98% {
     opacity: 0;
   }
 }
@@ -199,6 +202,7 @@ body {
     opacity: 0.4;
     transform: translate(-50%, -50%) scale(1);
   }
+
   100% {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.5);
@@ -210,8 +214,20 @@ body {
     opacity: 0.5;
     transform: translate(-50%, -50%) scale(1);
   }
+
   100% {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+
+.typewriter::after {
+  content: "|";
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }
