@@ -27,3 +27,5 @@
 - Tie each entity to an inner conflict (guilt, doubt, compassion, hunger).
 - Prefer lingering unease to jump scares; let choices haunt later scenes.
 - Costs are visible: cracked mirrors, deepened veins, missing names.
+- **Soul Aging Mechanic (Corruption Branch):** The descent into Rootdeep demands a *temporal* price—vitality drained, time accelerated, the body aged like ancient wood. This mirrors the psychological cost of confronting unintegrated shadow: wisdom gained through sacrifice, but the self is worn by the encounter. Success requires accepting that integration exacts a cost on the present self to honor the integrated whole.
+

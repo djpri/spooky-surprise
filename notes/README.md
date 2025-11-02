@@ -15,6 +15,7 @@ Use this folder as the living story bible for The Corrupted Veil of Alderthorn. 
  - `endings.md` — Terminal outcomes per branch with tone tags and unlock cues.
 - `glossary.md` — Canonical terms, names, and pronunciations.
  - `scenes.md` — Short scene drafts showing core mechanics.
+ - `folder-structure.md` — Guide to generating the story folder structure.
 
 Conventions across notes:
 

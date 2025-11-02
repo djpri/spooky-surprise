@@ -4,7 +4,8 @@
   "choices": [
     { "text": "Descend to the Bound Spirit", "next": "./beneath-the-altar/bound-spirit.md" },
     { "text": "Listen to the Voice Beneath the Altar", "next": "./voice-beneath-the-altar/voice.md" },
-    { "text": "Answer the Ashen Bride", "next": "./ashen-bride/ashen-bride.md" }
+    { "text": "Answer the Ashen Bride", "next": "./ashen-bride/ashen-bride.md" },
+    { "text": "Descend into Rootdeep — Final Trial", "next": "./descent-into-rootdeep/final-trial.md" }
   ],
   "imagePath": null
 }

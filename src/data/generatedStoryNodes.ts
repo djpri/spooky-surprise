@@ -2,6 +2,14 @@
 import type { StoryNode } from './storyNodes';
 
 export const generatedStoryNodes: Record<string, StoryNode> = {
+  "challenge-maerwyn": {
+    id: "What Do You Truly Believe?",
+    text: "Sister Maerwyn stands motionless for a long moment. Around you, the chapel seems to hold its breath.\n\n\"You're not supposed to ask that,\" she finally whispers.\n\n\"But you've wondered,\" you say. It's not a question.\n\nHer reflection moves a half-second late, and you realize: it's not a reflection. It's something *wearing* her reflection, listening from that in-between space. The Veil-Touched begin to gather at the edges of the pyre fields, drawn by doubt like moths to a wavering flame.\n\n\"The pyres hold,\" Sister Maerwyn says, but the conviction is gone. \"They must hold. Because if they don't...\"\n\nShe doesn't finish. She doesn't need to. The implication hangs in the Chapel's dimness: if the pyres are faith without foundation, then everything built on that faith collapses. The villagers' safety, your purpose, the annual Hunt itself—all of it revealed as *negotiation with hunger* rather than *sacred protection*.\n\n\"The choice is still yours,\" she says finally. \"Light the pyres and let the machinery continue. Or refuse, and face what happens when the machine stops.\"\n\nShe steps back. The Veil-Touched press closer.\n\nYou hold the lens. Its three rings—Nèamh, Muir, Talamh—pulse with expectation.\n\nWhat do you choose: the faith that holds, or the truth that breaks it?\n",
+    
+    
+    choices: [{"text":"Proceed with the pyres despite her doubt","next":"faith__village_at_dusk__faith_hardened_by_doubt"},{"text":"Refuse the pyres; speak the doubt aloud","next":"faith__village_at_dusk__refuse_pyres"}],
+    imagePath: null,
+  },
   "corruption__ashen_bride__accept_ring": {
     id: "Accept the Bride’s Ring",
     text: "Ash and lace tighten at your wrist. Two pulses in one vein.\n",
@@ -138,12 +146,36 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     choices: [],
     imagePath: null,
   },
+  "corruption__descent_into_rootdeep__final_trial": {
+    id: "The Descent into Rootdeep — Final Trial",
+    text: "Steps echo in a throat that used to be a mine and is now a memory. Each breath you take here is borrowed from a version of you that will never leave. With every descent, your joints ache with a future that arrives too early. In a slick of black‑violet on the rock, you see your face older than it should be, and you do not blink.\n\nThe Cave Guardian waits where Elar’s fear still hangs like incense. It is the shape of everything you didn’t live — every kindness refused, every hunger you smothered until it learned your voice. When it inhales, your back hurts the way it will in twenty years. When it exhales, the lantern dims and memory goes with it.\n\n- Accept what is yours and what is not, and let the shadow stand beside you.\n- Or grind it under heel until only the light speaks.\n\nEither way, the year will end. Only you decide whether it ends with a whole self.\n\n",
+    
+    
+    choices: [{"text":"Accept the Shadow (Integration)","next":"corruption__descent_into_rootdeep__guardian_transforms"},{"text":"Resist or Dominate the Shadow (Consumption)","next":"corruption__descent_into_rootdeep__guardian_consumes"}],
+    imagePath: null,
+  },
+  "corruption__descent_into_rootdeep__guardian_consumes": {
+    id: "Ending — The Guardian Consumes (Hollow Escape)",
+    text: "You press the shadow down until it slips your grip and takes the hand that held it. The cave exhales your name and keeps the breath.\n\nYou climb out lighter only where it matters; elsewhere, you are a husk packed with obligation. People are saved. You are not.\n\nThe cycle continues. The shadow is patient. It does not need to eat quickly to win.\n\n",
+    
+    
+    choices: [],
+    imagePath: null,
+  },
+  "corruption__descent_into_rootdeep__guardian_transforms": {
+    id: "Ending — The Guardian Transforms (True Integration)",
+    text: "You turn and let it turn with you. Where teeth waited, there are tools; where claws coiled, there are hands. The shadow steps forward and does not need to speak to be understood.\n\nYou emerge older than you entered — hair threaded with frost, breath quieter, eyes steady. The Veil mends along your fault lines. You carry both hunger and light without lying about either.\n\nThe cycle breaks here. Not through power, but through integration.\n\n",
+    
+    
+    choices: [],
+    imagePath: null,
+  },
   "corruption__start": {
     id: "Corruption — The Root Flame",
     text: "Roots seize stone; the old fire hums low. What you bind binds you back.\n\nUnder the chapel, the air tastes of coins and wet dirt. Roots thread the vaulting like ribs. In the center, an altar‑stone veined with soot sleeps over a throat in the world. When you align Talamh with the others, the stone feels you like a tooth feels a tongue.\n\n“Name me,” whispers something patient and proud. Another voice — softer, nearer — promises vows in the language of ash and lace. Beneath them both, the bound spirit thrums, a knot that could be cut, devoured, or taught to hold.\n",
     
     
-    choices: [{"text":"Descend to the Bound Spirit","next":"corruption__beneath_the_altar__bound_spirit"},{"text":"Listen to the Voice Beneath the Altar","next":"corruption__voice_beneath_the_altar__voice"},{"text":"Answer the Ashen Bride","next":"corruption__ashen_bride__ashen_bride"}],
+    choices: [{"text":"Descend to the Bound Spirit","next":"corruption__beneath_the_altar__bound_spirit"},{"text":"Listen to the Voice Beneath the Altar","next":"corruption__voice_beneath_the_altar__voice"},{"text":"Answer the Ashen Bride","next":"corruption__ashen_bride__ashen_bride"},{"text":"Descend into Rootdeep — Final Trial","next":"corruption__descent_into_rootdeep__final_trial"}],
     imagePath: null,
   },
   "corruption__voice_beneath_the_altar__condemn_voice": {
@@ -178,12 +210,28 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     choices: [{"text":"Free the Voice","next":"corruption__voice_beneath_the_altar__free_voice"},{"text":"Merge With It","next":"corruption__voice_beneath_the_altar__merge_voice"},{"text":"Condemn It","next":"corruption__voice_beneath_the_altar__condemn_voice"}],
     imagePath: null,
   },
+  "doubt-accepted": {
+    id: "Faith Questioned",
+    text: "You let the doubt step forward. It tastes like ash and salt—familiar, because it is *your* taste.\n\nThe lens cools further in your palm. Nèamh dims. Muir surfaces instead, the water-blue of reflection catching light from angles you didn't know existed. In it, you see not the Chapel but something *behind* the Chapel: a space where rituals go when they die. A graveyard of old faiths, old pyres, old certainties that someone once believed would save the world.\n\n\"What if,\" you ask quietly, \"the pyres are not salvation? What if they are simply *feeding*?\"\n\nThe doubt speaks in your voice, but it carries weight you didn't know you could hold.\n\nSister Maerwyn's composure flickers. For the first time, you see fear in her—not of the Veil, but of *you*, and the question you've just asked aloud.\n\nThe crowd murmurs. Some shuffle back. Some lean closer, desperate to hear an answer.\n\nYou have opened a door. The Veil watches. And now the question of what to do with doubt becomes *your* burden to carry.\n\nYour path has fractured. Time to walk the cracks.\n",
+    
+    
+    choices: [{"text":"Ask Sister Maerwyn what she truly believes","next":"challenge-maerwyn"}],
+    imagePath: null,
+  },
+  "doubt-rejected": {
+    id: "Faith Reaffirmed",
+    text: "You push the doubt down. It snarls and writhes, but you have been trained to burn away such things.\n\n\"The faith is not mine to question,\" you say aloud. \"It is the *structure that holds*. If I allow doubt to speak, the Veil widens. The people fall. That is not mercy—that is abdication.\"\n\nNèamh flares in your lens. Your veins brighten, the black‑gold burning toward pure white. The doubt doesn't vanish—it *sinks*, roots deep into your marrow, where it will feed on every sacrifice you make.\n\nSister Maerwyn nods with approval. The villagers relax.\n\nYou have chosen *to not choose*. You have chosen the role over the self. The doubt, unspeaking but alive, settles into your bones like ash that will never be cleaned.\n\nYour path is cleared. Time to light the pyres.\n",
+    
+    
+    choices: [{"text":"Light the pyres with renewed conviction","next":"faith__village_at_dusk__rekindle_pyres"}],
+    imagePath: null,
+  },
   "faith__start": {
     id: "Faith — The Light That Burns",
     text: "Smoke-sweet air and candle stubs in windows. Bells ring with no hands. Sister Maerwyn meets your gaze and does not look away.\n\nShe presses a taper into your palm. “The Year’s End isn’t a night,” she says, “it’s a decision that takes a year to pay for.” The pyre fields lie ready — circles of char and bone‑white stones, each labeled with a name that might yet be saved or surrendered. In the distance, children chalk mirrors; their parents pretend not to notice the way reflections arrive a blink late.\n\nYour lens warms at the prospect of order. The crowd, at the prospect of certainty. The Veil does not care how you choose, only that you understand the cost.\n",
     
     
-    choices: [{"text":"Rekindle the Pyres with Sister Maerwyn","next":"faith__village_at_dusk__rekindle_pyres"},{"text":"Refuse to Light the Pyres","next":"faith__village_at_dusk__refuse_pyres"}],
+    choices: [{"text":"Rekindle the Pyres with Sister Maerwyn","next":"faith__village_at_dusk__rekindle_pyres"},{"text":"Refuse to Light the Pyres","next":"faith__village_at_dusk__refuse_pyres"},{"text":"Confront your own doubt","next":"faith-own-faith-fractures"}],
     imagePath: null,
   },
   "faith__village_at_dusk__burn_both": {
@@ -197,6 +245,14 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
   "faith__village_at_dusk__corruption_spreads": {
     id: "Ending — The Corruption Spreads (Despair)",
     text: "Mercy blooms into rot. Veil‑Touched sweep ashes that return as they breathe.\n",
+    
+    
+    choices: [],
+    imagePath: null,
+  },
+  "faith__village_at_dusk__faith_hardened_by_doubt": {
+    id: "Ending — Faith Hardened by Doubt",
+    text: "You light the pyres, but something in you calcifies. The ritual holds; the village sleeps. Doubt sets like glass in your bones.\n\nSister Maerwyn thanks you with a voice that sounds like relief and pity braided together. Bells ring with no hands. Candles lean, but they do not warm you.\n\nYou have chosen safety over truth. The Veil holds — and so does the machinery.\n\n",
     
     
     choices: [],
@@ -266,12 +322,44 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     choices: [],
     imagePath: null,
   },
+  "faith-own-faith-fractures": {
+    id: "Your Own Faith Fractures",
+    text: "You stand in the Chapel of Sighing Stone. The pyres are ready. The villagers wait. Sister Maerwyn looks to you for certainty.\n\nAnd you realize: you have none.\n\nIt hits you like a bell rung in reverse—the sound of something *missing* rather than something *present*. All the rituals you've performed, all the oaths you've sworn in Nèamh's light, all the certainty you've inherited from Elar's teachings—suddenly they feel like *armor* rather than *belief*.\n\nThe candlelight leans toward you, but you notice: it leans in *request*, not in *answer*. As if the Veil itself is asking, \"Do you truly believe this will hold?\"\n\nIn your bones, you hear an echo of Elar's voice: \"The light consumes. Names slip. Faith hardens into something that protects nothing but itself.\"\n\nThe Veil does not thin because you have faith. The Veil thins because it *chooses* to. Every pyre, every prayer, every sacrifice—are these acts of salvation, or acts of *negotiation with hunger*?\n\nSister Maerwyn still watches you. The villagers begin to murmur. Your lens feels cold now, not warm.\n\nWhat do you choose: the faith you were given, or the doubt that grows from seeing too clearly?\n\n",
+    
+    
+    choices: [{"text":"Defend your faith; push back against doubt","next":"doubt-rejected"},{"text":"Acknowledge the doubt; let it speak","next":"doubt-accepted"}],
+    imagePath: null,
+  },
   "prologue": {
-    id: "Prologue — Choose Your Path",
-    text: "You wake to settling stone and angled light through dust. The lens lies where you left it beneath the altar, warm as a buried ember. The Veil thins — and you must choose how to meet it.\n\nThree ways open:\n- Faith and flame, to steady what breaks.\n- Reflection and truth, to see what hides.\n- Root and hunger, to bind or be bound.\n\nThe chapel breathes with you. Black‑gold veins stir beneath your skin, answering a heartbeat not entirely your own. When you lift the three‑ring lens, the rings give off faint signatures — Nèamh a clean warmth, Muir a cool tug like tidewater, Talamh a low thrum in your bones. Candles lean toward you as if listening.\n\nYou can taste ash and salt and glass. Names hover at the edge of recall. Beyond the door, bells ring with no hands. Alderthorn waits for your decision — and for the cost you’ll pay to see it through.\n",
+    id: "Prologue — The Stirring",
+    text: "You wake to settling stone and angled light through dust. The lens lies where you left it beneath the altar, warm as a buried ember. The Veil thins — and you must choose how to meet it.\n\nAs your fingers close around the lens, the chapel tilts. For a moment—or a year—you are not alone. A figure kneels where you now stand, veins black‑gold and pulsing beneath translucent skin. Elar. Older than memory, younger than the stone around him. His lips move in a prayer you almost understand. Then he turns. His eyes are not his own — they're the lens’s eyes, seeing through you as if you are made of cracks.\n\n“The light consumes,” he whispers. “Every Hunt leaves less of you behind. Names slip. Reflections argue. The body ages as the shadow grows — and shadow always grows.”\n\nAnother voice rides his, heavier and nearer, like the Veil speaking through him: “The three paths you’ll choose are not escapes. They are three ways of accepting the cost. Faith burns what it must, reflection remembers what you forget, and root‑flame bargains with hunger until it learns your name. The Veil does not care which path you take. It only cares that you pay.”\n\nThe chapel breathes with you. Black‑gold veins stir beneath your skin, answering a heartbeat not entirely your own. When you lift the three‑ring lens, the rings give off faint signatures — Nèamh a clean warmth, Muir a cool tug like tidewater, Talamh a low thrum in your bones. Candles lean toward you as if listening. Bells ring with no hands.\n\nThree ways open:\n- Faith and flame, to steady what breaks.\n- Reflection and truth, to see what hides.\n- Root and hunger, to bind or be bound.\n\nChoose not the path that saves you. Choose the path that costs you something true.\n",
     
     
-    choices: [{"text":"Path of Faith — The Light That Burns","next":"faith__start"},{"text":"Path of Reflection — The Mirror’s Truth","next":"reflection__start"},{"text":"Path of Corruption — The Root Flame","next":"corruption__start"}],
+    choices: [{"text":"Path of Faith — The Light That Burns","next":"faith__start"},{"text":"Path of Reflection — The Mirror's Truth","next":"reflection__start"},{"text":"Path of Corruption — The Root Flame","next":"corruption__start"}],
+    imagePath: null,
+  },
+  "prologue-choice": {
+    id: "Three Paths Open",
+    text: "Three ways open:\n- Faith and flame, to steady what breaks.\n- Reflection and truth, to see what hides.\n- Root and hunger, to bind or be bound.\n\nAlderthorn waits for your decision — and for the cost you'll pay to see it through.\n\n",
+    
+    
+    choices: [{"text":"Path of Faith — The Light That Burns","next":"faith__start"},{"text":"Path of Reflection — The Mirror's Truth","next":"reflection__start"},{"text":"Path of Corruption — The Root Flame","next":"corruption__start"}],
+    imagePath: null,
+  },
+  "prologue-elar-warning": {
+    id: "Elar's Last Counsel",
+    text: "The vision releases you slowly, like water draining from lungs.\n\nIn the chapel's dimness, a voice—not quite Elar's, but carrying his weight—settles over you:\n\n\"I am not here to dissuade you. The Brichan's role is not optional; it simply *is*. But know this: every choice you make in the coming Hunt will age you in ways the mirror cannot explain. Not just your body—your *self*. Memories that belong to you will become memories of people you were.\n\nThe three paths you'll choose are not escapes. They are three ways of *accepting* the cost.\n\n- Light those who choose Faith understand sacrifice through ritual and community. They will burn, and you will burn with them.\n- Those who seek Reflection think understanding will save them. But mirrors remember what you forget, and reflection lag is the first sign of fracture.\n- Those who walk the Root Flame believe they can bargain with shadow. The shadow always wins the negotiation—it simply takes longer to show its victory.\n\nThe Veil does not care which path you take. It only cares that you *pay*.\n\nI paid. I am still paying, in the places you cannot yet see.\n\nYour turn begins now. Choose not the path that saves you. Choose the path that costs you something true.\"\n\nThe voice fades. You stand alone with the lens, warm as a heartbeat in your palm.\n\nThree ways open. Only one cost: everything.\n\n",
+    
+    
+    choices: [{"text":"Acknowledge the warning; proceed to choose your path","next":"prologue"}],
+    imagePath: null,
+  },
+  "prologue-vision": {
+    id: "A Memory Surfaces",
+    text: "As your fingers close around the lens, the chapel tilts. For a moment—or a year—you're not alone.\n\nA figure kneels before the altar, their veins black‑gold and pulsing visibly beneath translucent skin. Elar. Older than memory, younger than the stone around him. His lips move in a prayer you almost understand.\n\nThen he turns. His eyes are not his own—they're the lenses' eyes, seeing through you as if you're made of cracks.\n\n\"The light consumes,\" he whispers. \"Every Hunt leaves less of you behind. Names slip. Reflections argue. The body ages as the shadow grows—and shadow always grows.\"\n\nThe scene fractures. You see him at the altar's base, veins unraveling into threads of light that writhe like worms, whispering prayers backward. Around him, the chapel breathes in rhythm with something vast and hungry.\n\n\"The role is not a gift,\" he says, his voice now overlapping with something deeper. \"It is a rotation. Each Brichan believes they will be the one to break the cycle. None have. The unlived life of those before you lives in the dark places now.\"\n\nThe vision crumbles. You're back in the chapel. Your hands shake. The lens is warm.\n\nThe choice before you—Faith, Reflection, Corruption—suddenly feels less like a path and more like a way of *accepting* rather than *choosing*.\n",
+    
+    
+    choices: [{"text":"Step into the vision fully","next":"prologue-elar-warning"},{"text":"Pull away; return to the chapel","next":"prologue"}],
     imagePath: null,
   },
   "reflection__archivist_of_ash__archivist": {

@@ -35,9 +35,24 @@ No unambiguously good outcome exists on this branch.
 - [5A5] You Burn Instead (Condemnation Ending) — [Traumatic]
   - What it means: The witch‑trial turns on you. Human fear succeeds where monsters failed.
   - Unlock cues: Refuse the pyres (3A2), fail community checks, spur blame.
-  - Dread note: As flames rise, your reflection keeps talking long after you’re quiet.
+  - Dread note: As flames rise, your reflection keeps talking long after you're quiet.
 
-## Branch B — Reflection: The Mirror’s Truth
+- **[5A6] Faith Hardened by Doubt** — **[Ambiguous‑Dark]**
+  - What it means: You light the pyres, but doubt has taken root. The ritual holds, but hollow. Veil steadies, but you know now: it's negotiation, not salvation. Villagers notice your changed demeanor; faith becomes *compliance*.
+  - Unlock cues: Acknowledge the doubt (3A1b) but proceed with the pyres anyway (4A3). Choose safety over truth.
+  - Dread note: Each pyre you light, your shadow grows. Sister Maerwyn watches you with pity, not respect.
+
+- **[5A7] The Villagers Turn (Witch Trial)** — **[Traumatic]**
+  - What it means: You speak the doubt aloud. Sister Maerwyn's composure breaks. The crowd, sensing weakness in the ritual, turns on you as the cause of instability. They burn you to restore faith.
+  - Unlock cues: Challenge Sister Maerwyn (3A3) and refuse the pyres (4A4). Choose truth over safety.
+  - Dread note: The last sound is their prayers, asking forgiveness from gods who don't answer.
+
+- **[5A8] The Veil Opens Early (Collapse)** — **[Traumatic]**
+  - What it means: Your doubt fractures the ritual. The Veil tears without warning. Entities pour through before containment can be re-established. The village falls in a single night.
+  - Unlock cues: Challenge Sister Maerwyn (3A3) and refuse the pyres (4A4) with high corruption already accumulated.
+  - Dread note: You survive, but the names of those who died echo in places you cannot reach.
+
+## Branch B — Reflection: The Mirror's Truth
 
 Contains one broadly positive resolution; most others are identity‑wounding or existentially bleak.
 
@@ -134,6 +149,45 @@ Contains one broadly positive resolution; most others are predation, dissolution
   - What it means: You negotiate terms with the Ashen Bride and keep your name. The bound spirit is a partner, not a prisoner; the Voice speaks as Self, not master.
   - Unlock cues: Bargain the Terms (4C9); maintain a True Name; demonstrate restraint with Talamh and empathy with Muir.
   - Bright note: Your veins glow warm gold‑violet; candles neither lean nor flee.
+
+**Voice & Bride Encounter Outcomes (3C2 choices leading to varied endings):**
+
+- [5C7] She Withholds Aid (Rejection Path) — [Ambiguous‑Dark]
+  - What it means: You condemn both Voice and Bride. They withdraw; you walk without the Anima's hand. Balance is possible but unlikely.
+  - Unlock cues: Choose Condemn Both (4C4). Functions as a flag that makes 5C11/5C13 harder.
+  - Dread note: Mirrors frost when you enter a room.
+
+- [5C8] Gnostic Wedding (Integration Variant) — [Ambiguous‑Dark]
+  - What it means: Union with Voice and Bride brings comprehension and constraint. The Veil rests; freedom narrows.
+  - Unlock cues: Choose Merge With Both (4C5) after integrating Shadow cues; decline full consumption.
+  - Dread note: Two pulses in one wrist.
+
+- [5C9] Reflection Darkens (Unguided State) — [Ambiguous‑Dark]
+  - What it means: Your reflection loses all guidance. The Anima's absence leaves you unanchored; choices feel hollow.
+  - Unlock cues: Choose Condemn Both (4C4) with high isolation flags.
+  - Dread note: Mirrors show only what is, without reflection of what might be.
+
+- [5C11] Omniscient Bride (New God Ending) — [Ambiguous‑Dark]
+  - What it means: The Bride speaks as the highest authority. You and she share one will. The Veil obeys — for now.
+  - Unlock cues: Choose Merge With Both (4C5) under controlled integration or deliberate union ritual.
+  - Dread note: Birds stop mid‑flight when she exhales.
+
+- [5C12] Reflection Binds to Her (Loss of Autonomy) — [Ambiguous‑Dark]
+  - What it means: The Ashen Bride owns the answer before you ask it. You still act — through permissions.
+  - Unlock cues: Choose Merge With Both (4C5); cede choices in reflection scenes.
+  - Dread note: Your reflection looks right to her before it looks to you.
+
+**Cave Guardian (Rootdeep) Final Trial Outcomes (3C3 choices):**
+
+- **[5C13] The Guardian Transforms (Rootdeep Integration)** — **[Good]**
+  - What it means: You descend into the Chasm of Rootdeep aged but unbroken. You face the Cave Guardian—the unintegrated shadow of Elar and the unlived burdens of generations—and *accept* it rather than resist. The monster transforms and merges with you. The shadow comes to light; the unlived becomes integrated. You escape the cave older, marked, but whole. The cycle breaks.
+  - Unlock cues: Reach the final trial (3C3) in Rootdeep. Demonstrate acceptance of shadow (through earlier Voice/Bride/Spirit choices that favored integration over domination). Succeed in the final confrontation by *integrating* rather than defeating the Guardian.
+  - Bright note: The weight you carry is visible but no longer devouring. Your reflection holds your own face—and something ancient and wise behind it. Bells ring with your hands now.
+
+- **[5C14] The Guardian Consumes (Rootdeep Consumption)** — **[Traumatic]**
+  - What it means: You descend into the Chasm of Rootdeep and confront the Cave Guardian. Your light is not enough. The Guardian consumes what you carry—your essence, your lens-power, your coherence. You escape hollow, corrupted, and irreparably fractured. The shadow is not integrated; it feeds on you instead. The cycle continues unbroken.
+  - Unlock cues: Reach the final trial (3C3) in Rootdeep. Fail the integration check or choose to resist/dominate rather than accept the Guardian. Accumulate high corruption before the descent.
+  - Dread note: You stumble out of the cave older than you should be, but there is no wisdom in your age—only hunger. Your reflection moves without your permission. Sometimes it whispers in Elar's voice.
 
 ## Epilogue and Credits Signals
 

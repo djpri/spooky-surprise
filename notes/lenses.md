@@ -14,7 +14,8 @@ Narrative rules for the Brichan’s three‑ring focus. Use these to keep cause�
 
 - Talamh (Black/Violet) — The Root Flame
   - Binding, devouring, renewal through death.
-  - Absorbs light; deepens the Brichan’s corruption marks.
+  - Absorbs light; deepens the Brichan's corruption marks.
+  - Required to navigate the Chasm of Rootdeep; necessary for confronting the Cave Guardian.
 
 ## Alignments (Sample Compounds)
 
@@ -29,6 +30,7 @@ Narrative rules for the Brichan’s three‑ring focus. Use these to keep cause�
 - Memory fray: names slip; reflections whisper with older selves (Muir backlash).
 - Pain and ringing in the bones after prolonged use of Nèamh.
 - Mirrors hairline‑crack when lies are exposed; candles gutter toward the lens when entities draw near.
+- Soul aging: Descent into Rootdeep with Talamh drains vitality; reflections show an older face; body and mind are worn by the temporal cost of confronting unintegrated shadow.
 
 ## Safety & Limits
 

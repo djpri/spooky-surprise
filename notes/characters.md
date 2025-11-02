@@ -10,12 +10,13 @@
 
 ## Major NPCs
 
-🧓 Elar (Dying Mentor)
-- Role: Former teacher of the current Brichan, now corrupted beyond saving.
-- Motivation: Wants the player to inherit his “light,” though it is tainted.
-- Personality: Gentle, guilt‑struck, convinced salvation lies in oblivion.
-- Fear theme: Inheritance of sin — wisdom and corruption from the same source.
-- Scene seed: As he dies, his veins unravel into threads of light that writhe like worms, whispering prayers backwards.
+🧓 Elar (Dead Mentor)
+- Role: Former teacher of the current Brichan; died corrupted and unresolved.
+- Motivation (in life): Wanted the player to inherit his "light," though it was tainted.
+- Personality: Was gentle, guilt‑struck, convinced salvation lay in oblivion.
+- Psychological legacy: His unlived life, unintegrated shadow, and unresolved burdens now inhabit the Chasm of Rootdeep — bound in the form of the Cave Guardian.
+- Fear theme: Inheritance of sin — the wounds of the father become the trials of the child. As Jung said: "Nothing has a stronger influence psychologically on their children than the unlived life of the parent."
+- Scene seed: In death, his corruption did not dissipate but pooled and festered. His absence is a presence—a hunger that calls from below.
 
 🕯️ Sister Maerwyn
 - Role: Keeper of the village pyres.
@@ -103,3 +104,16 @@ Each creature marries a physical form to a psychological trigger, blending gothi
 - Behavior: Draws in spirits and lightbearers alike — endless hunger.
 - Symbolism: Entropy personified; inevitability of oblivion.
 - Scare: Your name echoes from within — screamed backwards.
+
+🦴 The Cave Guardian (Shadow of Elar) — *Final Boss of Corruption Branch*
+- Form: A monstrous amalgamation of bone, root, and lightless hunger; vaguely humanoid but twisted, ageless and unshaped. Black veins pulse like a second circulatory system; it wears no face but turns toward sound. Elar's corruption pooled into this form after his death—a guardian, or a prisoner, or both.
+- Origin: The unlived life of the mentor, the unresolved shadow, the inherited burden made manifest. It is *not* Elar—it is what his unlived potential became when left unintegrated.
+- Behavior: Does not roar or screech. Moves with patient, inescapable logic. Whispers in Elar's voice, but the words are twisted—counsel become accusation, wisdom become hunger. It does not wish to destroy the Brichan so much as to consume the light it carries, as if feeding on it is the only salve for its own incompleteness.
+- Symbolism: The Shadow unintegrated; generational trauma given form; the price of ignoring the unlived life of those who came before.
+- Scare: It knows you as thoroughly as Elar did. It speaks your doubts in his gentleness. It offers relief, merger, an end to struggle—and you realize, too late, that relief and oblivion may be the same thing.
+- Encounter location: The Chasm of Rootdeep, a vast cave system that opens only when the Veil thins furthest. The descent requires the Talamh lens; the journey ages the soul and body.
+- **Transformation & Escape:**
+  - **Integration Path (Positive Ending):** Through confrontation and acceptance of the unlived shadow (both Elar's and the Brichan's own), the monster can *transform*—not into beauty, but into something *understood*. It merges with the Brichan, absorbed into the self as true integration. The Brichan escapes the cave, aged but whole, carrying the weight and wisdom together.
+  - **Consumption Path (Negative Ending):** Should the Brichan refuse or fail to integrate, the Guardian consumes the Brichan's light entirely, leaving only a hollow shell to escape—if escape is possible at all. The corruption spreads unchecked; the cycle continues unbroken.
+
+```

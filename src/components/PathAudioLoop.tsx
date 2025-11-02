@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import menuTrack from "../assets/audio/menu.mp3";
 import corruptionTrack from "../assets/audio/path_1.mp3";
 import faithTrack from "../assets/audio/path_2.mp3";
 import reflectionTrack from "../assets/audio/path_3.mp3";
@@ -11,42 +10,38 @@ const FADE_OUT_SECONDS = 0.8;
 const START_DELAY_SECONDS = 0.1;
 
 const TRACK_MAP = {
-  menu: menuTrack,
   faith: faithTrack,
   reflection: reflectionTrack,
   corruption: corruptionTrack,
 };
 
-export default function MenuAudioLoop() {
+export default function PathAudioLoop() {
   const { soundEnabled, volume, currentPath } = useStoryStore();
   const contextRef = useRef<AudioContext | null>(null);
   const gainNodesRef = useRef<GainNode[]>([]);
   const volumeRef = useRef(volume);
-  const currentTrackRef = useRef<string | null>(null);
-
-  // Determine which track should play
-  const activeTrack = currentPath || "menu";
+  const currentPathRef = useRef<string | null>(null);
 
   useEffect(() => {
     volumeRef.current = volume;
     gainNodesRef.current.forEach((g) => {
       g.gain.linearRampToValueAtTime(
         volume,
-        (contextRef.current?.currentTime ?? 0) + 0.2
+        contextRef.current?.currentTime ?? 0 + 0.2
       );
     });
   }, [volume]);
 
   useEffect(() => {
-    if (typeof window === "undefined" || !soundEnabled) {
+    if (typeof window === "undefined" || !soundEnabled || !currentPath) {
       return;
     }
 
-    // Only restart audio if track actually changed
-    if (currentTrackRef.current === activeTrack) {
+    // Only start/update audio if path actually changed
+    if (currentPathRef.current === currentPath) {
       return;
     }
-    currentTrackRef.current = activeTrack;
+    currentPathRef.current = currentPath;
 
     const AudioContextClass =
       (window.AudioContext as typeof AudioContext | undefined) ||
@@ -143,7 +138,7 @@ export default function MenuAudioLoop() {
     const start = async () => {
       try {
         await context.resume().catch(() => undefined);
-        const trackUrl = TRACK_MAP[activeTrack as keyof typeof TRACK_MAP];
+        const trackUrl = TRACK_MAP[currentPath as keyof typeof TRACK_MAP];
         const response = await fetch(trackUrl);
         const arrayBuffer = await response.arrayBuffer();
         const audioBuffer = await context.decodeAudioData(arrayBuffer);
@@ -178,7 +173,7 @@ export default function MenuAudioLoop() {
       contextRef.current = null;
       gainNodesRef.current = [];
     };
-  }, [soundEnabled, activeTrack]);
+  }, [soundEnabled, currentPath]);
 
   return null;
 }

@@ -3,7 +3,8 @@
   "id": "Faith — The Light That Burns",
   "choices": [
     { "text": "Rekindle the Pyres with Sister Maerwyn", "next": "./village-at-dusk/rekindle-pyres.md" },
-    { "text": "Refuse to Light the Pyres", "next": "./village-at-dusk/refuse-pyres.md" }
+    { "text": "Refuse to Light the Pyres", "next": "./village-at-dusk/refuse-pyres.md" },
+    { "text": "Confront your own doubt", "next": "./own-faith-fractures.md" }
   ],
   "imagePath": null
 }
