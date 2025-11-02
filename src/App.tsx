@@ -10,6 +10,7 @@ import ThemeToggle from "./components/ThemeToggle";
 import { Button } from "./components/ui/Button";
 import { useStoryStore } from "./store/storyStore";
 import { unlockAudioContext } from "./utils/audioContext";
+import { StoryStateInspector } from "./components/StoryStateInspector";
 
 function App() {
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -94,7 +95,9 @@ function App() {
                                         // Ensure audio can start on user gesture
                                         try {
                                             await unlockAudioContext();
-                                        } catch {}
+                                        } catch {
+                                            console.error("Failed to unlock audio context");
+                                        }
                                         setSoundEnabled(true);
                                         reset();
                                         setPlayerName("");
@@ -144,6 +147,7 @@ function App() {
                 isOpen={isSettingsOpen}
                 onClose={() => setIsSettingsOpen(false)}
             />
+            <StoryStateInspector />
             {showMaze && <MazeOverlay onClose={() => setShowMaze(false)} />}
             {showBSOD && <BSODOverlay onClose={() => setShowBSOD(false)} />}
         </div>
