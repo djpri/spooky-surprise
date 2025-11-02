@@ -76,26 +76,31 @@ function App() {
 
                     {!gameStarted ? (
                         <section className="w-full max-w-3xl">
-                            <h2 className="mb-6 font-heading text-4xl font-semibold text-center text-secondary">
-                                Welcome to Spooky Surprise!
-                            </h2>
-                            <p className="mb-4 text-lg text-foreground/90">
-                                Embark on a thrilling interactive adventure
-                                where your choices shape the story! Dive into a
-                                world of mystery, make critical decisions, and
-                                see where your path leads. Are you ready to
-                                begin?
-                            </p>
-                            <button
-                                className="w-full py-3 text-base font-semibold bg-secondary text-background rounded-md hover:bg-secondary/90 transition"
-                                onClick={() => {
-                                    reset();
-                                    setPlayerName("");
-                                    setTimeout(() => setGameStarted(true), 1);
-                                }}
-                            >
-                                Start Adventure
-                            </button>
+                            <div className=" space-y-6 rounded-2xl border border-border/60 bg-surface/80 p-8 shadow-lg shadow-primary/15 max-w-716px">
+                                <h2 className="mb-6 font-heading text-4xl font-semibold text-center text-secondary">
+                                    Welcome to Spooky Surprise!
+                                </h2>
+                                <p className="mb-4 text-lg text-foreground/90">
+                                    Embark on a thrilling interactive adventure
+                                    where your choices shape the story! Dive
+                                    into a world of mystery, make critical
+                                    decisions, and see where your path leads.
+                                    Are you ready to begin?
+                                </p>
+                                <button
+                                    className="w-full py-3 text-base font-semibold bg-secondary text-background rounded-md hover:bg-secondary/90 transition"
+                                    onClick={() => {
+                                        reset();
+                                        setPlayerName("");
+                                        setTimeout(
+                                            () => setGameStarted(true),
+                                            1
+                                        );
+                                    }}
+                                >
+                                    Start Adventure
+                                </button>
+                            </div>
                         </section>
                     ) : (
                         <section className="w-full max-w-3xl">
