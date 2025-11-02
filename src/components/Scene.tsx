@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, useCallback } from "react";
 import { Typewriter } from "./typewriter";
 import { storyNodes, type StoryNode } from "../data/storyNodes";
 import { useStoryStore } from "../store/storyStore";
@@ -13,8 +13,19 @@ export default function Scene({ node }: SceneProps) {
     const { setNode, recordRoll, lastRoll, playerName, setPlayerName } =
         useStoryStore();
     const [isRolling, setIsRolling] = useState(false);
+    const [isTyped, setIsTyped] = useState(false);
 
     const choices = useMemo(() => node.choices ?? [], [node.choices]);
+
+    // Reset typewriter completion when node changes
+    useEffect(() => {
+        setIsTyped(false);
+    }, [node]);
+
+    // Stable callback so Typewriter doesn't restart mid-typing
+    const handleTypedComplete = useCallback(() => {
+        setIsTyped(true);
+    }, []);
 
     const handleChoice = (nextId: string) => {
         if (!storyNodes[nextId]) return;
@@ -55,9 +66,9 @@ export default function Scene({ node }: SceneProps) {
 
             <p className="text-lg leading-relaxed text-foreground/90">
                 <span className="typewriter">
-                    <Typewriter text={fullText} speed={30} />
+                    <Typewriter text={fullText} speed={30} onComplete={handleTypedComplete} />
                 </span>
-                {node.requiresName && (
+                {node.requiresName && isTyped && (
                     <>
                         {" "}
                         <NameInput
