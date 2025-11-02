@@ -3,22 +3,35 @@
   Generates src/data/generatedStoryNodes.ts from all Markdown nodes under story/ (recursive).
   Node-only, no external deps. Metadata is a JSON object inside an HTML comment at the top of each file.
 */
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const STORY_DIR = path.resolve(__dirname, '..', 'story');
-const OUT_FILE = path.resolve(__dirname, '..', 'src', 'data', 'generatedStoryNodes.ts');
-const ASSETS_BG_DIR = path.resolve(__dirname, '..', 'src', 'assets', 'images', 'background');
+const STORY_DIR = path.resolve(__dirname, "..", "story");
+const OUT_FILE = path.resolve(
+  __dirname,
+  "..",
+  "src",
+  "data",
+  "generatedStoryNodes.ts"
+);
+const ASSETS_BG_DIR = path.resolve(
+  __dirname,
+  "..",
+  "src",
+  "assets",
+  "images",
+  "background"
+);
 
 function walk(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   let files = [];
   for (const e of entries) {
-    if (e.name.startsWith('.')) continue;
+    if (e.name.startsWith(".")) continue;
     const full = path.join(dir, e.name);
     if (e.isDirectory()) files = files.concat(walk(full));
-    else if (e.isFile() && e.name.toLowerCase().endsWith('.md')) {
-      if (e.name.toLowerCase() === 'readme.md') continue; // ignore docs
+    else if (e.isFile() && e.name.toLowerCase().endsWith(".md")) {
+      if (e.name.toLowerCase() === "readme.md") continue; // ignore docs
       files.push(full);
     }
   }
@@ -26,15 +39,15 @@ function walk(dir) {
 }
 
 function readNode(filePath) {
-  const raw = fs.readFileSync(filePath, 'utf8');
+  const raw = fs.readFileSync(filePath, "utf8");
   let meta = {};
   let body = raw;
-  const start = raw.indexOf('<!--');
-  const end = raw.indexOf('-->');
+  const start = raw.indexOf("<!--");
+  const end = raw.indexOf("-->");
   if (start === 0 && end > start) {
     const jsonText = raw.slice(start + 4, end).trim();
     try {
-      meta = JSON.parse(jsonText || '{}');
+      meta = JSON.parse(jsonText || "{}");
     } catch (e) {
       throw new Error(`Invalid JSON metadata in ${filePath}: ${e.message}`);
     }
@@ -44,12 +57,12 @@ function readNode(filePath) {
 }
 
 function deriveKeyFromPath(rel) {
-  const noExt = rel.replace(/\.md$/i, '');
+  const noExt = rel.replace(/\.md$/i, "");
   return noExt
     .split(path.sep)
-    .map(seg => seg.replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_+|_+$/g, ''))
+    .map((seg) => seg.replace(/[^a-zA-Z0-9]+/g, "_").replace(/^_+|_+$/g, ""))
     .filter(Boolean)
-    .join('__');
+    .join("__");
 }
 
 function escapeJsString(s) {
@@ -63,7 +76,7 @@ function main() {
   }
   const files = walk(STORY_DIR);
   // Pass 1: map file -> key
-  const toRel = f => path.relative(STORY_DIR, f);
+  const toRel = (f) => path.relative(STORY_DIR, f);
   const fileToKey = new Map();
   for (const f of files) {
     const rel = toRel(f);
@@ -74,7 +87,7 @@ function main() {
 
   // Pass 2: build nodes
   const nodes = [];
-  const PUBLIC_BG_DIR = path.resolve(__dirname, '..', 'public', 'backgrounds');
+  const PUBLIC_BG_DIR = path.resolve(__dirname, "..", "public", "backgrounds");
   fs.mkdirSync(PUBLIC_BG_DIR, { recursive: true });
   for (const f of files) {
     const rel = toRel(f);
@@ -86,8 +99,12 @@ function main() {
 
     // If imagePath is a bare filename (preferred), resolve under assets/background
     // Copy into public/backgrounds by filename and rewrite to runtime URL.
-    if (typeof imagePath === 'string' && imagePath && !/^https?:\/\//i.test(imagePath)) {
-      if (!imagePath.startsWith('/')) {
+    if (
+      typeof imagePath === "string" &&
+      imagePath &&
+      !/^https?:\/\//i.test(imagePath)
+    ) {
+      if (!imagePath.startsWith("/")) {
         const srcAbs = path.resolve(ASSETS_BG_DIR, imagePath);
         if (fs.existsSync(srcAbs) && fs.statSync(srcAbs).isFile()) {
           const outName = path.basename(srcAbs);
@@ -96,20 +113,70 @@ function main() {
             fs.copyFileSync(srcAbs, outAbs);
             imagePath = `/backgrounds/${outName}`;
           } catch (e) {
-            console.warn(`Warning: failed to copy image ${srcAbs} -> ${outAbs}: ${e.message}`);
+            console.warn(
+              `Warning: failed to copy image ${srcAbs} -> ${outAbs}: ${e.message}`
+            );
           }
         } else {
-          console.warn(`Warning: imagePath for ${rel} not found in assets: ${srcAbs}`);
+          console.warn(
+            `Warning: imagePath for ${rel} not found in assets: ${srcAbs}`
+          );
         }
       }
       // If it starts with '/', assume it's already a public URL; leave as is.
     }
+
+    // Handle audioPath — convert bare filenames to runtime URLs
+    let audioPath = meta.audioPath === undefined ? undefined : meta.audioPath;
+    if (
+      typeof audioPath === "string" &&
+      audioPath &&
+      !/^https?:\/\//i.test(audioPath)
+    ) {
+      if (!audioPath.startsWith("/")) {
+        // Resolve relative to assets/audio
+        const ASSETS_AUDIO_DIR = path.resolve(
+          __dirname,
+          "..",
+          "src",
+          "assets",
+          "audio"
+        );
+        const PUBLIC_AUDIO_DIR = path.resolve(
+          __dirname,
+          "..",
+          "public",
+          "audio"
+        );
+        fs.mkdirSync(PUBLIC_AUDIO_DIR, { recursive: true });
+        const srcAbs = path.resolve(ASSETS_AUDIO_DIR, audioPath);
+        if (fs.existsSync(srcAbs) && fs.statSync(srcAbs).isFile()) {
+          const outName = path.basename(srcAbs);
+          const outAbs = path.join(PUBLIC_AUDIO_DIR, outName);
+          try {
+            fs.copyFileSync(srcAbs, outAbs);
+            audioPath = `/audio/${outName}`;
+          } catch (e) {
+            console.warn(
+              `Warning: failed to copy audio ${srcAbs} -> ${outAbs}: ${e.message}`
+            );
+          }
+        } else {
+          console.warn(
+            `Warning: audioPath for ${rel} not found in assets: ${srcAbs}`
+          );
+        }
+      }
+    }
     let diceCheck = meta.diceCheck || undefined;
-    if (diceCheck && typeof diceCheck === 'object') {
+    if (diceCheck && typeof diceCheck === "object") {
       const dc = { ...diceCheck };
-      for (const k of ['success', 'fail']) {
-        if (typeof dc[k] === 'string' && dc[k].toLowerCase().endsWith('.md')) {
-          const targetRel = path.relative(STORY_DIR, path.resolve(path.dirname(path.join(STORY_DIR, rel)), dc[k]));
+      for (const k of ["success", "fail"]) {
+        if (typeof dc[k] === "string" && dc[k].toLowerCase().endsWith(".md")) {
+          const targetRel = path.relative(
+            STORY_DIR,
+            path.resolve(path.dirname(path.join(STORY_DIR, rel)), dc[k])
+          );
           const resolved = fileToKey.get(targetRel);
           if (resolved) dc[k] = resolved;
         }
@@ -118,38 +185,49 @@ function main() {
     }
     let choices = Array.isArray(meta.choices) ? meta.choices : undefined;
     if (choices) {
-      choices = choices.map(ch => {
+      choices = choices.map((ch) => {
         let next = ch.next;
-        if (typeof next === 'string' && next.toLowerCase().endsWith('.md')) {
-          const targetRel = path.relative(STORY_DIR, path.resolve(path.dirname(path.join(STORY_DIR, rel)), next));
+        if (typeof next === "string" && next.toLowerCase().endsWith(".md")) {
+          const targetRel = path.relative(
+            STORY_DIR,
+            path.resolve(path.dirname(path.join(STORY_DIR, rel)), next)
+          );
           const resolved = fileToKey.get(targetRel);
           next = resolved || ch.next;
         }
-        return { text: String(ch.text || ''), next: String(next || '') };
+        return { text: String(ch.text || ""), next: String(next || "") };
       });
     }
 
-    const hasPlayerName = body.includes('PLAYERNAME');
+    const hasPlayerName = body.includes("PLAYERNAME");
     const textExpr = hasPlayerName
-      ? `((playerName) => ${escapeJsString(body)}.replace(/PLAYERNAME/g, String(playerName)))`
+      ? `((playerName) => ${escapeJsString(
+          body
+        )}.replace(/PLAYERNAME/g, String(playerName)))`
       : `${escapeJsString(body)}`;
 
-    nodes.push({ key, code: `  ${JSON.stringify(key)}: {
+    nodes.push({
+      key,
+      code: `  ${JSON.stringify(key)}: {
     id: ${escapeJsString(id)},
     text: ${textExpr},
-    ${requiresName ? 'requiresName: true,' : ''}
-    ${diceCheck ? `diceCheck: ${JSON.stringify(diceCheck)},` : ''}
-    ${choices ? `choices: ${JSON.stringify(choices)},` : ''}
-    imagePath: ${imagePath === null ? 'null' : escapeJsString(String(imagePath))},
-  }` });
+    ${requiresName ? "requiresName: true," : ""}
+    ${diceCheck ? `diceCheck: ${JSON.stringify(diceCheck)},` : ""}
+    ${choices ? `choices: ${JSON.stringify(choices)},` : ""}
+    imagePath: ${
+      imagePath === null ? "null" : escapeJsString(String(imagePath))
+    },
+    ${audioPath ? `audioPath: ${escapeJsString(String(audioPath))},` : ""}
+  }`,
+    });
   }
 
   const sorted = nodes.sort((a, b) => a.key.localeCompare(b.key));
-  const entries = sorted.map(n => n.code).join(',\n');
+  const entries = sorted.map((n) => n.code).join(",\n");
   const out = `/* AUTO-GENERATED. Do not edit by hand. */\nimport type { StoryNode } from './storyNodes';\n\nexport const generatedStoryNodes: Record<string, StoryNode> = {\n${entries}\n};\n`;
 
   fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
-  fs.writeFileSync(OUT_FILE, out, 'utf8');
+  fs.writeFileSync(OUT_FILE, out, "utf8");
   console.log(`Wrote ${OUT_FILE} with ${nodes.length} nodes.`);
 }
 

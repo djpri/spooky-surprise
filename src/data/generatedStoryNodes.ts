@@ -4,11 +4,12 @@ import type { StoryNode } from './storyNodes';
 export const generatedStoryNodes: Record<string, StoryNode> = {
   "challenge-maerwyn": {
     id: "What Do You Truly Believe?",
-    text: "Sister Maerwyn stands motionless for a long moment. Around you, the chapel seems to hold its breath.\n\n\"You're not supposed to ask that,\" she finally whispers.\n\n\"But you've wondered,\" you say. It's not a question.\n\nHer reflection moves a half-second late, and you realize: it's not a reflection. It's something *wearing* her reflection, listening from that in-between space. The Veil-Touched begin to gather at the edges of the pyre fields, drawn by doubt like moths to a wavering flame.\n\n\"The pyres hold,\" Sister Maerwyn says, but the conviction is gone. \"They must hold. Because if they don't...\"\n\nShe doesn't finish. She doesn't need to. The implication hangs in the Chapel's dimness: if the pyres are faith without foundation, then everything built on that faith collapses. The villagers' safety, your purpose, the annual Hunt itself—all of it revealed as *negotiation with hunger* rather than *sacred protection*.\n\n\"The choice is still yours,\" she says finally. \"Light the pyres and let the machinery continue. Or refuse, and face what happens when the machine stops.\"\n\nShe steps back. The Veil-Touched press closer.\n\nYou hold the lens. Its three rings—Nèamh, Muir, Talamh—pulse with expectation.\n\nWhat do you choose: the faith that holds, or the truth that breaks it?\n",
+    text: "Sister Maerwyn stands motionless. Around you, the chapel holds its breath.\n\n\"You're not supposed to ask that,\" she whispers.\n\n\"But you've wondered,\" you say.\n\nHer reflection moves a half-second late. It's not a reflection—it's something *wearing* her reflection, listening from the in-between. The Veil-Touched gather at the pyre field edges, drawn by doubt like moths to flame.\n\n\"The pyres hold,\" Sister Maerwyn says, conviction gone. \"They must hold. Because if they don't...\"\n\nShe doesn't finish. The implication hangs in the dimness: if the pyres are faith without foundation, everything built on them collapses. The villagers' safety, your purpose, the annual Hunt—all of it revealed as *negotiation with hunger* rather than *sacred protection*.\n\n\"The choice is still yours,\" she says. \"Light the pyres and continue. Or refuse, and face what happens when the machine stops.\"\n\nShe steps back. The Veil-Touched press closer.\n\nYou hold the lens. Nèamh, Muir, Talamh pulse with expectation.\n\nFaith that holds, or truth that breaks it?\n",
     
     
     choices: [{"text":"Proceed with the pyres despite her doubt","next":"faith__village_at_dusk__faith_hardened_by_doubt"},{"text":"Refuse the pyres; speak the doubt aloud","next":"faith__village_at_dusk__refuse_pyres"}],
     imagePath: null,
+    
   },
   "corruption__ashen_bride__accept_ring": {
     id: "Accept the Bride’s Ring",
@@ -17,6 +18,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     diceCheck: {"stat":"will","target":14,"success":"corruption__ashen_bride__gnostic_wedding","fail":"corruption__ashen_bride__reflection_binds"},
     
     imagePath: null,
+    
   },
   "corruption__ashen_bride__ashen_bride": {
     id: "The Ashen Bride",
@@ -25,6 +27,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [{"text":"Accept the Ring","next":"corruption__ashen_bride__accept_ring"},{"text":"Refuse the Ring","next":"corruption__ashen_bride__refuse_ring"},{"text":"Bargain the Terms","next":"corruption__ashen_bride__bargain_ring"}],
     imagePath: null,
+    
   },
   "corruption__ashen_bride__bargain_ring": {
     id: "Bargain the Terms",
@@ -33,6 +36,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     diceCheck: {"stat":"insight","target":15,"success":"corruption__ashen_bride__earned_balance","fail":"corruption__ashen_bride__refuse_ring"},
     
     imagePath: null,
+    
   },
   "corruption__ashen_bride__earned_balance": {
     id: "Ending — Earned Balance (Integration without Surrender)",
@@ -41,6 +45,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "corruption__ashen_bride__gnostic_wedding": {
     id: "Ending — Gnostic Wedding (Integration Variant)",
@@ -49,6 +54,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "corruption__ashen_bride__reflection_binds": {
     id: "Ending — Reflection Binds to Her (Loss of Autonomy)",
@@ -57,6 +63,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "corruption__ashen_bride__refuse_ring": {
     id: "Ending — She Withholds Aid (Hard Path)",
@@ -65,6 +72,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "corruption__beneath_the_altar__abyssal_power": {
     id: "Ending — Gain Power, Lose Humanity (Abyssal)",
@@ -73,6 +81,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "corruption__beneath_the_altar__balance": {
     id: "Ending — Achieve Balance (True Victory)",
@@ -81,6 +90,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "corruption__beneath_the_altar__bind": {
     id: "Bind the Spirit",
@@ -89,6 +99,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     diceCheck: {"stat":"ritual","target":15,"success":"corruption__beneath_the_altar__balance","fail":"corruption__beneath_the_altar__inner_torment"},
     
     imagePath: "/backgrounds/soulLock.jpg",
+    
   },
   "corruption__beneath_the_altar__bound_spirit": {
     id: "Beneath the Altar — The Bound Spirit",
@@ -97,6 +108,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [{"text":"Devour It","next":"corruption__beneath_the_altar__devour"},{"text":"Free It","next":"corruption__beneath_the_altar__free"},{"text":"Bind It","next":"corruption__beneath_the_altar__bind"}],
     imagePath: "/backgrounds/cellar.jpg",
+    
   },
   "corruption__beneath_the_altar__devour": {
     id: "Devour the Spirit",
@@ -105,6 +117,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     diceCheck: {"stat":"will","target":14,"success":"corruption__beneath_the_altar__new_god","fail":"corruption__beneath_the_altar__abyssal_power"},
     
     imagePath: null,
+    
   },
   "corruption__beneath_the_altar__free": {
     id: "Free the Spirit",
@@ -113,6 +126,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     diceCheck: {"stat":"mercy","target":12,"success":"corruption__beneath_the_altar__veil_weakens","fail":"corruption__beneath_the_altar__spirit_betrays"},
     
     imagePath: null,
+    
   },
   "corruption__beneath_the_altar__inner_torment": {
     id: "Ending — It Whispers Madness (Inner Torment)",
@@ -121,6 +135,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "corruption__beneath_the_altar__new_god": {
     id: "Ending — Merge With the Spirit (New God)",
@@ -129,6 +144,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "corruption__beneath_the_altar__spirit_betrays": {
     id: "Ending — The Spirit Betrays You (Despair)",
@@ -137,6 +153,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "corruption__beneath_the_altar__veil_weakens": {
     id: "Ending — The Veil Weakens (World Fracture)",
@@ -145,14 +162,34 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
+  },
+  "corruption__descent_into_rootdeep__deeper_the_fading": {
+    id: "Deeper — The Fading",
+    text: "As you descend, the voices shift and fracture. Some shriek unbearably, others groan subsonic in your bones. They thin—stretching into wisps that break apart mid-cry, fading to nothing.\n\n*You* are leaving *them* behind.\n\nWith each step, the cost becomes clear:\n- Your breath slows, the air too thin or too old.\n- Your joints ache with borrowed decades.\n- Talamh's light gutters like a candle in windless dark.\n- The corruption beneath your skin pulses more hungrily.\n\nThe wailing becomes an echo of an echo. The spirits seal themselves above, unable to follow. Their cries fade through stone and centuries.\n\nThen, silence. Not absence—the silence of a held breath. Something patient and aware, waiting where sound forgets how to move.\n\nYou have descended past the suffering of the many. What remains is singular.\n\n",
+    
+    
+    choices: [{"text":"Continue your descent into the void","next":"corruption__descent_into_rootdeep__void_face_to_face"},{"text":"Resist the pull and try to ascend","next":"corruption__descent_into_rootdeep__void_face_to_face"},{"text":"Steady yourself and press on without hesitation","next":"corruption__descent_into_rootdeep__void_face_to_face"}],
+    imagePath: null,
+    
+  },
+  "corruption__descent_into_rootdeep__entry_the_voices": {
+    id: "Rootdeep Entry — The Wailing Spirits",
+    text: "The mouth of Rootdeep yawns before you—a throat of stone that smells of deep earth and something ancient. As you descend, your breath echoes off walls worn smooth by centuries. Then you hear them.\n\nVoices. All female. All wailing.\n\nThey spiral up like smoke from a thousand candles—a *cacophony* of pleas, mourning, accusations, wordless keening from the stone itself. One voice breaks into fractured harmony, another rises and falls like a wave, another sounds screamed backwards through time.\n\nThis is every sorrow the cave has swallowed. Centuries of spirits bound at the Veil's edge, all female, all caught between worlds. They cry out in desperate recognition—your arrival is a chance for witness, for burial, for judgment, for *anything* but endless darkness.\n\nYour lantern dims. Talamh gutters.\n\nThe voices grow louder, more *numerous*, stirring awake. They know what you carry. Some beg. Some warn. Some call you *home*.\n\n",
+    
+    
+    choices: [{"text":"Press deeper into the chaos of voices","next":"corruption__descent_into_rootdeep__deeper_the_fading"},{"text":"Attempt to hear an individual plea and follow it","next":"corruption__descent_into_rootdeep__deeper_the_fading"},{"text":"Brace yourself and descend with haste, pushing past the sorrow","next":"corruption__descent_into_rootdeep__deeper_the_fading"}],
+    imagePath: null,
+    audioPath: "/audio/cave_voices.mp3",
   },
   "corruption__descent_into_rootdeep__final_trial": {
     id: "The Descent into Rootdeep — Final Trial",
-    text: "Steps echo in a throat that used to be a mine and is now a memory. Each breath you take here is borrowed from a version of you that will never leave. With every descent, your joints ache with a future that arrives too early. In a slick of black‑violet on the rock, you see your face older than it should be, and you do not blink.\n\nThe Cave Guardian waits where Elar’s fear still hangs like incense. It is the shape of everything you didn’t live — every kindness refused, every hunger you smothered until it learned your voice. When it inhales, your back hurts the way it will in twenty years. When it exhales, the lantern dims and memory goes with it.\n\n- Accept what is yours and what is not; let it stand beside you.\n- Or grind it under heel until only the light speaks.\n\nEither way, the year will end. Only you decide whether it ends with a whole self.\n",
+    text: "The threshold to Rootdeep opens before you—a crack in the world that tastes of ages and dust older than prayer. The lantern made from three mirrors flares once, as if in warning, then settles to a dim and anxious glow. Each breath you take at this precipice is borrowed from a version of you that will never leave. To descend is to accept that you will emerge changed—if you emerge at all.\n\nBelow, even at this distance, you sense them: the spirits and the guardian both, waiting in the dark like memory and hunger pressed into stone.\n\nThe descent will cost you. \n- Years will settle into your joints.\n- Your face will age in the mirror of black‑violet stone.\n- The marks beneath your skin will pulse with hunger you have tried to ignore.\n\nBut it is the only way forward. The guardian is not something to avoid or bind. It is something to *meet*.\n\nStep down into the dark. Listen to what waits. Choose what you become.\n",
     
     
-    choices: [{"text":"Let it stand beside you","next":"corruption__descent_into_rootdeep__guardian_transforms"},{"text":"Grind it under heel","next":"corruption__descent_into_rootdeep__guardian_consumes"}],
+    choices: [{"text":"Begin the descent into Rootdeep","next":"corruption__descent_into_rootdeep__entry_the_voices"}],
     imagePath: "/backgrounds/lanternTaken.jpg",
+    
   },
   "corruption__descent_into_rootdeep__guardian_consumes": {
     id: "Ending — The Guardian Consumes (Hollow Escape)",
@@ -161,6 +198,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: "/backgrounds/staircase.jpg",
+    
   },
   "corruption__descent_into_rootdeep__guardian_transforms": {
     id: "Ending — The Guardian Transforms (True Integration)",
@@ -169,6 +207,16 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
+  },
+  "corruption__descent_into_rootdeep__void_face_to_face": {
+    id: "The Void — Face to Face with the Guardian",
+    text: "At the bottom of the descent, the Wailing ceases. A door seals between you and the spirits above.\n\nWhat remains is singular.\n\nIn the absolute darkness, you sense movement—something *vast* and *patient*. Not breath, but something like it. A presence so large the cave seems small around it.\n\nThen it moves. Stone grinds against stone. Something that might be a heartbeat echoes in the dark.\n\nThis is the **Cave Guardian**—Elar's unintegrated shadow, embodied hunger, every unlived life given form. It has waited here since before you were born, patient as stone.\n\nYour lantern gutters. The light of Talamh flickers. For a moment you see it—bone, root, and hunger twisted together.\n\nDarkness returns. You are alone with its breathing.\n\nThe spirits above cannot help you. Your light is a flame in a closing fist. The Guardian does not wish to speak.\n\nIt wishes to know if you can accept what you are—and what it is—without pretense, without the comfortable lie that one is light and the other only shadow.\n\nThis is the final moment. The cycle breaks here, or continues.\n\n",
+    
+    
+    choices: [{"text":"Let it stand beside you","next":"corruption__descent_into_rootdeep__guardian_transforms"},{"text":"Grind it under heel","next":"corruption__descent_into_rootdeep__guardian_consumes"}],
+    imagePath: null,
+    audioPath: "/audio/cave_monster.mp3",
   },
   "corruption__start": {
     id: "Corruption — The Root Flame",
@@ -177,6 +225,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [{"text":"Descend to the Bound Spirit","next":"corruption__beneath_the_altar__bound_spirit"},{"text":"Listen to the Voice Beneath the Altar","next":"corruption__voice_beneath_the_altar__voice"},{"text":"Answer the Ashen Bride","next":"corruption__ashen_bride__ashen_bride"},{"text":"Descend into Rootdeep — Final Trial","next":"corruption__descent_into_rootdeep__final_trial"}],
     imagePath: "/backgrounds/talamh.jpg",
+    
   },
   "corruption__voice_beneath_the_altar__condemn_voice": {
     id: "Ending — Condemn the Voice (Eternal Cycle)",
@@ -185,6 +234,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "corruption__voice_beneath_the_altar__free_voice": {
     id: "Ending — Free the Voice (Collapse)",
@@ -193,6 +243,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: "/backgrounds/secretPassage.jpg",
+    
   },
   "corruption__voice_beneath_the_altar__merge_voice": {
     id: "Ending — Merge With the Voice (Omniscient)",
@@ -201,6 +252,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "corruption__voice_beneath_the_altar__voice": {
     id: "The Voice Beneath the Altar",
@@ -209,6 +261,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [{"text":"Free the Voice","next":"corruption__voice_beneath_the_altar__free_voice"},{"text":"Merge With It","next":"corruption__voice_beneath_the_altar__merge_voice"},{"text":"Condemn It","next":"corruption__voice_beneath_the_altar__condemn_voice"}],
     imagePath: "/backgrounds/whisper.jpg",
+    
   },
   "doubt-accepted": {
     id: "Faith Questioned",
@@ -217,6 +270,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [{"text":"Ask Sister Maerwyn what she truly believes","next":"challenge-maerwyn"}],
     imagePath: null,
+    
   },
   "doubt-rejected": {
     id: "Faith Reaffirmed",
@@ -225,6 +279,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [{"text":"Light the pyres with renewed conviction","next":"faith__village_at_dusk__rekindle_pyres"}],
     imagePath: null,
+    
   },
   "faith__start": {
     id: "Faith — The Light That Burns",
@@ -233,6 +288,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [{"text":"Rekindle the Pyres with Sister Maerwyn","next":"faith__village_at_dusk__rekindle_pyres"},{"text":"Refuse to Light the Pyres","next":"faith__village_at_dusk__refuse_pyres"},{"text":"Confront your own doubt","next":"faith-own-faith-fractures"}],
     imagePath: "/backgrounds/lantern.jpg",
+    
   },
   "faith__village_at_dusk__burn_both": {
     id: "Pyre Dilemma — Burn Both",
@@ -241,6 +297,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     diceCheck: {"stat":"fortitude","target":12,"success":"faith__village_at_dusk__veil_holds","fail":"faith__village_at_dusk__martyr"},
     
     imagePath: null,
+    
   },
   "faith__village_at_dusk__corruption_spreads": {
     id: "Ending — The Corruption Spreads (Despair)",
@@ -249,6 +306,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "faith__village_at_dusk__faith_hardened_by_doubt": {
     id: "Ending — Faith Hardened by Doubt",
@@ -257,6 +315,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "faith__village_at_dusk__faithless_ending": {
     id: "Ending — The Gods Abandon the Faithful",
@@ -265,6 +324,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "faith__village_at_dusk__martyr": {
     id: "Ending — The Brichan Crumbles to Ash (Martyr)",
@@ -273,6 +333,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "faith__village_at_dusk__refuse_pyres": {
     id: "Refuse the Pyres",
@@ -281,6 +342,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     diceCheck: {"stat":"presence","target":12,"success":"faith__village_at_dusk__veil_opens_early","fail":"faith__village_at_dusk__witch_trial"},
     
     imagePath: null,
+    
   },
   "faith__village_at_dusk__rekindle_pyres": {
     id: "Village at Dusk — Rekindle the Pyres",
@@ -289,6 +351,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [{"text":"Burn both Innocent and Wicked","next":"faith__village_at_dusk__burn_both"},{"text":"Save the Innocent Spirit","next":"faith__village_at_dusk__save_innocent"}],
     imagePath: null,
+    
   },
   "faith__village_at_dusk__save_innocent": {
     id: "Mercy Path — Save the Innocent",
@@ -297,6 +360,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     diceCheck: {"stat":"insight","target":13,"success":"faith__village_at_dusk__faithless_ending","fail":"faith__village_at_dusk__corruption_spreads"},
     
     imagePath: null,
+    
   },
   "faith__village_at_dusk__veil_holds": {
     id: "Ending — The Veil Holds (Tragic Victory)",
@@ -305,6 +369,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "faith__village_at_dusk__veil_opens_early": {
     id: "Ending — The Veil Opens Early (World Collapse)",
@@ -313,6 +378,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "faith__village_at_dusk__witch_trial": {
     id: "Ending — You Burn Instead (Condemnation)",
@@ -321,14 +387,16 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "faith-own-faith-fractures": {
     id: "Your Own Faith Fractures",
-    text: "You stand in the Chapel of Sighing Stone. The pyres are ready. The villagers wait. Sister Maerwyn looks to you for certainty.\n\nAnd you realize: you have none.\n\nIt hits you like a bell rung in reverse—the sound of something *missing* rather than something *present*. All the rituals you've performed, all the oaths you've sworn in Nèamh's light, all the certainty you've inherited from Elar's teachings—suddenly they feel like *armor* rather than *belief*.\n\nThe candlelight leans toward you, but you notice: it leans in *request*, not in *answer*. As if the Veil itself is asking, \"Do you truly believe this will hold?\"\n\nIn your bones, you hear an echo of Elar's voice: \"The light consumes. Names slip. Faith hardens into something that protects nothing but itself.\"\n\nThe Veil does not thin because you have faith. The Veil thins because it *chooses* to. Every pyre, every prayer, every sacrifice—are these acts of salvation, or acts of *negotiation with hunger*?\n\nSister Maerwyn still watches you. The villagers begin to murmur. Your lens feels cold now, not warm.\n\nWhat do you choose: the faith you were given, or the doubt that grows from seeing too clearly?\n\n",
+    text: "You stand in the Chapel of Sighing Stone. The pyres are ready. Sister Maerwyn looks to you for certainty.\n\nAnd you have none.\n\nIt hits you like a bell rung in reverse—the sound of something *missing*. All the rituals, all the oaths sworn in Nèamh's light, all of Elar's teachings suddenly feel like *armor* rather than *belief*.\n\nThe candlelight leans toward you, but in *request*, not in *answer*. As if the Veil itself asks: \"Do you truly believe this will hold?\"\n\nIn your bones, you hear Elar's echo: \"The light consumes. Names slip. Faith hardens into something that protects nothing but itself.\"\n\nThe Veil does not thin because you have faith. It thins because it *chooses* to. Every pyre, every prayer, every sacrifice—are these acts of salvation, or acts of *negotiation with hunger*?\n\nSister Maerwyn watches. The villagers murmur. Your lens feels cold now, not warm.\n\nGiven faith, or doubt that sees too clearly?\n\n",
     
     
     choices: [{"text":"Defend your faith; push back against doubt","next":"doubt-rejected"},{"text":"Acknowledge the doubt; let it speak","next":"doubt-accepted"}],
     imagePath: null,
+    
   },
   "prologue": {
     id: "Prologue — The Stirring",
@@ -337,6 +405,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [{"text":"Path of Faith — The Light That Burns","next":"faith__start"},{"text":"Path of Reflection — The Mirror's Truth","next":"reflection__start"},{"text":"Path of Corruption — The Root Flame","next":"corruption__start"}],
     imagePath: "/backgrounds/study.jpg",
+    
   },
   "prologue-choice": {
     id: "Three Paths Open",
@@ -345,22 +414,25 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [{"text":"Path of Faith — The Light That Burns","next":"faith__start"},{"text":"Path of Reflection — The Mirror's Truth","next":"reflection__start"},{"text":"Path of Corruption — The Root Flame","next":"corruption__start"}],
     imagePath: null,
+    
   },
   "prologue-elar-warning": {
     id: "Elar's Last Counsel",
-    text: "The vision releases you slowly, like water draining from lungs.\n\nIn the chapel's dimness, a voice—not quite Elar's, but carrying his weight—settles over you:\n\n\"I am not here to dissuade you. The Brichan's role is not optional; it simply *is*. But know this: every choice you make in the coming Hunt will age you in ways the mirror cannot explain. Not just your body—your *self*. Memories that belong to you will become memories of people you were.\n\nThe three paths you'll choose are not escapes. They are three ways of *accepting* the cost.\n\n- Light those who choose Faith understand sacrifice through ritual and community. They will burn, and you will burn with them.\n- Those who seek Reflection think understanding will save them. But mirrors remember what you forget, and reflection lag is the first sign of fracture.\n- Those who walk the Root Flame believe they can bargain with shadow. The shadow always wins the negotiation—it simply takes longer to show its victory.\n\nThe Veil does not care which path you take. It only cares that you *pay*.\n\nI paid. I am still paying, in the places you cannot yet see.\n\nYour turn begins now. Choose not the path that saves you. Choose the path that costs you something true.\"\n\nThe voice fades. You stand alone with the lens, warm as a heartbeat in your palm.\n\nThree ways open. Only one cost: everything.\n\n",
+    text: "The vision releases you like water draining from lungs.\n\nIn the dimness, a voice—not quite Elar's but carrying his weight—settles over you:\n\n\"I do not dissuade you. The Brichan's role simply *is*. But know: every choice will age you in ways mirrors cannot explain. Not just your body—your *self*. Memories become memories of people you were.\n\nThe three paths are not escapes. Three ways of *accepting* the cost:\n\n- Faith: sacrifice through ritual and community. They burn, you burn with them.\n- Reflection: understanding will save you. But mirrors remember what you forget.\n- Root Flame: you can bargain with shadow. Shadow always wins—it takes longer to show its victory.\n\nThe Veil does not care which path. It only cares that you *pay*.\n\nI paid. I am still paying, in the places you cannot see.\n\nYour turn begins now. Choose not the path that saves you. Choose the path that costs something true.\"\n\nThe voice fades. You stand alone with the lens, warm as a heartbeat in your palm.\n\nThree ways open. One cost: everything.\n\n",
     
     
     choices: [{"text":"Acknowledge the warning; proceed to choose your path","next":"prologue"}],
     imagePath: null,
+    
   },
   "prologue-vision": {
     id: "A Memory Surfaces",
-    text: "As your fingers close around the lens, the chapel tilts. For a moment—or a year—you're not alone.\n\nA figure kneels before the altar, their veins black‑gold and pulsing visibly beneath translucent skin. Elar. Older than memory, younger than the stone around him. His lips move in a prayer you almost understand.\n\nThen he turns. His eyes are not his own—they're the lenses' eyes, seeing through you as if you're made of cracks.\n\n\"The light consumes,\" he whispers. \"Every Hunt leaves less of you behind. Names slip. Reflections argue. The body ages as the shadow grows—and shadow always grows.\"\n\nThe scene fractures. You see him at the altar's base, veins unraveling into threads of light that writhe like worms, whispering prayers backward. Around him, the chapel breathes in rhythm with something vast and hungry.\n\n\"The role is not a gift,\" he says, his voice now overlapping with something deeper. \"It is a rotation. Each Brichan believes they will be the one to break the cycle. None have. The unlived life of those before you lives in the dark places now.\"\n\nThe vision crumbles. You're back in the chapel. Your hands shake. The lens is warm.\n\nThe choice before you—Faith, Reflection, Corruption—suddenly feels less like a path and more like a way of *accepting* rather than *choosing*.\n",
+    text: "As your fingers close around the lens, the chapel tilts. For a moment—or a year—you're not alone.\n\nA figure kneels before the altar, veins black-gold and pulsing beneath translucent skin. Elar. His eyes are not his own—they're the lenses' eyes, seeing through you as if you're made of cracks.\n\n\"The light consumes,\" he whispers. \"Every Hunt leaves less of you behind. Names slip. Reflections argue. The body ages as the shadow grows—and shadow always grows.\"\n\nThe scene fractures. You see him at the altar's base, veins unraveling into threads that writhe like worms, whispering prayers backward. Around him, the chapel breathes in rhythm with something vast and hungry.\n\n\"The role is not a gift—it is a rotation. Each Brichan believes they will break the cycle. None have. The unlived life of those before you lives in the dark now.\"\n\nThe vision crumbles. You're back in the chapel. Your hands shake. The lens is warm.\n\nThe choice before you suddenly feels less like a path and more like accepting rather than choosing.\n",
     
     
     choices: [{"text":"Step into the vision fully","next":"prologue-elar-warning"},{"text":"Pull away; return to the chapel","next":"prologue"}],
     imagePath: null,
+    
   },
   "reflection__archivist_of_ash__archivist": {
     id: "The Archivist of Ash",
@@ -369,6 +441,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [{"text":"Bargain for Knowledge","next":"reflection__archivist_of_ash__bargain_for_knowledge"},{"text":"Refuse His Bargain","next":"reflection__archivist_of_ash__refuse_bargain"}],
     imagePath: null,
+    
   },
   "reflection__archivist_of_ash__bargain_for_knowledge": {
     id: "Bargain for Knowledge",
@@ -377,6 +450,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     diceCheck: {"stat":"reason","target":15,"success":"reflection__archivist_of_ash__break_cycle","fail":"reflection__archivist_of_ash__madness"},
     
     imagePath: "/backgrounds/amulet.jpg",
+    
   },
   "reflection__archivist_of_ash__break_cycle": {
     id: "Ending — Break the Cycle (Transcendent)",
@@ -385,6 +459,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "reflection__archivist_of_ash__madness": {
     id: "Ending — Learn Too Much (Madness)",
@@ -393,6 +468,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "reflection__archivist_of_ash__refuse_bargain": {
     id: "Ending — History Repeats (Fated)",
@@ -401,6 +477,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "reflection__chamber_of_glass__destroy_mirror": {
     id: "Destroy the Mirror",
@@ -409,6 +486,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     diceCheck: {"stat":"insight","target":14,"success":"reflection__chamber_of_glass__world_cracks","fail":"reflection__chamber_of_glass__mirror_consumes"},
     
     imagePath: null,
+    
   },
   "reflection__chamber_of_glass__give_away_reflection": {
     id: "Ending — Save the Child, Forget Yourself",
@@ -417,6 +495,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "reflection__chamber_of_glass__mirror_child": {
     id: "Chamber of Glass — The Mirror Child",
@@ -425,6 +504,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [{"text":"Give Away Your Reflection","next":"reflection__chamber_of_glass__give_away_reflection"},{"text":"Destroy the Mirror","next":"reflection__chamber_of_glass__destroy_mirror"}],
     imagePath: null,
+    
   },
   "reflection__chamber_of_glass__mirror_consumes": {
     id: "Ending — The Mirror Consumes You",
@@ -433,6 +513,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: null,
+    
   },
   "reflection__chamber_of_glass__world_cracks": {
     id: "Ending — The World Cracks but Survives",
@@ -441,6 +522,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [],
     imagePath: "/backgrounds/moonDoor.jpg",
+    
   },
   "reflection__start": {
     id: "Reflection — The Mirror’s Truth",
@@ -449,6 +531,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [{"text":"Enter the Chamber of Glass","next":"reflection__chamber_of_glass__mirror_child"},{"text":"Seek the Archivist of Ash","next":"reflection__archivist_of_ash__archivist"},{"text":"Meet Mr. Harriot at the Wayfarer’s Fire","next":"reflection__wayfarers_fire__mr_harriot"}],
     imagePath: "/backgrounds/Muir.jpg",
+    
   },
   "reflection__wayfarers_fire__accept_glaze": {
     id: "Harriot’s Mirror‑Glaze",
@@ -457,6 +540,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [{"text":"Return to the Reflection Path","next":"reflection__start"},{"text":"Head for the Chamber of Glass","next":"reflection__chamber_of_glass__mirror_child"}],
     imagePath: null,
+    
   },
   "reflection__wayfarers_fire__mr_harriot": {
     id: "Mr. Harriot at the Wayfarer’s Fire",
@@ -465,5 +549,6 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     choices: [{"text":"Trade a Name for Mirror‑Glaze","next":"reflection__wayfarers_fire__accept_glaze"},{"text":"Decline with Courtesy","next":"reflection__start"}],
     imagePath: null,
+    
   }
 };

@@ -10,22 +10,22 @@
 }
 -->
 
-Sister Maerwyn stands motionless for a long moment. Around you, the chapel seems to hold its breath.
+Sister Maerwyn stands motionless. Around you, the chapel holds its breath.
 
-"You're not supposed to ask that," she finally whispers.
+"You're not supposed to ask that," she whispers.
 
-"But you've wondered," you say. It's not a question.
+"But you've wondered," you say.
 
-Her reflection moves a half-second late, and you realize: it's not a reflection. It's something *wearing* her reflection, listening from that in-between space. The Veil-Touched begin to gather at the edges of the pyre fields, drawn by doubt like moths to a wavering flame.
+Her reflection moves a half-second late. It's not a reflection—it's something *wearing* her reflection, listening from the in-between. The Veil-Touched gather at the pyre field edges, drawn by doubt like moths to flame.
 
-"The pyres hold," Sister Maerwyn says, but the conviction is gone. "They must hold. Because if they don't..."
+"The pyres hold," Sister Maerwyn says, conviction gone. "They must hold. Because if they don't..."
 
-She doesn't finish. She doesn't need to. The implication hangs in the Chapel's dimness: if the pyres are faith without foundation, then everything built on that faith collapses. The villagers' safety, your purpose, the annual Hunt itself—all of it revealed as *negotiation with hunger* rather than *sacred protection*.
+She doesn't finish. The implication hangs in the dimness: if the pyres are faith without foundation, everything built on them collapses. The villagers' safety, your purpose, the annual Hunt—all of it revealed as *negotiation with hunger* rather than *sacred protection*.
 
-"The choice is still yours," she says finally. "Light the pyres and let the machinery continue. Or refuse, and face what happens when the machine stops."
+"The choice is still yours," she says. "Light the pyres and continue. Or refuse, and face what happens when the machine stops."
 
 She steps back. The Veil-Touched press closer.
 
-You hold the lens. Its three rings—Nèamh, Muir, Talamh—pulse with expectation.
+You hold the lens. Nèamh, Muir, Talamh pulse with expectation.
 
-What do you choose: the faith that holds, or the truth that breaks it?
+Faith that holds, or truth that breaks it?
