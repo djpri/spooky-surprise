@@ -23,6 +23,7 @@ export default function Scene({ node }: SceneProps) {
     const [isTyped, setIsTyped] = useState(false);
     const [lockedWidth, setLockedWidth] = useState<number | null>(null);
     const cardRef = useRef<HTMLDivElement>(null);
+    const { gameStarted } = useStoryStore();
 
     const choices = useMemo(() => node.choices ?? [], [node.choices]);
 
@@ -92,14 +93,18 @@ export default function Scene({ node }: SceneProps) {
                 </h3>
             </header>
 
-            <p className="text-lg leading-relaxed text-foreground/90 whitespace-pre-wrap break-words">
-                <span className="typewriter block w-full">
-                    <Typewriter
-                        text={fullText}
-                        speed={30}
-                        onComplete={handleTypedComplete}
-                    />
-                </span>
+            <p className="text-lg leading-relaxed text-foreground/90">
+                {gameStarted ? (
+                    <span className="typewriter">
+                        <Typewriter
+                            text={fullText}
+                            speed={30}
+                            onComplete={handleTypedComplete}
+                        />
+                    </span>
+                ) : (
+                    fullText
+                )}
                 {node.requiresName && isTyped && (
                     <NameInput
                         playerName={playerName}
