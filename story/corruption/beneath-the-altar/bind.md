@@ -2,7 +2,7 @@
 {
   "id": "Bind the Spirit",
   "diceCheck": { "stat": "ritual", "target": 15, "success": "./balance.md", "fail": "./inner-torment.md" },
-  "imagePath": null
+  "imagePath": "soulLock.jpg"
 }
 -->
 

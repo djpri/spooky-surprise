@@ -8,7 +8,7 @@
     { "text": "Path of Reflection — The Mirror's Truth", "next": "./reflection/start.md" },
     { "text": "Path of Corruption — The Root Flame", "next": "./corruption/start.md" }
   ],
-  "imagePath": null
+  "imagePath": "study.jpg"
 }
 -->
 

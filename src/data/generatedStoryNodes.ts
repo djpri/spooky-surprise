@@ -148,10 +148,10 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
   },
   "corruption__descent_into_rootdeep__final_trial": {
     id: "The Descent into Rootdeep — Final Trial",
-    text: "Steps echo in a throat that used to be a mine and is now a memory. Each breath you take here is borrowed from a version of you that will never leave. With every descent, your joints ache with a future that arrives too early. In a slick of black‑violet on the rock, you see your face older than it should be, and you do not blink.\n\nThe Cave Guardian waits where Elar’s fear still hangs like incense. It is the shape of everything you didn’t live — every kindness refused, every hunger you smothered until it learned your voice. When it inhales, your back hurts the way it will in twenty years. When it exhales, the lantern dims and memory goes with it.\n\n- Accept what is yours and what is not, and let the shadow stand beside you.\n- Or grind it under heel until only the light speaks.\n\nEither way, the year will end. Only you decide whether it ends with a whole self.\n",
+    text: "Steps echo in a throat that used to be a mine and is now a memory. Each breath you take here is borrowed from a version of you that will never leave. With every descent, your joints ache with a future that arrives too early. In a slick of black‑violet on the rock, you see your face older than it should be, and you do not blink.\n\nThe Cave Guardian waits where Elar’s fear still hangs like incense. It is the shape of everything you didn’t live — every kindness refused, every hunger you smothered until it learned your voice. When it inhales, your back hurts the way it will in twenty years. When it exhales, the lantern dims and memory goes with it.\n\n- Accept what is yours and what is not; let it stand beside you.\n- Or grind it under heel until only the light speaks.\n\nEither way, the year will end. Only you decide whether it ends with a whole self.\n",
     
     
-    choices: [{"text":"Accept the Shadow (Integration)","next":"corruption__descent_into_rootdeep__guardian_transforms"},{"text":"Resist or Dominate the Shadow (Consumption)","next":"corruption__descent_into_rootdeep__guardian_consumes"}],
+    choices: [{"text":"Let it stand beside you","next":"corruption__descent_into_rootdeep__guardian_transforms"},{"text":"Grind it under heel","next":"corruption__descent_into_rootdeep__guardian_consumes"}],
     imagePath: "/backgrounds/lanternTaken.jpg",
   },
   "corruption__descent_into_rootdeep__guardian_consumes": {
@@ -204,7 +204,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
   },
   "corruption__voice_beneath_the_altar__voice": {
     id: "The Voice Beneath the Altar",
-    text: "The cracks murmur in your childhood tone, then your mother’s, then your own: “I bear the name you buried.” The Voice carries three registers — judgment like sun‑heat on your scalp, reflection like cool riverwater in your mouth, and root‑flame like a coal under the tongue. Each offers a truth; each demands a price.\n\nYou feel the shape of yourself as the Voice understands it: Persona smoothed for strangers, Shadow heavy with appetite, Anima gloved in ash and lace. The Self waits at the center, patient as winter.\n",
+    text: "The cracks murmur in your childhood tone, then your mother’s, then your own: “I bear the name you buried.” The Voice carries three registers — judgment like sun‑heat on your scalp, reflection like cool riverwater in your mouth, and root‑flame like a coal under the tongue. Each offers a truth; each demands a price.\n\nYou feel the shape of yourself as the Voice understands it: a mask smoothed for strangers, a hunger that keeps to the dark, a tender calling braided with ash and lace. Something quiet waits at the center, patient as winter.\n",
     
     
     choices: [{"text":"Free the Voice","next":"corruption__voice_beneath_the_altar__free_voice"},{"text":"Merge With It","next":"corruption__voice_beneath_the_altar__merge_voice"},{"text":"Condemn It","next":"corruption__voice_beneath_the_altar__condemn_voice"}],

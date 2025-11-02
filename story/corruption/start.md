@@ -7,7 +7,7 @@
     { "text": "Answer the Ashen Bride", "next": "./ashen-bride/ashen-bride.md" },
     { "text": "Descend into Rootdeep — Final Trial", "next": "./descent-into-rootdeep/final-trial.md" }
   ],
-  "imagePath": null
+  "imagePath": "talamh.jpg"
 }
 -->
 

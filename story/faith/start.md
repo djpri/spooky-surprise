@@ -6,7 +6,7 @@
     { "text": "Refuse to Light the Pyres", "next": "./village-at-dusk/refuse-pyres.md" },
     { "text": "Confront your own doubt", "next": "./own-faith-fractures.md" }
   ],
-  "imagePath": null
+  "imagePath": "lantern.jpg"
 }
 -->
 

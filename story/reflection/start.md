@@ -6,7 +6,7 @@
     { "text": "Seek the Archivist of Ash", "next": "./archivist-of-ash/archivist.md" },
     { "text": "Meet Mr. Harriot at the Wayfarer’s Fire", "next": "./wayfarers-fire/mr-harriot.md" }
   ],
-  "imagePath": null
+  "imagePath": "Muir.jpg"
 }
 -->
 

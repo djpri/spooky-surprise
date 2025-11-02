@@ -6,7 +6,7 @@
     { "text": "Free It", "next": "./free.md" },
     { "text": "Bind It", "next": "./bind.md" }
   ],
-  "imagePath": null
+  "imagePath": "cellar.jpg"
 }
 -->
 

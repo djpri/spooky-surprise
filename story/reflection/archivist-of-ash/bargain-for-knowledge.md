@@ -2,7 +2,7 @@
 {
   "id": "Bargain for Knowledge",
   "diceCheck": { "stat": "reason", "target": 15, "success": "./break-cycle.md", "fail": "./madness.md" },
-  "imagePath": null
+  "imagePath": "amulet.jpg"
 }
 -->
 

@@ -2,7 +2,7 @@
 {
   "id": "Ending — The World Cracks but Survives",
   "choices": [],
-  "imagePath": null
+  "imagePath": "moonDoor.jpg"
 }
 -->
 

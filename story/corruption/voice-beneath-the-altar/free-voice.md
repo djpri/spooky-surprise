@@ -2,7 +2,7 @@
 {
   "id": "Ending — Free the Voice (Collapse)",
   "choices": [],
-  "imagePath": null
+  "imagePath": "secretPassage.jpg"
 }
 -->
 
