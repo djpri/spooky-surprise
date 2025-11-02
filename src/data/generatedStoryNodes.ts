@@ -88,7 +88,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     diceCheck: {"stat":"ritual","target":15,"success":"corruption__beneath_the_altar__balance","fail":"corruption__beneath_the_altar__inner_torment"},
     
-    imagePath: null,
+    imagePath: "/backgrounds/soulLock.jpg",
   },
   "corruption__beneath_the_altar__bound_spirit": {
     id: "Beneath the Altar — The Bound Spirit",
@@ -96,7 +96,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     
     choices: [{"text":"Devour It","next":"corruption__beneath_the_altar__devour"},{"text":"Free It","next":"corruption__beneath_the_altar__free"},{"text":"Bind It","next":"corruption__beneath_the_altar__bind"}],
-    imagePath: null,
+    imagePath: "/backgrounds/cellar.jpg",
   },
   "corruption__beneath_the_altar__devour": {
     id: "Devour the Spirit",
@@ -148,19 +148,19 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
   },
   "corruption__descent_into_rootdeep__final_trial": {
     id: "The Descent into Rootdeep — Final Trial",
-    text: "Steps echo in a throat that used to be a mine and is now a memory. Each breath you take here is borrowed from a version of you that will never leave. With every descent, your joints ache with a future that arrives too early. In a slick of black‑violet on the rock, you see your face older than it should be, and you do not blink.\n\nThe Cave Guardian waits where Elar’s fear still hangs like incense. It is the shape of everything you didn’t live — every kindness refused, every hunger you smothered until it learned your voice. When it inhales, your back hurts the way it will in twenty years. When it exhales, the lantern dims and memory goes with it.\n\n- Accept what is yours and what is not, and let the shadow stand beside you.\n- Or grind it under heel until only the light speaks.\n\nEither way, the year will end. Only you decide whether it ends with a whole self.\n\n",
+    text: "Steps echo in a throat that used to be a mine and is now a memory. Each breath you take here is borrowed from a version of you that will never leave. With every descent, your joints ache with a future that arrives too early. In a slick of black‑violet on the rock, you see your face older than it should be, and you do not blink.\n\nThe Cave Guardian waits where Elar’s fear still hangs like incense. It is the shape of everything you didn’t live — every kindness refused, every hunger you smothered until it learned your voice. When it inhales, your back hurts the way it will in twenty years. When it exhales, the lantern dims and memory goes with it.\n\n- Accept what is yours and what is not, and let the shadow stand beside you.\n- Or grind it under heel until only the light speaks.\n\nEither way, the year will end. Only you decide whether it ends with a whole self.\n",
     
     
     choices: [{"text":"Accept the Shadow (Integration)","next":"corruption__descent_into_rootdeep__guardian_transforms"},{"text":"Resist or Dominate the Shadow (Consumption)","next":"corruption__descent_into_rootdeep__guardian_consumes"}],
-    imagePath: null,
+    imagePath: "/backgrounds/lanternTaken.jpg",
   },
   "corruption__descent_into_rootdeep__guardian_consumes": {
     id: "Ending — The Guardian Consumes (Hollow Escape)",
-    text: "You press the shadow down until it slips your grip and takes the hand that held it. The cave exhales your name and keeps the breath.\n\nYou climb out lighter only where it matters; elsewhere, you are a husk packed with obligation. People are saved. You are not.\n\nThe cycle continues. The shadow is patient. It does not need to eat quickly to win.\n\n",
+    text: "You press the shadow down until it slips your grip and takes the hand that held it. The cave exhales your name and keeps the breath.\n\nYou climb out lighter only where it matters; elsewhere, you are a husk packed with obligation. People are saved. You are not.\n\nThe cycle continues. The shadow is patient. It does not need to eat quickly to win.\n",
     
     
     choices: [],
-    imagePath: null,
+    imagePath: "/backgrounds/staircase.jpg",
   },
   "corruption__descent_into_rootdeep__guardian_transforms": {
     id: "Ending — The Guardian Transforms (True Integration)",
@@ -176,7 +176,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     
     choices: [{"text":"Descend to the Bound Spirit","next":"corruption__beneath_the_altar__bound_spirit"},{"text":"Listen to the Voice Beneath the Altar","next":"corruption__voice_beneath_the_altar__voice"},{"text":"Answer the Ashen Bride","next":"corruption__ashen_bride__ashen_bride"},{"text":"Descend into Rootdeep — Final Trial","next":"corruption__descent_into_rootdeep__final_trial"}],
-    imagePath: null,
+    imagePath: "/backgrounds/talamh.jpg",
   },
   "corruption__voice_beneath_the_altar__condemn_voice": {
     id: "Ending — Condemn the Voice (Eternal Cycle)",
@@ -192,7 +192,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     
     choices: [],
-    imagePath: null,
+    imagePath: "/backgrounds/secretPassage.jpg",
   },
   "corruption__voice_beneath_the_altar__merge_voice": {
     id: "Ending — Merge With the Voice (Omniscient)",
@@ -208,7 +208,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     
     choices: [{"text":"Free the Voice","next":"corruption__voice_beneath_the_altar__free_voice"},{"text":"Merge With It","next":"corruption__voice_beneath_the_altar__merge_voice"},{"text":"Condemn It","next":"corruption__voice_beneath_the_altar__condemn_voice"}],
-    imagePath: null,
+    imagePath: "/backgrounds/whisper.jpg",
   },
   "doubt-accepted": {
     id: "Faith Questioned",
@@ -232,7 +232,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     
     choices: [{"text":"Rekindle the Pyres with Sister Maerwyn","next":"faith__village_at_dusk__rekindle_pyres"},{"text":"Refuse to Light the Pyres","next":"faith__village_at_dusk__refuse_pyres"},{"text":"Confront your own doubt","next":"faith-own-faith-fractures"}],
-    imagePath: null,
+    imagePath: "/backgrounds/lantern.jpg",
   },
   "faith__village_at_dusk__burn_both": {
     id: "Pyre Dilemma — Burn Both",
@@ -336,7 +336,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     requiresName: true,
     
     choices: [{"text":"Path of Faith — The Light That Burns","next":"faith__start"},{"text":"Path of Reflection — The Mirror's Truth","next":"reflection__start"},{"text":"Path of Corruption — The Root Flame","next":"corruption__start"}],
-    imagePath: null,
+    imagePath: "/backgrounds/study.jpg",
   },
   "prologue-choice": {
     id: "Three Paths Open",
@@ -376,7 +376,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     diceCheck: {"stat":"reason","target":15,"success":"reflection__archivist_of_ash__break_cycle","fail":"reflection__archivist_of_ash__madness"},
     
-    imagePath: null,
+    imagePath: "/backgrounds/amulet.jpg",
   },
   "reflection__archivist_of_ash__break_cycle": {
     id: "Ending — Break the Cycle (Transcendent)",
@@ -440,7 +440,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     
     choices: [],
-    imagePath: null,
+    imagePath: "/backgrounds/moonDoor.jpg",
   },
   "reflection__start": {
     id: "Reflection — The Mirror’s Truth",
@@ -448,7 +448,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     
     choices: [{"text":"Enter the Chamber of Glass","next":"reflection__chamber_of_glass__mirror_child"},{"text":"Seek the Archivist of Ash","next":"reflection__archivist_of_ash__archivist"},{"text":"Meet Mr. Harriot at the Wayfarer’s Fire","next":"reflection__wayfarers_fire__mr_harriot"}],
-    imagePath: null,
+    imagePath: "/backgrounds/Muir.jpg",
   },
   "reflection__wayfarers_fire__accept_glaze": {
     id: "Harriot’s Mirror‑Glaze",
