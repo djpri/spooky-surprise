@@ -48,7 +48,7 @@ This document defines exactly how to organize the `story/` folder and generate t
 - `key` (string, optional): Stable key to reference this node. If omitted, the generator derives a unique key from the file path.
 - `id` (string, required): Human‑readable chapter/title shown in the UI.
 - `requiresName` (boolean, optional): If true, the UI asks for the player’s name at this node.
-- `imagePath` (string|null, optional): Background image path or `null`. Safe to leave `null` unless you have an asset.
+- `imagePath` (string|null, optional): Background image path or `null`. Store all images in `src/assets/images/background` and reference them by filename only (e.g., `lantern.jpg`). The generator copies from assets to `public/backgrounds/` and rewrites the path. No automatic fallbacks.
 - `diceCheck` (object, optional): `{ stat, target, success, fail }`.
   - `stat` (string): One of: `fortitude`, `insight`, `presence`, `reason`, `will`, `ritual`, `mercy`.
   - `target` (number): DC for a d20 roll.

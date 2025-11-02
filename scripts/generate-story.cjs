@@ -8,6 +8,7 @@ const path = require('path');
 
 const STORY_DIR = path.resolve(__dirname, '..', 'story');
 const OUT_FILE = path.resolve(__dirname, '..', 'src', 'data', 'generatedStoryNodes.ts');
+const ASSETS_BG_DIR = path.resolve(__dirname, '..', 'src', 'assets', 'images', 'background');
 
 function walk(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -73,13 +74,36 @@ function main() {
 
   // Pass 2: build nodes
   const nodes = [];
+  const PUBLIC_BG_DIR = path.resolve(__dirname, '..', 'public', 'backgrounds');
+  fs.mkdirSync(PUBLIC_BG_DIR, { recursive: true });
   for (const f of files) {
     const rel = toRel(f);
     const { meta, body } = readNode(f);
     const key = meta.key || deriveKeyFromPath(rel);
     const id = meta.id || key;
     const requiresName = !!meta.requiresName;
-    const imagePath = meta.imagePath === undefined ? null : meta.imagePath;
+    let imagePath = meta.imagePath === undefined ? null : meta.imagePath;
+
+    // If imagePath is a bare filename (preferred), resolve under assets/background
+    // Copy into public/backgrounds by filename and rewrite to runtime URL.
+    if (typeof imagePath === 'string' && imagePath && !/^https?:\/\//i.test(imagePath)) {
+      if (!imagePath.startsWith('/')) {
+        const srcAbs = path.resolve(ASSETS_BG_DIR, imagePath);
+        if (fs.existsSync(srcAbs) && fs.statSync(srcAbs).isFile()) {
+          const outName = path.basename(srcAbs);
+          const outAbs = path.join(PUBLIC_BG_DIR, outName);
+          try {
+            fs.copyFileSync(srcAbs, outAbs);
+            imagePath = `/backgrounds/${outName}`;
+          } catch (e) {
+            console.warn(`Warning: failed to copy image ${srcAbs} -> ${outAbs}: ${e.message}`);
+          }
+        } else {
+          console.warn(`Warning: imagePath for ${rel} not found in assets: ${srcAbs}`);
+        }
+      }
+      // If it starts with '/', assume it's already a public URL; leave as is.
+    }
     let diceCheck = meta.diceCheck || undefined;
     if (diceCheck && typeof diceCheck === 'object') {
       const dc = { ...diceCheck };
