@@ -143,7 +143,6 @@ function App() {
         isOpen={isSettingsOpen}
         onClose={() => setIsSettingsOpen(false)}
       />
-      <StoryStateInspector />
       {showMaze && <MazeOverlay onClose={() => setShowMaze(false)} />}
       {showBSOD && <BSODOverlay onClose={() => setShowBSOD(false)} />}
     </div>
