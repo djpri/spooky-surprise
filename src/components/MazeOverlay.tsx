@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { levels, LEVEL_SIZE } from '../game/mazeLevels'
 import { MazeGameEngine } from '../game/mazeEngine'
+import { Button } from './ui/Button'
 
 type Props = {
   onClose: () => void
@@ -13,13 +14,42 @@ export default function MazeOverlay({ onClose }: Props) {
   const [levelIdx, setLevelIdx] = useState(0)
   const [phase, setPhase] = useState<'ready' | 'starting' | 'playing' | 'failed' | 'game-complete'>('ready')
   const startTimerRef = useRef<number | null>(null)
+  const [isSupported, setIsSupported] = useState<boolean | null>(null)
 
+  // Detect if environment is supported (desktop-like width and mouse pointer)
   useEffect(() => {
+    if (typeof window === 'undefined') return
+    const mqDesktop = window.matchMedia('(min-width: 1024px)')
+    const mqFinePointer = window.matchMedia('(pointer: fine)')
+    const evaluate = () => setIsSupported(mqDesktop.matches && mqFinePointer.matches)
+    evaluate()
+    // Update on resize or pointer changes
+    mqDesktop.addEventListener?.('change', evaluate)
+    mqFinePointer.addEventListener?.('change', evaluate)
+    return () => {
+      mqDesktop.removeEventListener?.('change', evaluate)
+      mqFinePointer.removeEventListener?.('change', evaluate)
+    }
+  }, [])
+
+  // Base overlay lifecycle (cursor/escape handling) — only when supported
+  useEffect(() => {
+    if (isSupported !== true) return
     document.body.classList.add('maze-active')
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
     }
     window.addEventListener('keydown', handleKey)
+    return () => {
+      document.body.classList.remove('maze-active')
+      window.removeEventListener('keydown', handleKey)
+      if (startTimerRef.current) window.clearTimeout(startTimerRef.current)
+    }
+  }, [isSupported, onClose])
+
+  // Initialize engine only when supported
+  useEffect(() => {
+    if (isSupported !== true) return
     const canvas = canvasRef.current
     if (!canvas) return
 
@@ -48,13 +78,7 @@ export default function MazeOverlay({ onClose }: Props) {
         setStatus('You escaped all mazes! Click Exit to return.')
       }
     })
-
-    return () => {
-      document.body.classList.remove('maze-active')
-      window.removeEventListener('keydown', handleKey)
-      if (startTimerRef.current) window.clearTimeout(startTimerRef.current)
-    }
-  }, [])
+  }, [isSupported])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current
@@ -75,6 +99,12 @@ export default function MazeOverlay({ onClose }: Props) {
       setStatus('Move mouse to green START, reach red GOAL.')
     }
   }
+
+  // If unsupported, close (if possible) and render nothing — no user alteration
+  useEffect(() => {
+    if (isSupported === false) onClose()
+  }, [isSupported, onClose])
+  if (isSupported !== true) return null
 
   return (
     <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/90 p-4">
@@ -111,7 +141,9 @@ export default function MazeOverlay({ onClose }: Props) {
           />
           {(phase === 'starting' || phase === 'failed' || phase === 'game-complete') && (
             <div
-              className={`pointer-events-none absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+              className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+                phase === 'game-complete' ? 'pointer-events-auto' : 'pointer-events-none'
+              } ${
                 phase === 'failed'
                   ? 'bg-red-500/30'
                   : phase === 'starting'
@@ -120,16 +152,32 @@ export default function MazeOverlay({ onClose }: Props) {
               }`}
             >
               {phase === 'starting' && (
-                <div className="rounded-xl bg-black/60 px-6 py-3 text-3xl font-semibold text-white shadow-lg">GO!</div>
+                <div className="pointer-events-none rounded-xl bg-black/60 px-6 py-3 text-3xl font-semibold text-white shadow-lg">GO!</div>
               )}
               {phase === 'failed' && (
-                <div className="rounded-xl bg-black/70 px-6 py-3 text-xl font-semibold text-white shadow-lg">
+                <div className="pointer-events-none rounded-xl bg-black/70 px-6 py-3 text-xl font-semibold text-white shadow-lg">
                   You hit a wall — click to retry
                 </div>
               )}
               {phase === 'game-complete' && (
-                <div className="rounded-xl bg-black/70 px-6 py-3 text-xl font-semibold text-white shadow-lg">
-                  All levels complete! Use Exit to return
+                <div className="flex flex-col items-center gap-4 rounded-xl bg-black/70 px-8 py-6 text-white shadow-lg">
+                  <div className="text-3xl font-extrabold">🎉 Congratulations!</div>
+                  <div className="text-center text-sm opacity-90">You escaped all mazes.</div>
+                  <div className="flex gap-3">
+                    <Button
+                      onClick={() => {
+                        engineRef.current?.setLevel(0)
+                        setLevelIdx(0)
+                        setPhase('ready')
+                        setStatus('Start again! Move to START to begin level 1.')
+                      }}
+                    >
+                      Play Again
+                    </Button>
+                    <Button onClick={onClose} className="bg-background text-foreground hover:bg-background/80 border border-border">
+                      Exit
+                    </Button>
+                  </div>
                 </div>
               )}
             </div>

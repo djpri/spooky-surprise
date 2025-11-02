@@ -60,7 +60,8 @@ export const levels: MazeLevel[] = [
     width: LEVEL_SIZE.width,
     height: LEVEL_SIZE.height,
     start: { x: 30, y: 500, w: 80, h: 70 },
-    goal: { x: 690, y: 120, w: 80, h: 30 },
+    // Align goal rect with drawn goal (red) area
+    goal: { x: 690, y: 40, w: 80, h: 70 },
     draw: (ctx) => {
       clearAndFill(ctx, COLORS.wall)
       drawRects(

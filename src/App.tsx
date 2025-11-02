@@ -24,6 +24,16 @@ function App() {
     } = useStoryStore();
     const visitedCount = visited.length;
     const toggleSound = () => setSoundEnabled(!soundEnabled);
+    const openMazeIfSupported = () => {
+        if (typeof window === 'undefined') return;
+        const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+        const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+        if (!isDesktop || !hasFinePointer) {
+            // Silently do nothing on unsupported devices
+            return;
+        }
+        setShowMaze(true);
+    };
     useEffect(() => {
         const script = document.createElement("script");
         script.src = "https://kit.fontawesome.com/9cf674f529.js";
@@ -44,7 +54,7 @@ function App() {
                 <div className="mx-auto flex min-h-screen flex-col items-center justify-center gap-16 px-4 py-16 z-20">
                     <h2 className="font-heading text-center text-7xl font-semibold tracking-widest">
                         <button
-                        onClick={() => setShowMaze(true)}
+                        onClick={openMazeIfSupported}
                         className="underline-offset-4 hover:underline"
                         aria-label="Open spooky maze"
                         title="Spooky (click me)"
