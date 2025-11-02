@@ -2,7 +2,7 @@
 {
   "id": "Ending — The Guardian Consumes (Hollow Escape)",
   "choices": [],
-  "imagePath": "staircase.jpg"
+  "imagePath": "brichan_cave.webp"
 }
 -->
 

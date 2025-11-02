@@ -6,7 +6,7 @@
     { "text": "Resist the pull and try to ascend", "next": "./void-face-to-face.md" },
     { "text": "Steady yourself and press on without hesitation", "next": "./void-face-to-face.md" }
   ],
-  "imagePath": null
+  "imagePath": "brichan_cave.webp"
 }
 -->
 

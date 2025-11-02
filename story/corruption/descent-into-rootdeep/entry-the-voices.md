@@ -6,7 +6,7 @@
     { "text": "Attempt to hear an individual plea and follow it", "next": "./deeper-the-fading.md" },
     { "text": "Brace yourself and descend with haste, pushing past the sorrow", "next": "./deeper-the-fading.md" }
   ],
-  "imagePath": null,
+  "imagePath": "brichan_cave.webp",
   "audioPath": "cave_voices.mp3"
 }
 -->

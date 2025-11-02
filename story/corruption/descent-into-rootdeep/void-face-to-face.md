@@ -5,7 +5,7 @@
     { "text": "Let it stand beside you", "next": "./guardian-transforms.md" },
     { "text": "Grind it under heel", "next": "./guardian-consumes.md" }
   ],
-  "imagePath": null,
+  "imagePath": "brichan_cave.webp",
   "audioPath": "cave_monster.mp3"
 }
 -->

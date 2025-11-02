@@ -170,7 +170,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     
     choices: [{"text":"Continue your descent into the void","next":"corruption__descent_into_rootdeep__void_face_to_face"},{"text":"Resist the pull and try to ascend","next":"corruption__descent_into_rootdeep__void_face_to_face"},{"text":"Steady yourself and press on without hesitation","next":"corruption__descent_into_rootdeep__void_face_to_face"}],
-    imagePath: null,
+    imagePath: "/backgrounds/brichan_cave.webp",
     
   },
   "corruption__descent_into_rootdeep__entry_the_voices": {
@@ -179,7 +179,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     
     choices: [{"text":"Press deeper into the chaos of voices","next":"corruption__descent_into_rootdeep__deeper_the_fading"},{"text":"Attempt to hear an individual plea and follow it","next":"corruption__descent_into_rootdeep__deeper_the_fading"},{"text":"Brace yourself and descend with haste, pushing past the sorrow","next":"corruption__descent_into_rootdeep__deeper_the_fading"}],
-    imagePath: null,
+    imagePath: "/backgrounds/brichan_cave.webp",
     audioPath: "/audio/cave_voices.mp3",
   },
   "corruption__descent_into_rootdeep__final_trial": {
@@ -197,7 +197,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     
     choices: [],
-    imagePath: "/backgrounds/staircase.jpg",
+    imagePath: "/backgrounds/brichan_cave.webp",
     
   },
   "corruption__descent_into_rootdeep__guardian_transforms": {
@@ -206,7 +206,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     
     choices: [],
-    imagePath: null,
+    imagePath: "/backgrounds/brichan_cave.webp",
     
   },
   "corruption__descent_into_rootdeep__void_face_to_face": {
@@ -215,7 +215,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     
     
     choices: [{"text":"Let it stand beside you","next":"corruption__descent_into_rootdeep__guardian_transforms"},{"text":"Grind it under heel","next":"corruption__descent_into_rootdeep__guardian_consumes"}],
-    imagePath: null,
+    imagePath: "/backgrounds/brichan_cave.webp",
     audioPath: "/audio/cave_monster.mp3",
   },
   "corruption__start": {
@@ -404,7 +404,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
     requiresName: true,
     
     choices: [{"text":"Path of Faith — The Light That Burns","next":"faith__start"},{"text":"Path of Reflection — The Mirror's Truth","next":"reflection__start"},{"text":"Path of Corruption — The Root Flame","next":"corruption__start"}],
-    imagePath: "/backgrounds/study.jpg",
+    imagePath: "/backgrounds/brichan.webp",
     
   },
   "prologue-choice": {

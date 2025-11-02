@@ -2,7 +2,7 @@
 {
   "id": "Ending — The Guardian Transforms (True Integration)",
   "choices": [],
-  "imagePath": null
+  "imagePath": "brichan_cave.webp"
 }
 -->
 
