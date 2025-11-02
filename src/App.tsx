@@ -9,6 +9,7 @@ import StoryRenderer from "./components/StoryRenderer";
 import ThemeToggle from "./components/ThemeToggle";
 import { Button } from "./components/ui/Button";
 import { useStoryStore } from "./store/storyStore";
+import { unlockAudioContext } from "./utils/audioContext";
 
 function App() {
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -89,13 +90,15 @@ function App() {
                                 </p>
                                 <button
                                     className="w-full py-3 text-base font-semibold bg-secondary text-background rounded-md hover:bg-secondary/90 transition"
-                                    onClick={() => {
+                                    onClick={async () => {
+                                        // Ensure audio can start on user gesture
+                                        try {
+                                            await unlockAudioContext();
+                                        } catch {}
+                                        setSoundEnabled(true);
                                         reset();
                                         setPlayerName("");
-                                        setTimeout(
-                                            () => setGameStarted(true),
-                                            1
-                                        );
+                                        setTimeout(() => setGameStarted(true), 1);
                                     }}
                                 >
                                     Start Adventure
