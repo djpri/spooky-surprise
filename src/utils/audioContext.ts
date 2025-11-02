@@ -25,6 +25,12 @@ export function unlockAudioContext(): Promise<void> {
     const context = getAudioContext();
 
     if (context.state === "running") {
+        // Fire an event so listeners can react to a now-usable context
+        if (typeof window !== "undefined") {
+            try {
+                window.dispatchEvent(new Event("audio-unlocked"));
+            } catch {}
+        }
         return Promise.resolve();
     }
 
@@ -36,6 +42,10 @@ export function unlockAudioContext(): Promise<void> {
                     window.removeEventListener("click", tryResume);
                     window.removeEventListener("keydown", tryResume);
                     window.removeEventListener("touchstart", tryResume);
+                    // Notify that audio is unlocked so components can start playback
+                    try {
+                        window.dispatchEvent(new Event("audio-unlocked"));
+                    } catch {}
                     resolve();
                 })
                 .catch(() => {
@@ -46,7 +56,12 @@ export function unlockAudioContext(): Promise<void> {
         // try immediately
         context
             .resume()
-            .then(resolve)
+            .then(() => {
+                try {
+                    window.dispatchEvent(new Event("audio-unlocked"));
+                } catch {}
+                resolve();
+            })
             .catch(() => {
                 // wait for any gesture if immediate resume fails
                 window.addEventListener("click", tryResume, { once: true });

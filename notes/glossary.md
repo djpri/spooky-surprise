@@ -1,0 +1,30 @@
+# Glossary
+
+- Alderthorn: Region where the Veil thins each year; home of Alderthornians.
+- Alderthornians: People of Alderthorn.
+- Brichan: Vowed lightbearer who cleanses, binds, or devours spirits at personal cost.
+- The Veil: Living boundary between worlds; thins at Year's End.
+- Year's End: October 31; end of harvest; the Hunt begins.
+- The Hunt: Period during which entities cross into Alderthorn; the Brichan acts.
+- Pyres: Communal fires used to ward, cleanse, or burn offerings.
+- Mirrors (Mirror‑Candles): Wards that lure deceptions into reflection where they can be struck.
+- Lenses: Three‑ring focus device used by the Brichan.
+  - Nèamh: White/Gold; judgement, cleansing.
+  - Muir: Light Blue; reflection, revelation.
+  - Talamh: Black/Violet; binding, devouring, renewal; required to navigate Rootdeep.
+- Geis: Binding oath or destiny; the Brichan bears one.
+- Anchor: An object/place a spirit clings to when crossing.
+- Veil‑Touched: Corrupted villagers; candlelight burns in hollow eyes.
+- Threaded Ones: Entities stitched by strands of light; guilt made flesh.
+- Mirror Child: Reflection‑born echo; empathy twisted into imitation.
+- Lantern Hag: Luring crone with a lantern‑skull; false guidance.
+- Archivist of Ash: Keeper of the record between realms.
+- Maw of the Veil: Teeth‑lined rift that hungers for light and names.
+- Cave Guardian: Unintegrated shadow of Elar; embodiment of inherited trauma and unlived life; final trial of Corruption branch.
+- Rootdeep (Chasm of Rootdeep): Lightless cave system; opens when Veil thins furthest; requires Talamh to traverse; soul ages with descent.
+- Creed: "Lux beò, solas mòr, glainne dorcha." — Living light, great flame, dark glass.
+ - Persona: The face shown to the world; a voice the Voice may wear.
+ - Shadow: Repressed impulses and hunger; often speaks in your own voice.
+ - Anima: Inner feminine image of the Brichan; here, the Ashen Bride.
+ - Self: The organizing totality of psyche; in this tale, the Voice beneath the altar.
+ - Thaumaturge: Worker of practical wonder; ritualist wizardry focused on real‑world materials.

@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "npm run generate:story",
     "build": "tsc -b && vite build",
+    "generate:story": "node scripts/generate-story.cjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
