@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import BSODOverlay from "./components/BSODOverlay";
 import DynamicBackground from "./components/DynamicBackground";
 import { GhostCursor } from "./components/GhostCursor";
+import MazeOverlay from "./components/MazeOverlay";
 import MenuAudioLoop from "./components/MenuAudioLoop";
 import { SettingsMenu } from "./components/SettingsMenu";
 import StoryRenderer from "./components/StoryRenderer";
@@ -10,9 +12,21 @@ import { useStoryStore } from "./store/storyStore";
 
 function App() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [showMaze, setShowMaze] = useState(false);
+  const [showBSOD, setShowBSOD] = useState(false);
   const { currentNode, reset, soundEnabled, setSoundEnabled, setPlayerName } =
     useStoryStore();
   const toggleSound = () => setSoundEnabled(!soundEnabled);
+  const openMazeIfSupported = () => {
+    if (typeof window === "undefined") return;
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+    const hasFinePointer = window.matchMedia("(pointer: fine)").matches;
+    if (!isDesktop || !hasFinePointer) {
+      // Silently do nothing on unsupported devices
+      return;
+    }
+    setShowMaze(true);
+  };
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://kit.fontawesome.com/9cf674f529.js";
@@ -26,13 +40,24 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <GhostCursor />
+      {!showMaze && <GhostCursor />}
       <DynamicBackground currentNode={currentNode} />
-      <MenuAudioLoop />
+      {!showBSOD && <MenuAudioLoop />}
       <main className="container mx-auto flex min-h-screen flex-col items-center justify-center">
         <div className="mx-auto flex min-h-screen flex-col items-center justify-center gap-16 px-4 py-16 z-20">
           <h2 className="font-heading text-center text-7xl font-semibold tracking-widest">
-            Spooky <span className="text-secondary">Surprise</span>
+            <button
+              onClick={openMazeIfSupported}
+              className="underline-offset-4 hover:underline"
+              aria-label="Open spooky maze"
+              title="Spooky (click me)"
+            >
+              Spooky
+            </button>{" "}
+            {/* Intentionally no hover/gesture to suggest interaction */}
+            <span className="text-secondary" onClick={() => setShowBSOD(true)}>
+              Surprise
+            </span>
           </h2>
           <h3 className="text-center text-2xl text-foreground/70">
             An Interactive Halloween Adventure
@@ -74,6 +99,8 @@ function App() {
         isOpen={isSettingsOpen}
         onClose={() => setIsSettingsOpen(false)}
       />
+      {showMaze && <MazeOverlay onClose={() => setShowMaze(false)} />}
+      {showBSOD && <BSODOverlay onClose={() => setShowBSOD(false)} />}
     </div>
   );
 }
