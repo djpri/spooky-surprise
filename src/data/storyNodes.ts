@@ -44,8 +44,6 @@ export const storyNodes: Record<string, StoryNode> = {
                 next: "Talamh",
             },
         ],
-        // SAMPLE TEST IMAGE
-        // imagePath: null,
         imagePath: bgImages["../assets/images/background/Muir.jpg"],
     },
     Talamh: {
@@ -58,7 +56,7 @@ export const storyNodes: Record<string, StoryNode> = {
             },
             { text: "Shake free of the voices and refocus", next: "intro" },
         ],
-        imagePath: null,
+        imagePath: bgImages["../assets/images/background/talamh.jpg"],
     },
     secretPassage: {
         id: "secretPassage",
@@ -69,7 +67,7 @@ export const storyNodes: Record<string, StoryNode> = {
             success: "cellar",
             fail: "panic",
         },
-        imagePath: null,
+        imagePath: bgImages["../assets/images/background/secretPassage.jpg"],
     },
     panic: {
         id: "panic",
@@ -92,7 +90,7 @@ export const storyNodes: Record<string, StoryNode> = {
                 next: "foyer",
             },
         ],
-        imagePath: null,
+        imagePath: bgImages["../assets/images/background/cellar.jpg"],
     },
     amulet: {
         id: "amulet",
@@ -103,13 +101,13 @@ export const storyNodes: Record<string, StoryNode> = {
                 next: "cellarReturn",
             },
         ],
-        imagePath: null,
+        imagePath: bgImages["../assets/images/background/amulet.jpg"],
     },
     cellarReturn: {
         id: "cellarReturn",
         text: "The censer is silent, yet the shard hums in your grasp. Each pulse tightens the web of dark lines beneath your skin. Above, the chapel waits with more anchors to break.",
         choices: [{ text: "Return to the narthex", next: "foyer" }],
-        imagePath: null,
+        imagePath: bgImages["../assets/images/background/secretPassage.jpg"],
     },
     whisper: {
         id: "whisper",
@@ -121,7 +119,7 @@ export const storyNodes: Record<string, StoryNode> = {
             },
             { text: "Bow in thanks and steady your focus", next: "intro" },
         ],
-        imagePath: null,
+        imagePath: bgImages["../assets/images/background/whisper.jpg"],
     },
     staircase: {
         id: "staircase",
@@ -132,7 +130,7 @@ export const storyNodes: Record<string, StoryNode> = {
             success: "moonDoor",
             fail: "soulLock",
         },
-        imagePath: null,
+        imagePath: bgImages["../assets/images/background/staircase.jpg"],
     },
     moonDoor: {
         id: "moonDoor",
@@ -140,7 +138,7 @@ export const storyNodes: Record<string, StoryNode> = {
         choices: [
             { text: "Read the ledger and heed its warning", next: "study" },
         ],
-        imagePath: null,
+        imagePath: bgImages["../assets/images/background/moonDoor.jpg"],
     },
     soulLock: {
         id: "soulLock",
@@ -151,7 +149,7 @@ export const storyNodes: Record<string, StoryNode> = {
                 next: "foyer",
             },
         ],
-        imagePath: null,
+        imagePath: bgImages["../assets/images/background/moonDoor.jpg"],
     },
     study: {
         id: "study",
@@ -162,7 +160,7 @@ export const storyNodes: Record<string, StoryNode> = {
                 next: "lantern",
             },
         ],
-        imagePath: null,
+        imagePath: bgImages["../assets/images/background/study.jpg"],
     },
     lantern: {
         id: "lantern",
@@ -177,7 +175,7 @@ export const storyNodes: Record<string, StoryNode> = {
                 next: "intro",
             },
         ],
-        imagePath: null,
+        imagePath: bgImages["../assets/images/background/lantern.jpg"],
     },
     lanternTaken: {
         id: "lanternTaken",
@@ -185,6 +183,6 @@ export const storyNodes: Record<string, StoryNode> = {
         choices: [
             { text: "Let the ember guide you back inside", next: "foyer" },
         ],
-        imagePath: null,
+        imagePath: bgImages["../assets/images/background/lanternTaken.jpg"],
     },
 };
