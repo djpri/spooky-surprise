@@ -172,7 +172,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
   },
   "corruption__start": {
     id: "Corruption — The Root Flame",
-    text: "Roots seize stone; the old fire hums low. What you bind binds you back.\n\nUnder the chapel, the air tastes of coins and wet dirt. Roots thread the vaulting like ribs. In the center, an altar‑stone veined with soot sleeps over a throat in the world. When you align Talamh with the others, the stone feels you like a tooth feels a tongue.\n\n“Name me,” whispers something patient and proud. Another voice — softer, nearer — promises vows in the language of ash and lace. Beneath them both, the bound spirit thrums, a knot that could be cut, devoured, or taught to hold.\n",
+    text: ((playerName) => "Roots seize stone; the old fire hums low. What you bind binds you back, PLAYERNAME.\n\nUnder the chapel, the air tastes of coins and wet dirt. Roots thread the vaulting like ribs. In the center, an altar‑stone veined with soot sleeps over a throat in the world. When you align Talamh with the others, the stone feels you like a tooth feels a tongue.\n\n“Name me,” whispers something patient and proud. Another voice — softer, nearer — promises vows in the language of ash and lace. Beneath them both, the bound spirit thrums, a knot that could be cut, devoured, or taught to hold.\n".replace(/PLAYERNAME/g, String(playerName))),
     
     
     choices: [{"text":"Descend to the Bound Spirit","next":"corruption__beneath_the_altar__bound_spirit"},{"text":"Listen to the Voice Beneath the Altar","next":"corruption__voice_beneath_the_altar__voice"},{"text":"Answer the Ashen Bride","next":"corruption__ashen_bride__ashen_bride"},{"text":"Descend into Rootdeep — Final Trial","next":"corruption__descent_into_rootdeep__final_trial"}],
@@ -228,7 +228,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
   },
   "faith__start": {
     id: "Faith — The Light That Burns",
-    text: "Smoke-sweet air and candle stubs in windows. Bells ring with no hands. Sister Maerwyn meets your gaze and does not look away.\n\nShe presses a taper into your palm. “The Year’s End isn’t a night,” she says, “it’s a decision that takes a year to pay for.” The pyre fields lie ready — circles of char and bone‑white stones, each labeled with a name that might yet be saved or surrendered. In the distance, children chalk mirrors; their parents pretend not to notice the way reflections arrive a blink late.\n\nYour lens warms at the prospect of order. The crowd, at the prospect of certainty. The Veil does not care how you choose, only that you understand the cost.\n",
+    text: ((playerName) => "Smoke-sweet air and candle stubs in windows. Bells ring with no hands. Sister Maerwyn meets your gaze, PLAYERNAME, and does not look away.\n\nShe presses a taper into your palm. “The Year’s End isn’t a night,” she says, “it’s a decision that takes a year to pay for.” The pyre fields lie ready — circles of char and bone‑white stones, each labeled with a name that might yet be saved or surrendered. In the distance, children chalk mirrors; their parents pretend not to notice the way reflections arrive a blink late.\n\nYour lens warms at the prospect of order. The crowd, at the prospect of certainty. The Veil does not care how you choose, only that you understand the cost.\n".replace(/PLAYERNAME/g, String(playerName))),
     
     
     choices: [{"text":"Rekindle the Pyres with Sister Maerwyn","next":"faith__village_at_dusk__rekindle_pyres"},{"text":"Refuse to Light the Pyres","next":"faith__village_at_dusk__refuse_pyres"},{"text":"Confront your own doubt","next":"faith-own-faith-fractures"}],
@@ -364,7 +364,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
   },
   "reflection__archivist_of_ash__archivist": {
     id: "The Archivist of Ash",
-    text: "Shelves of candlelit skulls whisper fragments of your name as the Archivist passes, ledger open to a page not yet written. Soot falls like snow from a ceiling you cannot see. The Archivist does not look up. He never needs to — every story that ends here ends the same way: with a signature.\n\n“Truth is not a lantern,” he says, “it’s a ledger. The cost is the column beside it.” He turns the book so you can read a line where your name should be. The space hums.\n",
+    text: ((playerName) => "Shelves of candlelit skulls whisper fragments of your name as the Archivist passes, ledger open to a page not yet written. Soot falls like snow from a ceiling you cannot see. The Archivist does not look up. He never needs to — every story that ends here ends the same way: with a signature. Somewhere in the stacks, a skull exhales a single word: PLAYERNAME.\n\n“Truth is not a lantern,” he says, “it’s a ledger. The cost is the column beside it.” He turns the book so you can read a line where your name should be. The space hums.\n".replace(/PLAYERNAME/g, String(playerName))),
     
     
     choices: [{"text":"Bargain for Knowledge","next":"reflection__archivist_of_ash__bargain_for_knowledge"},{"text":"Refuse His Bargain","next":"reflection__archivist_of_ash__refuse_bargain"}],
@@ -444,7 +444,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
   },
   "reflection__start": {
     id: "Reflection — The Mirror’s Truth",
-    text: "Glass remembers everything. When you breathe, the mirrors breathe back.\n\nThe Chamber of Glass rises like a grove of winter trees — tall panes, beveled edges catching candlelight in thin, cold lines. Every surface shows a true thing and a comforting lie, overlapping like ripples. Somewhere inside those echoing corridors, a child’s voice hums a tune whose words you can’t afford to recall. Further below, the Archivist catalogs choices you haven’t made yet.\n\nSomewhere on the road, a wayfaring thaumaturge fans a brazier. His glaze sings when heated; his smile does the same.\n",
+    text: ((playerName) => "Glass remembers everything, PLAYERNAME. When you breathe, the mirrors breathe back.\n\nThe Chamber of Glass rises like a grove of winter trees — tall panes, beveled edges catching candlelight in thin, cold lines. Every surface shows a true thing and a comforting lie, overlapping like ripples. Somewhere inside those echoing corridors, a child’s voice hums a tune whose words you can’t afford to recall. Further below, the Archivist catalogs choices you haven’t made yet.\n\nSomewhere on the road, a wayfaring thaumaturge fans a brazier. His glaze sings when heated; his smile does the same.\n".replace(/PLAYERNAME/g, String(playerName))),
     
     
     choices: [{"text":"Enter the Chamber of Glass","next":"reflection__chamber_of_glass__mirror_child"},{"text":"Seek the Archivist of Ash","next":"reflection__archivist_of_ash__archivist"},{"text":"Meet Mr. Harriot at the Wayfarer’s Fire","next":"reflection__wayfarers_fire__mr_harriot"}],
@@ -460,7 +460,7 @@ export const generatedStoryNodes: Record<string, StoryNode> = {
   },
   "reflection__wayfarers_fire__mr_harriot": {
     id: "Mr. Harriot at the Wayfarer’s Fire",
-    text: "By a roadside brazier, he paints a shimmering glaze over a cracked hand‑mirror. The brush leaves ripples that won’t settle, as if the glass were a pond with a memory. “Name for a recipe,” he smiles. “A nickname will do.”\n\nHe warms the mirror over coals that smell faintly of rosemary and something sweet you can’t place. When the glaze sings, your reflection lags a heartbeat. The smile he gives you is friendly and not entirely for you.\n",
+    text: ((playerName) => "By a roadside brazier, he paints a shimmering glaze over a cracked hand‑mirror. The brush leaves ripples that won’t settle, as if the glass were a pond with a memory. “Name for a recipe,” he smiles. “A nickname will do, PLAYERNAME.”\n\nHe warms the mirror over coals that smell faintly of rosemary and something sweet you can’t place. When the glaze sings, your reflection lags a heartbeat. The smile he gives you is friendly and not entirely for you.\n".replace(/PLAYERNAME/g, String(playerName))),
     
     
     choices: [{"text":"Trade a Name for Mirror‑Glaze","next":"reflection__wayfarers_fire__accept_glaze"},{"text":"Decline with Courtesy","next":"reflection__start"}],

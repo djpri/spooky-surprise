@@ -10,7 +10,7 @@
 }
 -->
 
-Glass remembers everything. When you breathe, the mirrors breathe back.
+Glass remembers everything, PLAYERNAME. When you breathe, the mirrors breathe back.
 
 The Chamber of Glass rises like a grove of winter trees — tall panes, beveled edges catching candlelight in thin, cold lines. Every surface shows a true thing and a comforting lie, overlapping like ripples. Somewhere inside those echoing corridors, a child’s voice hums a tune whose words you can’t afford to recall. Further below, the Archivist catalogs choices you haven’t made yet.
 

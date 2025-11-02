@@ -11,7 +11,7 @@
 }
 -->
 
-Roots seize stone; the old fire hums low. What you bind binds you back.
+Roots seize stone; the old fire hums low. What you bind binds you back, PLAYERNAME.
 
 Under the chapel, the air tastes of coins and wet dirt. Roots thread the vaulting like ribs. In the center, an altar‑stone veined with soot sleeps over a throat in the world. When you align Talamh with the others, the stone feels you like a tooth feels a tongue.
 
