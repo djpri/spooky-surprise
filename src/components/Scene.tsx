@@ -1,4 +1,11 @@
-import { useMemo, useState, useEffect, useCallback } from "react";
+import {
+    useMemo,
+    useState,
+    useEffect,
+    useCallback,
+    useLayoutEffect,
+    useRef,
+} from "react";
 import { Typewriter } from "./typewriter";
 import { storyNodes, type StoryNode } from "../data/storyNodes";
 import { useStoryStore } from "../store/storyStore";
@@ -14,6 +21,8 @@ export default function Scene({ node }: SceneProps) {
         useStoryStore();
     const [isRolling, setIsRolling] = useState(false);
     const [isTyped, setIsTyped] = useState(false);
+    const [lockedWidth, setLockedWidth] = useState<number | null>(null);
+    const cardRef = useRef<HTMLDivElement>(null);
 
     const choices = useMemo(() => node.choices ?? [], [node.choices]);
 
@@ -50,6 +59,13 @@ export default function Scene({ node }: SceneProps) {
         }, 1100);
     };
 
+    useLayoutEffect(() => {
+        if (cardRef.current) {
+            const { width } = cardRef.current.getBoundingClientRect();
+            setLockedWidth(width);
+        }
+    }, []);
+
     const fullText = useMemo(() => {
         return typeof node.text === "function"
             ? node.text(playerName)
@@ -57,30 +73,42 @@ export default function Scene({ node }: SceneProps) {
     }, [node, playerName]);
 
     return (
-        <div className="w-full max-w-3xl space-y-6 rounded-2xl border border-border/60 bg-surface/80 p-8 shadow-lg shadow-primary/15">
+        <div
+            ref={cardRef}
+            className="space-y-6 rounded-2xl border border-border/60 bg-surface/80 p-8 shadow-lg shadow-primary/15"
+            style={
+                lockedWidth
+                    ? {
+                          width: lockedWidth,
+                          maxWidth: lockedWidth,
+                          overflowX: "clip",
+                      }
+                    : { width: "100%", maxWidth: "48rem" }
+            }
+        >
             <header className="space-y-2 text-center">
                 <h3 className="font-heading text-3xl font-semibold text-secondary">
                     Chapter: {node.id}
                 </h3>
             </header>
 
-            <p className="text-lg leading-relaxed text-foreground/90">
-                <span className="typewriter">
-                    <Typewriter text={fullText} speed={30} onComplete={handleTypedComplete} />
+            <p className="text-lg leading-relaxed text-foreground/90 whitespace-pre-wrap break-words">
+                <span className="typewriter block w-full">
+                    <Typewriter
+                        text={fullText}
+                        speed={30}
+                        onComplete={handleTypedComplete}
+                    />
                 </span>
                 {node.requiresName && isTyped && (
-                    <>
-                        {" "}
-                        <NameInput
-                            playerName={playerName}
-                            setPlayerName={setPlayerName}
-                        />
-                    </>
+                    <NameInput
+                        playerName={playerName}
+                        setPlayerName={setPlayerName}
+                    />
                 )}
             </p>
 
-            {/* Choices */}
-            {choices.length > 0 ? (
+            {choices.length > 0 && (
                 <div className="space-y-2">
                     <h4 className="font-heading text-lg uppercase tracking-wide text-foreground/80">
                         Choices
@@ -98,9 +126,8 @@ export default function Scene({ node }: SceneProps) {
                         ))}
                     </div>
                 </div>
-            ) : null}
+            )}
 
-            {/* Dice check block */}
             {node.diceCheck && (
                 <div className="space-y-3 rounded-xl border border-border/40 bg-background/60 p-4">
                     <p className="text-sm text-foreground/80">
@@ -120,7 +147,6 @@ export default function Scene({ node }: SceneProps) {
                 </div>
             )}
 
-            {/* Display roll result */}
             {lastRoll !== null && (
                 <p className="text-center text-sm text-foreground/70">
                     You rolled a {lastRoll}.

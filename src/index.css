@@ -82,6 +82,7 @@ body {
 .maze-active * {
   cursor: auto !important;
 }
+
 .maze-active .ghost-cursor {
   display: none !important;
 }
@@ -102,12 +103,15 @@ body {
   opacity: 0.15;
   filter: drop-shadow(0 0 6px rgba(163, 24, 24, 0.25));
 }
+
 .dark .ghost-cursor.ghost-pointer .ghost-body {
   filter: drop-shadow(0 0 8px rgba(255, 8, 8, 0.3));
 }
+
 .ghost-cursor.ghost-pointer .ghost-wave {
   opacity: 0.55;
 }
+
 .ghost-cursor.ghost-pointer .ghost-eye {
   opacity: 0.75;
 }
@@ -189,6 +193,7 @@ body {
 .ghost-pointer-mode .ghost-trail {
   opacity: 0.2;
 }
+
 .dark .ghost-pointer-mode .ghost-trail {
   opacity: 0.25;
 }
@@ -262,17 +267,6 @@ body {
   }
 }
 
-.dark @keyframes fadeOut {
-  0% {
-    opacity: 0.5;
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.5);
-  }
-}
 
 .typewriter::after {
   content: "|";
