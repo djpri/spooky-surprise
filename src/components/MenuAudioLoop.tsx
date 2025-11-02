@@ -1,9 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import menuTrack from "../assets/audio/menu.mp3";
 import corruptionTrack from "../assets/audio/path_1.mp3";
 import faithTrack from "../assets/audio/path_2.mp3";
 import reflectionTrack from "../assets/audio/path_3.mp3";
 import { useStoryStore } from "../store/storyStore";
+import { getAudioContext } from "../utils/audioContext";
 
 const OVERLAP_SECONDS = 0.4;
 const FADE_IN_SECONDS = 0.4;
@@ -23,6 +24,7 @@ export default function MenuAudioLoop() {
     const gainNodesRef = useRef<GainNode[]>([]);
     const volumeRef = useRef(volume);
     const currentTrackRef = useRef<string | null>(null);
+    const [kick, setKick] = useState(0);
 
     // Determine which track should play
     const activeTrack = currentPath || "menu";
@@ -38,10 +40,11 @@ export default function MenuAudioLoop() {
     }, [volume]);
 
     useEffect(() => {
-        if (typeof window === "undefined" || !soundEnabled) {
+        if (typeof window === "undefined") {
             return;
         }
 
+        // If sound is disabled, gently fade out any playing nodes and exit.
         if (!soundEnabled) {
             gainNodesRef.current.forEach((g) => {
                 g.gain.linearRampToValueAtTime(
@@ -52,25 +55,13 @@ export default function MenuAudioLoop() {
             return; // don't rebuild or close context
         }
 
-        // Only restart audio if track actually changed
-        if (currentTrackRef.current === activeTrack) {
-            return;
-        }
-        currentTrackRef.current = activeTrack;
-
-        const AudioContextClass =
-            (window.AudioContext as typeof AudioContext | undefined) ||
-            (
-                window as typeof window & {
-                    webkitAudioContext?: typeof AudioContext;
-                }
-            ).webkitAudioContext;
-
-        if (!AudioContextClass) {
+        // Only restart audio if needed. If we haven't built nodes yet, allow start.
+        const alreadySetup = gainNodesRef.current.length > 0;
+        if (currentTrackRef.current === activeTrack && alreadySetup) {
             return;
         }
 
-        const context = new AudioContextClass();
+        const context = getAudioContext();
         const gainNodes: GainNode[] = [
             context.createGain(),
             context.createGain(),
@@ -173,6 +164,8 @@ export default function MenuAudioLoop() {
                 }
 
                 const initialStart = context.currentTime + START_DELAY_SECONDS;
+                // Mark the active track only when we're actually about to schedule playback
+                currentTrackRef.current = activeTrack;
                 playSlot(0, initialStart, audioBuffer);
             } catch {
                 // Swallow errors to avoid crashing the app if audio fails to load.
@@ -195,11 +188,18 @@ export default function MenuAudioLoop() {
                 }
             });
             gainNodes.forEach((gain) => gain.disconnect());
-            context.close().catch(() => undefined);
+            // Do not close the shared audio context
             contextRef.current = null;
             gainNodesRef.current = [];
         };
-    }, [soundEnabled, activeTrack]);
+    }, [soundEnabled, activeTrack, kick]);
+
+    // Re-trigger playback attempt when the audio context becomes unlocked
+    useEffect(() => {
+        const onUnlocked = () => setKick((k) => k + 1);
+        window.addEventListener("audio-unlocked", onUnlocked);
+        return () => window.removeEventListener("audio-unlocked", onUnlocked);
+    }, []);
 
     return null;
 }
