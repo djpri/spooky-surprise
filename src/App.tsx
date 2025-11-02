@@ -7,7 +7,6 @@ import MenuAudioLoop from "./components/MenuAudioLoop";
 import SceneAudioPlayer from "./components/SceneAudioPlayer";
 import { SettingsMenu } from "./components/SettingsMenu";
 import StoryRenderer from "./components/StoryRenderer";
-import { StoryStateInspector } from "./components/StoryStateInspector";
 import ThemeToggle from "./components/ThemeToggle";
 import { Button } from "./components/ui/Button";
 import { useStoryStore } from "./store/storyStore";
