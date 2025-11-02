@@ -25,8 +25,8 @@ interface StoryState {
 }
 
 export const useStoryStore = create<StoryState>((set) => ({
-    currentNode: "Neamh",
-    visited: ["Neamh"],
+    currentNode: "prologue",
+    visited: ["prologue"],
     lastRoll: null,
     soundEnabled: getInitialSoundEnabled(),
     playerName: "",
@@ -47,8 +47,8 @@ export const useStoryStore = create<StoryState>((set) => ({
         })),
     reset: () =>
         set((state) => ({
-            currentNode: "Neamh",
-            visited: ["Neamh"],
+            currentNode: "prologue",
+            visited: ["prologue"],
             lastRoll: null,
             soundEnabled: state.soundEnabled,
         })),

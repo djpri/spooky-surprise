@@ -87,11 +87,6 @@ export default function Scene({ node }: SceneProps) {
                         ))}
                     </div>
                 </div>
-            ) : !node.diceCheck ? (
-                <p className="rounded-lg border border-border/40 bg-background/60 p-4 text-center text-sm text-foreground/70">
-                    No choices remain here. Perhaps another path will reveal
-                    itself later.
-                </p>
             ) : null}
 
             {/* Dice check block */}

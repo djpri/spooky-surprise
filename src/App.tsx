@@ -10,15 +10,8 @@ import DynamicBackground from "./components/DynamicBackground";
 
 function App() {
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-    const {
-        currentNode,
-        visited,
-        reset,
-        soundEnabled,
-        setSoundEnabled,
-        setPlayerName,
-    } = useStoryStore();
-    const visitedCount = visited.length;
+    const { currentNode, reset, soundEnabled, setSoundEnabled, setPlayerName } =
+        useStoryStore();
     const toggleSound = () => setSoundEnabled(!soundEnabled);
     useEffect(() => {
         const script = document.createElement("script");
@@ -49,16 +42,11 @@ function App() {
                         <StoryRenderer />
                     </section>
 
-                    <section className="w-full max-w-3xl space-y-4 rounded-2xl border border-border/70 bg-surface/70 p-6 text-center shadow-inner">
-                        <div className="space-y-3">
-                            <p className="text-xs uppercase tracking-wide text-foreground/60">
-                                Current Location
-                            </p>
-                            <p className="font-heading text-3xl text-secondary">
-                                {currentNode}
-                            </p>
+                    
+
+                    <div className="mt-auto w-full pb-8 pt-12">
+                        <div className="flex justify-center gap-4">
                             <Button
-                                className="mt-4 w-full py-3 text-base"
                                 onClick={() => {
                                     reset();
                                     setPlayerName("");
@@ -66,30 +54,6 @@ function App() {
                             >
                                 Restart Adventure
                             </Button>
-                        </div>
-
-                        <div className="space-y-3 text-left">
-                            <h3 className="font-heading text-lg uppercase tracking-wide text-foreground/70">
-                                Visited
-                            </h3>
-                            <p className="text-sm text-foreground/60">
-                                {visitedCount} locations explored
-                            </p>
-                            <ul className="grid gap-2 text-sm text-foreground/80 sm:grid-cols-2">
-                                {visited.map((nodeId) => (
-                                    <li
-                                        key={nodeId}
-                                        className="rounded border border-border/50 bg-background/40 px-3 py-2"
-                                    >
-                                        {nodeId}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </section>
-
-                    <div className="mt-auto w-full pb-8 pt-12">
-                        <div className="flex justify-center gap-4">
                             <Button onClick={() => setIsSettingsOpen(true)}>
                                 Settings
                             </Button>
