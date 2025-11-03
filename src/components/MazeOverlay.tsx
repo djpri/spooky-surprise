@@ -107,7 +107,7 @@ export default function MazeOverlay({ onClose }: Props) {
   if (isSupported !== true) return null
 
   return (
-    <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/90 p-4">
+    <div className="fixed inset-0 z-10000 flex items-center justify-center bg-black/90 p-4">
       <div className="relative flex max-w-full flex-col items-center gap-3 rounded-xl border border-border bg-surface p-4 text-surface-foreground shadow-2xl">
         <div className="flex w-full items-center justify-between gap-4">
           <div className="text-sm opacity-70">Level {levelIdx + 1} / {levels.length}</div>
