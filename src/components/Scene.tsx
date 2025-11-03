@@ -106,7 +106,7 @@ export default function Scene({ node }: SceneProps) {
           <span className="typewriter">
             <Typewriter
               text={fullText}
-              speed={30}
+              speed={16}
               onComplete={handleTypedComplete}
             />
           </span>
