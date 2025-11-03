@@ -1,11 +1,4 @@
-import {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { storyNodes, type StoryNode } from "../data/storyNodes";
 import { useStoryStore } from "../store/storyStore";
 import { NameInput } from "./name";
@@ -21,7 +14,6 @@ export default function Scene({ node }: SceneProps) {
     useStoryStore();
   const [isRolling, setIsRolling] = useState(false);
   const [isTyped, setIsTyped] = useState(false);
-  const [lockedWidth, setLockedWidth] = useState<number | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const { gameStarted } = useStoryStore();
 
@@ -55,6 +47,7 @@ export default function Scene({ node }: SceneProps) {
 
     setIsRolling(true);
     const roll = Math.ceil(Math.random() * 20);
+
     recordRoll(roll);
 
     const result =
@@ -68,13 +61,6 @@ export default function Scene({ node }: SceneProps) {
     }, 1100);
   };
 
-  useLayoutEffect(() => {
-    if (cardRef.current) {
-      const { width } = cardRef.current.getBoundingClientRect();
-      setLockedWidth(width);
-    }
-  }, []);
-
   const fullText = useMemo(() => {
     return typeof node.text === "function"
       ? node.text(playerName)
@@ -84,24 +70,15 @@ export default function Scene({ node }: SceneProps) {
   return (
     <div
       ref={cardRef}
-      className="space-y-6 rounded-2xl border border-border/60 bg-surface/80 p-8 shadow-lg shadow-primary/15"
-      style={
-        lockedWidth
-          ? {
-              width: lockedWidth,
-              maxWidth: lockedWidth,
-              overflowX: "clip",
-            }
-          : { width: "100%", maxWidth: "48rem" }
-      }
+      className="w-full max-w-3xl space-y-6 rounded-2xl border border-border/60 bg-surface/80 p-4 sm:p-6 md:p-8 shadow-lg shadow-primary/15"
     >
       <header className="space-y-2 text-center">
-        <h3 className="font-heading text-3xl font-semibold text-secondary">
+        <h3 className="font-heading text-xl sm:text-2xl md:text-3xl font-semibold text-secondary">
           Chapter: {node.id}
         </h3>
       </header>
 
-      <p className="text-lg leading-relaxed text-foreground/90">
+      <p className="text-lg leading-relaxed text-foreground/90 md:max-w-2xl">
         {gameStarted ? (
           <span className="typewriter">
             <Typewriter
@@ -119,11 +96,11 @@ export default function Scene({ node }: SceneProps) {
       </p>
 
       {choices.length > 0 && (
-        <div className="space-y-2">
+        <div className="space-y-2 w-full">
           <h4 className="font-heading text-lg uppercase tracking-wide text-foreground/80">
             Choices
           </h4>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3 grid-cols-1 sm:grid-cols-2">
             {choices.map((choice) => (
               <Button
                 key={`${node.id}-${choice.next}-${choice.text}`}

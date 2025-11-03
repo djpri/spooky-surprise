@@ -37,6 +37,18 @@ function App() {
     setShowMaze(true);
   };
 
+  const openBSODIfSupported = () => {
+    if (typeof window === "undefined") return;
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+    const hasFinePointer = window.matchMedia("(pointer: fine)").matches;
+    if (!isDesktop || !hasFinePointer) {
+      // Show alert on unsupported devices
+      alert("This is too spooky for mobile");
+      return;
+    }
+    setShowBSOD(true);
+  };
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://kit.fontawesome.com/9cf674f529.js";
@@ -55,32 +67,35 @@ function App() {
       {!showBSOD && <MenuAudioLoop />}
       <SceneAudioPlayer />
       <main className="container mx-auto flex min-h-screen flex-col items-center justify-center">
-        <div className="mx-auto flex min-h-screen flex-col items-center justify-center gap-16 px-4 py-16 z-20">
-          <h2 className="font-heading text-center text-7xl font-semibold tracking-widest">
+        <div className="mx-auto flex min-h-screen flex-col items-center justify-center gap-4 sm:gap-8 md:gap-16 px-4 py-8 sm:py-16 z-20">
+          <h2 className="font-heading text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-widest leading-tight">
             <button
               onClick={openMazeIfSupported}
-              className="underline-offset-4 hover:underline"
+              className="text-white underline-offset-4 hover:underline"
               aria-label="Open spooky maze"
               title="Spooky (click me)"
             >
               Spooky
             </button>{" "}
             {/* Intentionally no hover/gesture to suggest interaction */}
-            <span className="text-secondary" onClick={() => setShowBSOD(true)}>
+            <span
+              className="text-secondary cursor-pointer underline-offset-4 hover:underline"
+              onClick={openBSODIfSupported}
+            >
               Surprise
             </span>
           </h2>
-          <h3 className="text-center text-2xl text-foreground/70">
+          <h3 className="text-center text-lg sm:text-xl md:text-2xl text-foreground/70">
             An Interactive Halloween Adventure
           </h3>
 
           {!gameStarted ? (
             <section className="w-full max-w-3xl">
-              <div className=" space-y-6 rounded-2xl border border-border/60 bg-surface/80 p-8 shadow-lg shadow-primary/15 max-w-716px">
-                <h2 className="mb-6 font-heading text-4xl font-semibold text-center text-secondary">
+              <div className=" space-y-6 rounded-2xl border border-border/60 bg-surface/80 p-6 sm:p-8 shadow-lg shadow-primary/15">
+                <h2 className="mb-6 font-heading text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-secondary">
                   Welcome to Spooky Surprise!
                 </h2>
-                <p className="mb-4 text-lg text-foreground/90">
+                <p className="mb-4 text-base sm:text-lg text-foreground/90">
                   Embark on a thrilling interactive adventure where your choices
                   shape the story! Dive into a world of mystery, make critical
                   decisions, and see where your path leads. Are you ready to
@@ -111,7 +126,7 @@ function App() {
             </section>
           )}
           <div className="mt-auto w-full pb-8 pt-12">
-            <div className="flex justify-center gap-4">
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
               <Button
                 onClick={() => {
                   reset();
@@ -123,8 +138,8 @@ function App() {
               <Button onClick={() => setIsSettingsOpen(true)}>Settings</Button>
               <ThemeToggle />
               <Button
-                className="px-4 py-2 text-sm"
                 onClick={toggleSound}
+                className="py-3"
                 aria-pressed={soundEnabled}
               >
                 {soundEnabled ? (
