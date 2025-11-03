@@ -1,3 +1,4 @@
+import { backgroundImages } from "../assets/images/backgrounds";
 import { corruptionNodes } from "./corruptionNodes";
 import { faithNodes } from "./faithNodes";
 import { reflectionNodes } from "./reflectionNodes";
@@ -39,9 +40,12 @@ export const storyNodes: Record<string, StoryNode> = {
         next: "corruption__start",
       },
     ],
-    imagePath: "/backgrounds/brichan.webp",
+    imagePath: backgroundImages.brichan,
   },
   ...faithNodes,
   ...reflectionNodes,
   ...corruptionNodes,
 };
+
+// Export backgroundImages for use in path node files
+export { backgroundImages } from "../assets/images/backgrounds";

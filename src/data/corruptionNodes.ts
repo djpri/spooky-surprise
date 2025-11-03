@@ -1,3 +1,4 @@
+import { backgroundImages } from "../assets/images/backgrounds";
 import type { StoryNode } from "./storyNodes";
 
 export const corruptionNodes: Record<string, StoryNode> = {
@@ -94,7 +95,7 @@ export const corruptionNodes: Record<string, StoryNode> = {
       fail: "corruption__beneath_the_altar__inner_torment",
     },
 
-    imagePath: "/backgrounds/soulLock.jpg",
+    imagePath: backgroundImages.soulLock,
   },
   corruption__beneath_the_altar__bound_spirit: {
     id: "Beneath the Altar — The Bound Spirit",
@@ -105,7 +106,7 @@ export const corruptionNodes: Record<string, StoryNode> = {
       { text: "Free It", next: "corruption__beneath_the_altar__free" },
       { text: "Bind It", next: "corruption__beneath_the_altar__bind" },
     ],
-    imagePath: "/backgrounds/cellar.jpg",
+    imagePath: backgroundImages.cellar,
   },
   corruption__beneath_the_altar__devour: {
     id: "Devour the Spirit",
@@ -161,6 +162,17 @@ export const corruptionNodes: Record<string, StoryNode> = {
     choices: [],
     imagePath: null,
   },
+  corruption__descent_into_rootdeep__final_trial: {
+    id: "The Descent into Rootdeep — Final Trial",
+    text: "The threshold to Rootdeep opens before you—a crack in the world that tastes of ages and dust older than prayer. The lantern made from three mirrors flares once, as if in warning, then settles to a dim and anxious glow. Each breath you take at this precipice is borrowed from a version of you that will never leave. To descend is to accept that you will emerge changed—if you emerge at all.\n\nBelow, even at this distance, you sense them: the spirits and the guardian both, waiting in the dark like memory and hunger pressed into stone.\n\nThe descent will cost you. \n- Years will settle into your joints.\n- Your face will age in the mirror of black-violet stone.\n- The marks beneath your skin will pulse with hunger you have tried to ignore.\n\nBut it is the only way forward. The guardian is not something to avoid or bind. It is something to *meet*.\n\nStep down into the dark. Listen to what waits. Choose what you become.\n",
+    choices: [
+      {
+        text: "Begin the descent into Rootdeep",
+        next: "corruption__descent_into_rootdeep__entry_the_voices",
+      },
+    ],
+    imagePath: backgroundImages.lanternTaken,
+  },
   corruption__descent_into_rootdeep__deeper_the_fading: {
     id: "Deeper — The Fading",
     text: "As you descend, the voices shift and fracture. Some shriek unbearably, others groan subsonic in your bones. They thin—stretching into wisps that break apart mid-cry, fading to nothing.\n\n*You* are leaving *them* behind.\n\nWith each step, the cost becomes clear:\n- Your breath slows, the air too thin or too old.\n- Your joints ache with borrowed decades.\n- Talamh's light gutters like a candle in windless dark.\n- The corruption beneath your skin pulses more hungrily.\n\nThe wailing becomes an echo of an echo. The spirits seal themselves above, unable to follow. Their cries fade through stone and centuries.\n\nThen, silence. Not absence—the silence of a held breath. Something patient and aware, waiting where sound forgets how to move.\n\nYou have descended past the suffering of the many. What remains is singular.\n\n",
@@ -179,7 +191,7 @@ export const corruptionNodes: Record<string, StoryNode> = {
         next: "corruption__descent_into_rootdeep__void_face_to_face",
       },
     ],
-    imagePath: "/backgrounds/brichan_cave.webp",
+    imagePath: backgroundImages.brichanCave,
   },
   corruption__descent_into_rootdeep__entry_the_voices: {
     id: "Rootdeep Entry — The Wailing Spirits",
@@ -199,34 +211,8 @@ export const corruptionNodes: Record<string, StoryNode> = {
         next: "corruption__descent_into_rootdeep__deeper_the_fading",
       },
     ],
-    imagePath: "/backgrounds/brichan_cave.webp",
+    imagePath: backgroundImages.brichanCave,
     audioPath: "/audio/cave_voices.mp3",
-  },
-  corruption__descent_into_rootdeep__final_trial: {
-    id: "The Descent into Rootdeep — Final Trial",
-    text: "The threshold to Rootdeep opens before you—a crack in the world that tastes of ages and dust older than prayer. The lantern made from three mirrors flares once, as if in warning, then settles to a dim and anxious glow. Each breath you take at this precipice is borrowed from a version of you that will never leave. To descend is to accept that you will emerge changed—if you emerge at all.\n\nBelow, even at this distance, you sense them: the spirits and the guardian both, waiting in the dark like memory and hunger pressed into stone.\n\nThe descent will cost you. \n- Years will settle into your joints.\n- Your face will age in the mirror of black-violet stone.\n- The marks beneath your skin will pulse with hunger you have tried to ignore.\n\nBut it is the only way forward. The guardian is not something to avoid or bind. It is something to *meet*.\n\nStep down into the dark. Listen to what waits. Choose what you become.\n",
-
-    choices: [
-      {
-        text: "Begin the descent into Rootdeep",
-        next: "corruption__descent_into_rootdeep__entry_the_voices",
-      },
-    ],
-    imagePath: "/backgrounds/lanternTaken.jpg",
-  },
-  corruption__descent_into_rootdeep__guardian_consumes: {
-    id: "Ending — The Guardian Consumes (Hollow Escape)",
-    text: "You press the shadow down until it slips your grip and takes the hand that held it. The cave exhales your name and keeps the breath.\n\nYou climb out lighter only where it matters; elsewhere, you are a husk packed with obligation. People are saved. You are not.\n\nThe cycle continues. The shadow is patient. It does not need to eat quickly to win.\n",
-
-    choices: [],
-    imagePath: "/backgrounds/brichan_cave.webp",
-  },
-  corruption__descent_into_rootdeep__guardian_transforms: {
-    id: "Ending — The Guardian Transforms (True Integration)",
-    text: "You turn and let it turn with you. Where teeth waited, there are tools; where claws coiled, there are hands. The shadow steps forward and does not need to speak to be understood.\n\nYou emerge older than you entered — hair threaded with frost, breath quieter, eyes steady. The Veil mends along your fault lines. You carry both hunger and light without lying about either.\n\nThe cycle breaks here. Not through power, but through integration.\n\n",
-
-    choices: [],
-    imagePath: "/backgrounds/brichan_cave.webp",
   },
   corruption__descent_into_rootdeep__void_face_to_face: {
     id: "The Void — Face to Face with the Guardian",
@@ -242,8 +228,22 @@ export const corruptionNodes: Record<string, StoryNode> = {
         next: "corruption__descent_into_rootdeep__guardian_consumes",
       },
     ],
-    imagePath: "/backgrounds/brichan_cave.webp",
+    imagePath: backgroundImages.brichanCave,
     audioPath: "/audio/cave_monster.mp3",
+  },
+  corruption__descent_into_rootdeep__guardian_transforms: {
+    id: "Ending — The Guardian Transforms (True Integration)",
+    text: "You turn and let it turn with you. Where teeth waited, there are tools; where claws coiled, there are hands. The shadow steps forward and does not need to speak to be understood.\n\nYou emerge older than you entered — hair threaded with frost, breath quieter, eyes steady. The Veil mends along your fault lines. You carry both hunger and light without lying about either.\n\nThe cycle breaks here. Not through power, but through integration.\n\n",
+
+    choices: [],
+    imagePath: backgroundImages.brichanCave,
+  },
+  corruption__descent_into_rootdeep__guardian_consumes: {
+    id: "Ending — The Guardian Consumes (Hollow Escape)",
+    text: "You press the shadow down until it slips your grip and takes the hand that held it. The cave exhales your name and keeps the breath.\n\nYou climb out lighter only where it matters; elsewhere, you are a husk packed with obligation. People are saved. You are not.\n\nThe cycle continues. The shadow is patient. It does not need to eat quickly to win.\n",
+
+    choices: [],
+    imagePath: backgroundImages.brichanCave,
   },
   corruption__start: {
     id: "Corruption — The Root Flame",
@@ -271,7 +271,7 @@ export const corruptionNodes: Record<string, StoryNode> = {
         next: "corruption__descent_into_rootdeep__final_trial",
       },
     ],
-    imagePath: "/backgrounds/talamh.jpg",
+    imagePath: backgroundImages.talamh,
   },
   corruption__voice_beneath_the_altar__condemn_voice: {
     id: "Ending — Condemn the Voice (Eternal Cycle)",
@@ -285,7 +285,7 @@ export const corruptionNodes: Record<string, StoryNode> = {
     text: "Walls inhale. The world exhales.\n",
 
     choices: [],
-    imagePath: "/backgrounds/secretPassage.jpg",
+    imagePath: backgroundImages.secretPassage,
   },
   corruption__voice_beneath_the_altar__merge_voice: {
     id: "Ending — Merge With the Voice (Omniscient)",
@@ -312,6 +312,6 @@ export const corruptionNodes: Record<string, StoryNode> = {
         next: "corruption__voice_beneath_the_altar__condemn_voice",
       },
     ],
-    imagePath: "/backgrounds/whisper.jpg",
+    imagePath: backgroundImages.whisper,
   },
 };

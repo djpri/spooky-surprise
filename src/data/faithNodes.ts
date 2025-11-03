@@ -1,3 +1,4 @@
+import { backgroundImages } from "../assets/images/backgrounds";
 import type { StoryNode } from "./storyNodes";
 
 export const faithNodes: Record<string, StoryNode> = {
@@ -60,7 +61,7 @@ export const faithNodes: Record<string, StoryNode> = {
       },
       { text: "Confront your own doubt", next: "faith-own-faith-fractures" },
     ],
-    imagePath: "/backgrounds/lantern.jpg",
+    imagePath: backgroundImages.lantern,
   },
   faith__village_at_dusk__burn_both: {
     id: "Pyre Dilemma — Burn Both",

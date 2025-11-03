@@ -1,3 +1,4 @@
+import { backgroundImages } from "../assets/images/backgrounds";
 import type { StoryNode } from "./storyNodes";
 
 export const reflectionNodes: Record<string, StoryNode> = {
@@ -32,7 +33,7 @@ export const reflectionNodes: Record<string, StoryNode> = {
       fail: "reflection__archivist_of_ash__madness",
     },
 
-    imagePath: "/backgrounds/amulet.jpg",
+    imagePath: backgroundImages.amulet,
   },
   reflection__archivist_of_ash__break_cycle: {
     id: "Ending — Break the Cycle (Transcendent)",
@@ -103,7 +104,7 @@ export const reflectionNodes: Record<string, StoryNode> = {
     text: "Glass storms across the sky in hairline seams. Life continues, carefully.\n",
 
     choices: [],
-    imagePath: "/backgrounds/moonDoor.jpg",
+    imagePath: backgroundImages.moonDoor,
   },
   reflection__start: {
     id: "Reflection — The Mirror's Truth",
@@ -127,7 +128,7 @@ export const reflectionNodes: Record<string, StoryNode> = {
         next: "reflection__wayfarers_fire__mr_harriot",
       },
     ],
-    imagePath: "/backgrounds/Muir.jpg",
+    imagePath: backgroundImages.Muir,
   },
   reflection__wayfarers_fire__accept_glaze: {
     id: "Harriot's Mirror-Glaze",
