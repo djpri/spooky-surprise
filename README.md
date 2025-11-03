@@ -69,17 +69,17 @@ Spooky Surprise is a text-based interactive fiction experience where players ass
 ## Technology Stack
 
 ### Core
-- **React 19.1.1** - UI framework
-- **TypeScript 5.9.3** - Type-safe development
-- **Vite 7.1.7** - Build tool and development server
+- **React 19** - UI framework
+- **TypeScript 5** - Type-safe development
+- **Vite 7** - Build tool and development server
 
 ### Styling
-- **Tailwind CSS 4.1.16** - Utility-first CSS framework
-- **clsx 2.1.1** - Conditional class name utility
+- **Tailwind CSS** - Utility-first CSS framework
+- **clsx** - Conditional class name utility
 - Custom CSS animations for cursor, typewriter, and transitions
 
 ### State Management
-- **Zustand 5.0.8** - Lightweight state management with localStorage persistence
+- **Zustand** - Lightweight state management with localStorage persistence
 
 ### Audio
 - Web Audio API for advanced audio processing
@@ -89,39 +89,16 @@ Spooky Surprise is a text-based interactive fiction experience where players ass
 ## Project Structure
 
 ```
-halloweenhackathon/
+spooky-surprise/
 ├── public/
 │   └── audio/                    # Public audio assets
 ├── src/
-│   ├── assets/
-│   │   ├── audio/                # Background music and sound effects
-│   │   ├── fonts/                # Custom decorative fonts
-│   │   ├── images/               # Background images and visual assets
-│   │   └── videos/               # Video backgrounds
-│   ├── components/
-│   │   ├── ui/                   # Reusable UI components (Button, Modal, etc.)
-│   │   ├── BSODOverlay.tsx       # Blue screen Easter egg
-│   │   ├── DynamicBackground.tsx # Background management system
-│   │   ├── GhostCursor.tsx       # Custom animated cursor
-│   │   ├── MazeOverlay.tsx       # Maze mini-game
-│   │   ├── MenuAudioLoop.tsx     # Background music manager
-│   │   ├── Scene.tsx             # Story scene renderer
-│   │   ├── SettingsMenu.tsx      # Settings modal
-│   │   ├── ThemeToggle.tsx       # Theme switcher
-│   │   └── typewriter.tsx        # Typewriter text effect
-│   ├── data/                     # Story content
-│   │   ├── storyNodes.ts         # Main story and prologue
-│   │   ├── faithNodes.ts         # Faith path narrative
-│   │   ├── reflectionNodes.ts    # Reflection path narrative
-│   │   └── corruptionNodes.ts    # Corruption path narrative
-│   ├── game/                     # Game logic
-│   │   ├── mazeEngine.ts         # Maze game engine
-│   │   └── mazeLevels.ts         # Maze level definitions
-│   ├── store/
-│   │   └── storyStore.ts         # Global state management
-│   ├── utils/
-│   │   ├── audioContext.ts       # Web Audio API helpers
-│   │   └── typeClickHelper.ts    # Audio buffer utilities
+│   ├── assets/                   # Static resources (audio, fonts, images, videos)
+│   ├── components/               # React components (UI, overlays, effects)
+│   ├── data/                     # Story content and narrative nodes
+│   ├── game/                     # Game logic (maze engine and levels)
+│   ├── store/                    # Global state management
+│   ├── utils/                    # Helper functions and utilities
 │   ├── App.tsx                   # Root component
 │   ├── main.tsx                  # React entry point
 │   └── index.css                 # Global styles
@@ -253,7 +230,7 @@ This project was developed as part of a Halloween hackathon. Contributions, bug 
 
 ## License
 
-Copyright (c) 2024. All rights reserved.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
