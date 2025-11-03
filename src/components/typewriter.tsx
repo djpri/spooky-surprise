@@ -12,7 +12,7 @@ interface TypewriterProps {
 
 export const Typewriter: React.FC<TypewriterProps> = ({
     text,
-    speed = 50,
+    speed = 100,
     onComplete,
 }) => {
     const [displayed, setDisplayed] = useState("");
@@ -39,7 +39,7 @@ export const Typewriter: React.FC<TypewriterProps> = ({
         const setupGainNode = () => {
             if (!gainRef.current) {
                 const g = ctx.createGain();
-                g.gain.value = 0.3; // <-- volume control (0.0 silent, 1.0 full)
+                g.gain.value = 0.2; // <-- volume control (0.0 silent, 1.0 full)
                 g.connect(ctx.destination);
                 gainRef.current = g;
             }
